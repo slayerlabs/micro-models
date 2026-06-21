@@ -43,6 +43,29 @@ zlecenie: "Kacper Wikieł — research + paper w LaTeX na bloga Slayer"
 **Ścieżka kompozycji (hazard, osobny profil ryzyka):**
 6. **mini-MoE/BTM** — ekspert vs ekspert + router na styku. ⚠️ **Pułapka metrum:** NIE jig(6/8) vs reel(4/4) — router oszuka po nagłówku `M:` (~100% trafności z jednego tokena). Użyj domen w **TYM SAMYM metrum** (walc vs mazur). Najpierw [[Kompozycja-Eksperymenty]] (E_CKA → shared-trunk) i rama: [[Emergencja-i-Wspolna-Reprezentacja]].
 
+## Wyniki spektrum (2026-06-21) — char-level jigi, ten sam split (90/10)
+| model | mechanizm | val ppl | rozmiar |
+|---|---|---|---|
+| n-gram rząd 1 | zliczanie, okno 1 | 11,86 | 52 konteksty |
+| n-gram rząd 2 | zliczanie, okno 2 | 7,14 | 1,2K |
+| n-gram rząd 3 | zliczanie, okno 3 | 5,19 | 13,9K |
+| n-gram rząd 4 | zliczanie, okno 4 | 4,29 | 67,6K |
+| n-gram rząd 5 | zliczanie, okno 5 | 3,95 | 215K |
+| n-gram rząd 6 | zliczanie, okno 6 | **3,90** | **508K kontekstów** |
+| NPLM okno 4 | MLP, stałe okno | 4,52 | 25K param |
+| NPLM okno 8 | MLP, stałe okno | 4,41 | 41K param |
+| NPLM okno 16 | MLP, stałe okno | 4,38 | 74K param |
+| **GPT** | atencja, okno 128 | **3,80** | ~800K param |
+
+Kod: `src/train/ngram_eval.py` (n-gram: interpolacja rzędów 0..M, wagi ∝2^o, floor add-k), `src/train/nplm.py`.
+
+**Wniosek (uczciwie, NIE naiwnie):**
+- **n-gram skaluje ppl z rzędem (11,86 → 3,90), ale pamięć EKSPLODUJE** (~2-3× kontekstów na rząd → rząd 6 = 508K) i to **tablica look-up bez generalizacji** poza widziane konteksty.
+- **n-gram rząd 6 (3,90) ≈ GPT (3,80)** na tym repetytywnym korpusie — muzyka ma dużo dosłownie powtarzalnych fraz, więc n-gram „pamięta". To **nie** jest „transformer miażdży n-gram"; ppl prawie remis.
+- **NPLM kompresuje** n-gram w zwartą, gładką, **generalizującą** funkcję (~40K param, ppl ~4,4) — trochę gorszy ppl, ale uczy reprezentacji, nie tablicy.
+- **GPT** wygrywa ppl (3,80) **zmiennym długim kontekstem** (atencja), kosztem ~800K param.
+- **Spektrum to ppl vs PAMIĘĆ vs GENERALIZACJA** — nie proste uszeregowanie ppl. To uczciwsza teza papera niż „każdy krok obniża ppl".
+
 ## Weryfikacja u źródeł (deep-research, 2026-06-20)
 **Teza potwierdzona** (jeden cel, spektrum mechanizmów, most = NPLM/kNN-LM). Cytowania zweryfikowane:
 - **kNN-LM** — Khandelwal i in., **ICLR 2020** (arXiv 1911.00172): ppl **15.79** WikiText-103, poprawa **2,86 pkt** (abstrakt zaokrągla do 2,9; „SOTA" wg stanu 2020).
