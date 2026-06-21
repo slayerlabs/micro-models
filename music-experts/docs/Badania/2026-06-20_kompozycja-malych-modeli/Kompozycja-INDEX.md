@@ -23,6 +23,7 @@ author: Arkadiusz Słota
 | 3 | [[10-Tezy/KMT3-Slownik-Z-Aktywacji\|KMT3]] słownik z aktywacji | [[15-Antytezy/KMAT3-Liniowy-Mapper\|KMAT3]] liniowy mapper | [[25-Syntezy/KMS3-Liniowy-Najpierw\|KMS3]] |
 | 4 | [[10-Tezy/KMT4-Routing-Przez-Wariancje\|KMT4]] routing przez wariancję | [[15-Antytezy/KMAT4-Nauczony-Router\|KMAT4]] nauczony router | [[25-Syntezy/KMS4-Wariancja-Plus-Router\|KMS4]] |
 | 5 | [[10-Tezy/KMT5-Meta-Atencja\|KMT5]] meta-atencja | [[15-Antytezy/KMAT5-Plaskie-Wazenie\|KMAT5]] płaskie ważenie | [[25-Syntezy/KMS5-Meta-Gdy-Trudne-Obszary\|KMS5]] |
+| 6 | [[10-Tezy/KMT6-Konwergencja-Umozliwia-Kompozycje\|KMT6]] konwergencja umożliwia kompozycję | [[15-Antytezy/KMAT6-Konwergencja-To-Redundancja\|KMAT6]] konwergencja = redundancja | [[25-Syntezy/KMS6-Konwergencja-Vs-Komplementarnosc\|KMS6]] (z E_CKA) |
 
 Syntezy = **propozycje; rozstrzygane POMIAREM** (E0/E0.5/E1/E2), nie przekonaniem.
 
