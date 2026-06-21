@@ -10,7 +10,7 @@ punkt; pełny wynik wymaga sweepu po rozmiarach. Baseline losowy kalibruje „ze
 
 Użycie: python src/tools/cka.py
 """
-import os, sys
+import os, sys, itertools
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import torch
 import torch.nn.functional as F
@@ -92,6 +92,11 @@ def main():
         # sweep skali (te same dane, inny seed, różny n_embd) — test PRH: czy CKA rośnie z rozmiarem
         "jig_s1": "data/models/jig_s1_ckpt.pt", "jig_s2": "data/models/jig_s2_ckpt.pt",   # ~0,2M (n_embd 64)
         "jig_l1": "data/models/jig_l1_ckpt.pt", "jig_l2": "data/models/jig_l2_ckpt.pt",   # ~1,8M (n_embd 192)
+        # utwardzenie: 3. seed na skalę (error bars) + szerszy zakres (~0,05M, n_embd 32)
+        "jig_e32_s1": "data/models/jig_e32_s1_ckpt.pt", "jig_e32_s2": "data/models/jig_e32_s2_ckpt.pt", "jig_e32_s3": "data/models/jig_e32_s3_ckpt.pt",
+        "jig_e64_s3": "data/models/jig_e64_s3_ckpt.pt",
+        "jig_e128_s3": "data/models/jig_e128_s3_ckpt.pt",
+        "jig_e192_s3": "data/models/jig_e192_s3_ckpt.pt",
     }
     models, vocabs = {}, []
     for name, p in paths.items():
@@ -126,14 +131,30 @@ def main():
             print(f"{a:>8}" + "".join(f"{pair(metric, a, b):>8.3f}" for b in core))
         print()
 
-    # KRZYWA SKALI — same-task CKA (inny seed) na 3 rozmiarach: czy konwergencja rośnie z N? (test PRH)
-    print("=== KRZYWA SKALI: same-task CKA (inny seed) vs rozmiar — test PRH ===")
-    for label, a, b in [("~0,2M", "jig_s1", "jig_s2"), ("~0,8M", "jig", "jig-v2"), ("~1,8M", "jig_l1", "jig_l2")]:
-        if a in models and b in models:
-            print(f"{label:>7}: CKA {pair(linear_cka, a, b):.3f} | mutual-kNN {pair(mutual_knn, a, b):.3f}")
-        else:
-            print(f"{label:>7}: (brak modeli {a}/{b})")
-    print("PRH przewiduje: CKA ROŚNIE z rozmiarem. Płasko/spadek = brak trendu w tym zakresie.\n")
+    # KRZYWA SKALI (utwardzona) — same-task CKA na 4 rozmiarach, mean±std po WSZYSTKICH parach seedów
+    print("=== KRZYWA SKALI (utwardzona): same-task CKA, mean±std po parach seedów — test PRH ===")
+    SCALES = [
+        ("~0,05M", ["jig_e32_s1", "jig_e32_s2", "jig_e32_s3"]),
+        ("~0,2M",  ["jig_s1", "jig_s2", "jig_e64_s3"]),
+        ("~0,8M",  ["jig", "jig-v2", "jig_e128_s3"]),
+        ("~1,8M",  ["jig_l1", "jig_l2", "jig_e192_s3"]),
+    ]
+
+    def mean_std(xs):
+        m = sum(xs) / len(xs)
+        s = (sum((x - m) ** 2 for x in xs) / len(xs)) ** 0.5
+        return m, s
+
+    for label, group in SCALES:
+        present = [n for n in group if n in models]
+        pairs = list(itertools.combinations(present, 2))
+        if not pairs:
+            print(f"{label:>8}: (za mało modeli: {present})")
+            continue
+        cm, cs = mean_std([pair(linear_cka, a, b) for a, b in pairs])
+        km, ks = mean_std([pair(mutual_knn, a, b) for a, b in pairs])
+        print(f"{label:>8} (n={len(pairs)} par): CKA {cm:.3f}±{cs:.3f} | mutual-kNN {km:.3f}±{ks:.3f}")
+    print("PRH przewiduje: podobieństwo ROŚNIE z rozmiarem. Płasko/szum = brak trendu w tym zakresie.\n")
 
     # kluczowe porównania
     print("=== kluczowe odczyty ===")

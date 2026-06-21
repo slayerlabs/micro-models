@@ -108,7 +108,29 @@ modele tej samej architektury są w ogóle liniowo zszywalne \cite{stitch15,bans
 
 \paragraph{Asymetria porównania.} Nasz stitch jest \emph{kierunkowy} (front A $\times\,g\,\times$ głowa B), a ensemble \emph{symetryczny} (miesza obie głowy). Uczciwszy test pytania „czy kompozycja reprezentacji bije mieszanie wyjścia'' to \emph{symetryczna} fuzja reprezentacji do wspólnej głowy --- nie unieważnia remisu, ale go niuansuje.
 
-\paragraph{Decydujący tani pomiar następny.} Zanim budować bogatszy mechanizm, warto zmierzyć, czy niezależnie trenowane mikro-modele w ogóle dzielą geometrię reprezentacji --- metryką CKA \cite{cka} / mutual-kNN, i to jako \emph{funkcję skali}. Hipoteza platońska \cite{platonic} przewiduje konwergencję rosnącą z rozmiarem; jej zachowanie na skali $\sim$$10^6$ parametrów jest niezbadane. Brak konwergencji tłumaczyłby nasz remis wprost (różne geometrie $\Rightarrow$ stitch $\approx$ ensemble); jej obecność otwierałaby darmową interoperacyjność przez reprezentacje względne \cite{relreps}. \emph{Uwaga metodyczna do dalszego routingu:} domeny rozłączne po metrum (6/8 vs 4/4) pozwalają routerowi „oszukać'' po jednym tokenie nagłówka --- testy routingu wymagają domen w \emph{tym samym} metrum.
+\paragraph{Pomiar konwergencji reprezentacji (CKA na mikro-skali).} Sprawdziliśmy wprost, czy niezależnie trenowane mikro-modele dzielą geometrię --- metrykami CKA \cite{cka} i mutual-kNN \cite{platonic}, jako \emph{funkcję skali} (Rys.~\ref{fig:cka}). \textbf{Tak: konwergencja jest wysoka już na $0{,}05$M} (CKA $\approx0{,}95$, daleko powyżej poziomu null $0{,}35$ dla modelu-vs-losowy). To \emph{obala} naszą pierwotną interpretację „różnych geometrii'' --- geometrie są wspólne, więc remis stitch$\approx$ensemble wynika z \textbf{redundancji} (mało komplementarnej informacji), nie z niezgodności; wspólna geometria otwiera za to darmową interoperacyjność przez reprezentacje względne \cite{relreps}. \emph{Niuans:} CKA saturuje ($\approx0{,}95$--$0{,}97$), więc trend ze skalą widać dopiero w czulszej metryce mutual-kNN ($0{,}71\to0{,}84$, monotonicznie i ponad szum seedów) --- zgodnie z kierunkiem hipotezy platońskiej \cite{platonic}; \emph{wybór metryki ma znaczenie}. \emph{Uwaga do dalszego routingu:} domeny rozłączne po metrum (6/8 vs 4/4) pozwalają routerowi „oszukać'' po jednym tokenie nagłówka --- testy routingu wymagają domen w \emph{tym samym} metrum.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=12cm, height=6.5cm, xmode=log, log basis x=10,
+  xlabel={rozmiar modelu (mln parametrów)}, ylabel={podobieństwo reprezentacji},
+  xtick={0.05,0.2,0.8,1.8}, xticklabels={0{,}05M,0{,}2M,0{,}8M,1{,}8M},
+  ymin=0.3, ymax=1.02, legend pos=south east, grid=major, mark size=2.5pt]
+\addplot+[mark=*, error bars/.cd, y dir=both, y explicit] coordinates {
+  (0.05,0.952)+-(0,0.007) (0.2,0.964)+-(0,0.006) (0.8,0.973)+-(0,0.000) (1.8,0.971)+-(0,0.000)};
+\addlegendentry{CKA}
+\addplot+[mark=square*, error bars/.cd, y dir=both, y explicit] coordinates {
+  (0.05,0.713)+-(0,0.018) (0.2,0.793)+-(0,0.011) (0.8,0.829)+-(0,0.005) (1.8,0.842)+-(0,0.002)};
+\addlegendentry{mutual-kNN ($k{=}10$)}
+\addplot[black, dashed, mark=none] coordinates {(0.05,0.35) (1.8,0.35)};
+\addlegendentry{null (vs losowy)}
+\end{axis}
+\end{tikzpicture}
+\caption{\textbf{Konwergencja reprezentacji niezależnie trenowanych mikro-modeli w funkcji rozmiaru.} Podobieństwo \emph{same-task} (te same dane --- jigi ABC; różny seed) między wyjściami bloków, uśrednione po warstwach, mierzone CKA \cite{cka} i mutual-kNN ($k{=}10$; metryka z \cite{platonic}); słupki błędu $=\pm$std po 3 parach seedów na każdą skalę. Linia przerywana: poziom null (model wytrenowany vs losowy, CKA$\approx0{,}35$). \emph{Wniosek:} konwergencja jest wysoka już na $0{,}05$M; mutual-kNN rośnie monotonicznie i ponad szum seedów wraz ze skalą ($0{,}71\to0{,}84$, malejące przyrosty), zgodnie z kierunkiem hipotezy platońskiej, podczas gdy CKA saturuje ($\approx0{,}95$--$0{,}97$) i jest zbyt zgrubny, by ten trend rozdzielić --- wybór metryki ma znaczenie na mikro-skali.}
+\label{fig:cka}
+\end{figure}
 
 \section{Wnioski}
 Pokazaliśmy, że (i) malutki char-LM uczy się struktury muzycznej z samej predykcji następnego znaku oraz (ii)

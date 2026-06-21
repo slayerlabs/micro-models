@@ -19,7 +19,7 @@ author: Arkadiusz Słota
 | `[ace]` musi zostać z nawiasami, by grało jako akord | test: 2 akordy w ABC → 2 akordy w MIDI | ✅ |
 | Mechanizm stitchu jest bezstratny (E0) | g=identyczność == baseline co do cyfry; g losowy (ppl **122**) → trening 16K param → ppl **3,83** (Δ+0,03) | ✅ |
 | **Ensemble ekspertów bije pojedyncze modele** (zadanie mieszane) | zbalansowany held-out: ensemble **5,15** < reel 5,87 < walc 6,20 | ✅ zmierzone |
-| **Niezależne maluchy mają WSPÓLNĄ geometrię** (mikro-skala) | CKA ~0,96 **już od 0,2M** (sweep 0,2/0,8/1,8M; sufit), kNN rośnie **0,78→0,82→0,84** (kierunek PRH), vs null **0,35** (`src/tools/cka.py`) | ✅ zmierzone (3 pkt skali, 1 para seedów/pkt) |
+| **Niezależne maluchy mają WSPÓLNĄ geometrię, rosnącą z N** (mikro-skala) | CKA ~0,95 **już od 0,05M** (sufit), mutual-kNN rośnie **0,71→0,79→0,83→0,84 PONAD szum** (kierunek PRH), vs null **0,35** (`src/tools/cka.py`) | ✅ zmierzone (4 skale ×3 seedy = mean±std) |
 
 ## ❌ NIE udowodnione (jeszcze)
 | Hipoteza | Co wyszło | Status |

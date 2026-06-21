@@ -96,20 +96,24 @@ Nasz stitch jest **kierunkowy** (front=walc × g × głowa=reel), ensemble **sym
 
 **Konsekwencja (obala interpretację E1):** geometrie NIE są różne (0,85–0,97), więc remis stitch≈ensemble **nie** wynika z „różnych geometrii". Nowe wyjaśnienie: **wspólna geometria ⇒ redundancja ⇒ mało komplementarnej informacji** do złożenia (stąd ensemble ledwo bije single). Wspólna geometria pomaga **interoperacyjności** (relative reps zadziałają zero-shot), ale nie tworzy *czego* złożyć. Bottleneck programu „kompozycja > ensemble" to **komplementarność**, nie wyrównanie → następne eksperymenty potrzebują ekspertów o **różnych, mało nakładających się** reprezentacjach. → [[Emergencja-i-Wspolna-Reprezentacja]].
 
-### Sweep skali (2026-06-21) — czy konwergencja ROŚNIE z N? (same-task, inny seed; n_layer=4, n_embd 64/128/192)
-| rozmiar | val ppl | CKA | mutual-kNN |
-|---|---|---|---|
-| ~0,2M | 5,0 | 0,956 | 0,778 |
-| ~0,8M | 3,80 | 0,973 | 0,822 |
-| ~1,8M | 3,13 | 0,970 | 0,843 |
+### Sweep skali (2026-06-21, UTWARDZONY) — czy konwergencja ROŚNIE z N? (same-task, inny seed; **3 seedy/skalę → mean±std**)
+| rozmiar | n_embd | val ppl | CKA (mean±std) | mutual-kNN (mean±std) |
+|---|---|---|---|---|
+| ~0,05M | 32 | ~8,3 | 0,952 ± 0,007 | 0,713 ± 0,018 |
+| ~0,2M | 64 | ~5,0 | 0,964 ± 0,006 | 0,793 ± 0,011 |
+| ~0,8M | 128 | 3,80 | 0,973 ± 0,000 | 0,829 ± 0,005 |
+| ~1,8M | 192 | 3,13 | 0,971 ± 0,000 | 0,842 ± 0,002 |
+*(null: model wytrenowany vs losowy ≈ 0,35; 3 pary seedów na skalę)*
 
-**Odczyt (uczciwie):**
-- **Konwergencja jest WYSOKA już na 0,2M** (CKA ~0,96) — pojawia się **wcześnie/tanio**, nie dopiero przy skali.
-- **CKA saturuje** (~0,96–0,97, blisko sufitu) → w tym zakresie **nie pokazuje trendu** (efekt sufitu).
-- **mutual-kNN rośnie monotonicznie** 0,778 → 0,822 → 0,843 — **zgodnie z kierunkiem PRH** (czulsza metryka łapie trend, którego CKA nie widzi). **Metryka ma znaczenie.**
-- ⚠️ **1 para seedów na skalę** → różnice w granicach szumu; to **sugestia, nie dowód**. Twardy wynik wymaga **wielu par seedów (error bars)** + szerszego zakresu skal.
+**Odczyt (utwardzony):**
+- **Konwergencja wysoka już na 0,05M** (CKA ~0,95, daleko nad null 0,35) — wczesna, tania.
+- **mutual-kNN rośnie monotonicznie i PONAD SZUM seedów**: 0,71 → 0,79 → 0,83 → 0,84 (malejące przyrosty = zbliżanie do sufitu). **Czysty kierunek PRH** — już nie „sugestia", tylko zmierzony trend.
+- **CKA saturuje** (~0,95–0,97) — zbyt zgrubny, by rozdzielić trend. **Metryka ma znaczenie** (zmierzone, nie opinia).
+- ⚠️ Wciąż ograniczone: 3 seedy/skalę, **jedna domena** (jigi), zakres 0,05–1,8M. Szerzej (3M+, GPU) i **cross-domena** = dalej.
 
-**Wniosek:** na mikro-skali konwergencja jest **obecna i wczesna**; PRH-owski „rośnie z N" widać tylko **czulszą metryką** (kNN), bo CKA już przy suficie. Wzmacnia tezę interoperacyjności ([[10-Tezy/KMT6-Konwergencja-Umozliwia-Kompozycje|KMT6]]): skoro maluchy zbiegają już od 0,2M, relative reps mają mocne podłoże.
+**Figura:** `paper/paper.tex` (Rys. `fig:cka`) — pgfplots z error barami, null-line, samowystarczalny podpis.
+
+**Wniosek:** na mikro-skali konwergencja jest **obecna, wczesna i rośnie z N** (czytelnie w mutual-kNN, ponad szum; CKA przy suficie). Wzmacnia tezę interoperacyjności ([[10-Tezy/KMT6-Konwergencja-Umozliwia-Kompozycje|KMT6]]): skoro maluchy zbiegają już od 0,05M, relative reps mają mocne podłoże.
 
 ## E0.5 — niezależny seed (uzasadnione wynikiem E1; po E_CKA)
 Front modelu A × back **niezależnie wytrenowanej kopii** (inny seed, ten sam kontrakt). Test: czy kontrakt **wymusza wspólną geometrię**. Wymaga **jig-v2** (drugi seed). Δppl mały → kontrakt trzyma; duży → naprawić przed E1. (E_CKA mierzy to **pasywnie** — bez stitchu; E0.5 to ten sam test aktywnie, przez złączenie.)
