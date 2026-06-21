@@ -1,0 +1,169 @@
+<title>Raport — Baseline generatora muzyki ABC (n-gram)</title>
+<style>
+  :root{
+    --ink:#1a1726; --muted:#6b6580; --line:#e7e3f0; --bg:#faf9fd;
+    --accent:#6d4aff; --accent2:#12a594; --warn:#c2410c; --paper:#fff;
+  }
+  *{box-sizing:border-box}
+  .wrap{max-width:880px;margin:0 auto;padding:36px 22px 80px;
+    font-family:"Segoe UI",system-ui,-apple-system,sans-serif;color:var(--ink);
+    background:var(--bg);line-height:1.62;font-size:16px;-webkit-font-smoothing:antialiased}
+  h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.02em}
+  h2{font-size:20px;margin:38px 0 12px;padding-top:18px;border-top:1px solid var(--line);letter-spacing:-.01em}
+  h3{font-size:15px;margin:22px 0 6px;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+  p{margin:10px 0}
+  .sub{color:var(--muted);font-size:14.5px;margin:0 0 4px}
+  .tag{display:inline-block;background:var(--accent);color:#fff;font-size:11px;
+    font-weight:700;letter-spacing:.08em;padding:3px 9px;border-radius:20px;text-transform:uppercase}
+  .abstract{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--accent);
+    border-radius:10px;padding:16px 20px;margin:22px 0;font-size:15.5px}
+  .cards{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}
+  .card{flex:1;min-width:150px;background:var(--paper);border:1px solid var(--line);
+    border-radius:12px;padding:16px 18px}
+  .card .n{font-size:26px;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+  .card .l{font-size:13px;color:var(--muted);margin-top:2px}
+  .chart{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:14px 0}
+  .cap{font-size:13px;color:var(--muted);margin-top:10px}
+  /* vertical bars */
+  .barv-row{display:flex;align-items:flex-end;gap:10px;height:220px;margin-top:6px}
+  .barv-col{flex:1;display:flex;flex-direction:column;align-items:center;height:100%;justify-content:flex-end}
+  .barv{width:100%;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#8a6bff,#6d4aff)}
+  .barv-v{font-size:12.5px;font-weight:700;margin-bottom:5px;color:var(--ink)}
+  .barv-x{font-size:12px;color:var(--muted);margin-top:7px}
+  /* horizontal bars */
+  .barh{display:grid;grid-template-columns:54px 1fr;gap:8px;align-items:center;margin:5px 0}
+  .barh .k{font-family:ui-monospace,Consolas,monospace;font-size:13px;text-align:right;color:var(--muted)}
+  .track{background:#f0edf8;border-radius:6px;height:22px;overflow:hidden;position:relative}
+  .fill{height:100%;background:linear-gradient(90deg,#6d4aff,#9a82ff);border-radius:6px;
+    display:flex;align-items:center;justify-content:flex-end;padding-right:7px;color:#fff;font-size:11.5px;font-weight:700}
+  /* stacked novelty */
+  .stack{display:flex;height:30px;border-radius:7px;overflow:hidden;margin:7px 0;font-size:12px;font-weight:700;color:#fff}
+  .seg-copy{background:#b8b2cc;display:flex;align-items:center;justify-content:center}
+  .seg-new{background:var(--accent2);display:flex;align-items:center;justify-content:center}
+  .skey{font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--muted);margin-right:8px;min-width:60px;display:inline-block}
+  .finding{background:#eafaf6;border:1px solid #b9ece1;border-radius:10px;padding:14px 18px;margin:18px 0}
+  .finding b{color:var(--accent2)}
+  .warnbox{background:#fff5ed;border:1px solid #fcd9bf;border-radius:10px;padding:14px 18px;margin:18px 0}
+  pre{background:#1a1726;color:#e8e3f7;border-radius:10px;padding:16px 18px;overflow-x:auto;
+    font-family:ui-monospace,Consolas,monospace;font-size:13px;line-height:1.5}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.5px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+  th{color:var(--muted);font-weight:600;font-size:13px}
+  .ok{color:var(--accent2);font-weight:700}
+  .no{color:var(--warn);font-weight:700}
+  footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  .flow{font-family:ui-monospace,Consolas,monospace;font-size:13.5px;background:var(--paper);
+    border:1px solid var(--line);border-radius:10px;padding:14px 16px;text-align:center;color:var(--accent)}
+</style>
+
+<div class="wrap">
+
+  <span class="tag">Slayer · NaukaML · Capstone (baseline)</span>
+  <h1>Generator melodii fortepianowych metodą n-gram</h1>
+  <p class="sub">Raport z eksperymentu &middot; 2026-06-20 &middot; Arkadiusz Słota</p>
+  <p class="sub">Korpus: 11&nbsp;404 jigów 6/8 (thesession.org) &middot; model i kod własne, bez bibliotek ML</p>
+
+  <div class="abstract">
+    <b>Streszczenie.</b> Zbudowano od podstaw statystyczny model językowy (n-gram rzędu&nbsp;6)
+    przewidujący kolejny <i>znak</i> notacji ABC i generujący nowe melodie taneczne (jigi 6/8).
+    Model — w całości napisany w czystym Pythonie — odtwarza strukturę metryczną, kreski taktowe
+    i kadencje <b>bez żadnej zakodowanej wiedzy muzycznej</b>, wyłącznie ze statystyki 2,3&nbsp;mln znaków.
+    Wygenerowane utwory przekonwertowano do MIDI (fortepian). Praca stanowi <b>punkt odniesienia</b>
+    dla planowanego modelu neuronowego (GPT od zera).
+  </div>
+
+  <div class="cards">
+    <div class="card"><div class="n">2 321 606</div><div class="l">znaków w korpusie</div></div>
+    <div class="card"><div class="n">53</div><div class="l">znaki w słowniku</div></div>
+    <div class="card"><div class="n">306 858</div><div class="l">unikalne konteksty (rząd 6)</div></div>
+    <div class="card"><div class="n">5 / 5</div><div class="l">melodii → MIDI</div></div>
+  </div>
+
+  <h2>1. Metoda</h2>
+  <p>Muzykę potraktowano jako <b>tekst</b> w notacji ABC, a generację jako zadanie „przewidź następny token"
+  — identycznie jak w modelach językowych, tylko na poziomie znaku. Pipeline:</p>
+  <p class="flow">dane (ABC) → zliczanie n-gramów → próbkowanie z backoffem → ABC → MIDI (fortepian)</p>
+  <p>Model przechowuje, dla każdego kontekstu długości 0–6 znaków, rozkład następnego znaku.
+  Przy generacji stosuje <b>backoff</b>: używa najdłuższego zaobserwowanego kontekstu, a gdy go brak —
+  skraca. Próbkowanie z temperaturą&nbsp;0,7. Uczenie = zliczanie (brak wag, gradientu, GPU).</p>
+
+  <h2>2. Struktura danych: „pamięć" modelu</h2>
+  <div class="chart">
+    <div class="barv-row">
+      <div class="barv-col"><div class="barv-v">53</div><div class="barv" style="height:31%"></div><div class="barv-x">1</div></div>
+      <div class="barv-col"><div class="barv-v">1 295</div><div class="barv" style="height:57%"></div><div class="barv-x">2</div></div>
+      <div class="barv-col"><div class="barv-v">13 410</div><div class="barv" style="height:75%"></div><div class="barv-x">3</div></div>
+      <div class="barv-col"><div class="barv-v">56 461</div><div class="barv" style="height:87%"></div><div class="barv-x">4</div></div>
+      <div class="barv-col"><div class="barv-v">154 688</div><div class="barv" style="height:94%"></div><div class="barv-x">5</div></div>
+      <div class="barv-col"><div class="barv-v">306 858</div><div class="barv" style="height:100%"></div><div class="barv-x">6</div></div>
+    </div>
+    <div class="cap">Ryc. 1 — Liczba unikalnych kontekstów wg długości n-gramu (skala log). Im dłuższy kontekst,
+    tym więcej różnych wzorców — i tym bliżej do zapamiętywania pojedynczych fragmentów.</div>
+  </div>
+
+  <h2>3. Z czego zbudowana jest notacja ABC</h2>
+  <div class="chart">
+    <div class="barh"><div class="k">spacja</div><div class="track"><div class="fill" style="width:100%">291 488</div></div></div>
+    <div class="barh"><div class="k">|</div><div class="track"><div class="fill" style="width:92.6%">269 821</div></div></div>
+    <div class="barh"><div class="k">A</div><div class="track"><div class="fill" style="width:61.6%">179 528</div></div></div>
+    <div class="barh"><div class="k">d</div><div class="track"><div class="fill" style="width:54.7%">159 584</div></div></div>
+    <div class="barh"><div class="k">B</div><div class="track"><div class="fill" style="width:53.8%">156 938</div></div></div>
+    <div class="barh"><div class="k">e</div><div class="track"><div class="fill" style="width:43%">125 418</div></div></div>
+    <div class="barh"><div class="k">G</div><div class="track"><div class="fill" style="width:38.8%">113 138</div></div></div>
+    <div class="barh"><div class="k">2</div><div class="track"><div class="fill" style="width:35.2%">102 474</div></div></div>
+    <div class="barh"><div class="k">:</div><div class="track"><div class="fill" style="width:26.4%">76 971</div></div></div>
+    <div class="cap">Ryc. 2 — Najczęstsze znaki w korpusie. Dominują <b>spacja</b> i <b>kreska taktowa „|"</b>
+    (rytm/struktura), potem nuty (A, d, B…) — model najpierw uczy się „rusztowania" utworu.</div>
+  </div>
+
+  <h2>4. Wynik kluczowy: kopiuje czy komponuje?</h2>
+  <p>Sprawdzono, jaki procent fragmentów wygenerowanej muzyki <b>występuje dosłownie</b> w danych treningowych
+  (im dłuższe okno, tym ostrzejszy test oryginalności):</p>
+  <div class="chart">
+    <div><span class="skey">okno 4</span></div>
+    <div class="stack"><div class="seg-copy" style="width:97.7%">97,7% skopiowane</div><div class="seg-new" style="width:2.3%">2,3%</div></div>
+    <div><span class="skey">okno 6</span></div>
+    <div class="stack"><div class="seg-copy" style="width:94.2%">94,2% skopiowane</div><div class="seg-new" style="width:5.8%">5,8%</div></div>
+    <div><span class="skey">okno 8</span></div>
+    <div class="stack"><div class="seg-copy" style="width:83.9%">83,9% skopiowane</div><div class="seg-new" style="width:16.1%">16,1% nowe</div></div>
+    <div class="cap">Ryc. 3 — Udział fragmentów skopiowanych (szare) vs nowych (zielone) wg długości okna.</div>
+  </div>
+  <div class="finding">
+    <b>Wniosek:</b> na krótkich oknach model niemal wyłącznie powtarza zapamiętane wzorce (97,7%),
+    ale na dłuższych <b>16,1% sekwencji jest nowych</b> — model <b>skleja zapamiętane fragmenty
+    w nowe, niewidziane wcześniej całości</b>. To jest „kompozycja" n-gramu: lokalnie poprawna,
+    globalnie świeża.
+  </div>
+
+  <h2>5. Dyskusja — uczciwie o ograniczeniach</h2>
+  <div class="warnbox">
+    To <b>model statystyczny (n-gram), nie sieć neuronowa.</b> „Widzi" maksymalnie 6 znaków wstecz,
+    więc nie ma <b>długiego łuku formalnego</b> (powtórzenie tematu, budowa AABB), a MIDI jest
+    mechaniczne (stała głośność, brak pedału i frazowania). Wysoki odsetek kopiowania to wprost
+    skutek braku uogólniania — czego nauczyliśmy się jako granicy małych/prostych modeli (L04, L08).
+  </div>
+
+  <h2>6. Następny krok (Tor 2)</h2>
+  <table>
+    <tr><th>Aspekt</th><th>Teraz (baseline)</th><th>GPT neuronowy</th></tr>
+    <tr><td>Mechanizm</td><td>zliczanie n-gramów</td><td>wagi + gradient (backprop)</td></tr>
+    <tr><td>Pamięć kontekstu</td><td class="no">6 znaków</td><td class="ok">setki tokenów (uwaga)</td></tr>
+    <tr><td>Uogólnianie</td><td class="no">słabe (kopiuje)</td><td class="ok">realne</td></tr>
+    <tr><td>Sprzęt</td><td>CPU, sekundy</td><td>GPU (RTX 3050)</td></tr>
+    <tr><td>Cel docelowy</td><td>jigi ABC</td><td class="ok">fortepian, styl Chopina</td></tr>
+  </table>
+  <p>Baseline będzie <b>miarą</b>, o ile model neuronowy poprawi spójność i oryginalność.</p>
+
+  <h2>Aneks — przykładowa wygenerowana melodia</h2>
+  <pre>X:1
+M:6/8
+K:G
+|:DED F2A|d2f a2f|fge fdB|AdB AFD|FED E2 A|cA/B/c dcd|
+efe edB|dBA GBd|~g3 gfg|afd e2 g|f2 d def|efe edB|AGF Gdc:|</pre>
+
+  <footer>
+    Eksperyment wykonany w ramach kursu NaukaML (Slayer). Model i kod: własne (czysty Python).
+    Konwersja ABC→MIDI: music21. Dane: thesession.org. Metryki liczone na 2,3&nbsp;mln znaków korpusu.
+  </footer>
+
+</div>
