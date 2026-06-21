@@ -10,8 +10,13 @@ IGNORE = [
     "data/_test_chord.mid", "data/generated*.abc",
     "data/demo_*.mid", "data/clean_*.mid", "data/gpt_jig_*.mid",
     "data/jig_*.mid", "data/out_*.*",
+    "paper/**",                       # LaTeX dla Kacpra mieszka w repo Slayera, nie na HF
     "**/__pycache__/**", "*.pyc",
 ]
+
+# Pliki do skasowania z repo HF, jeśli zniknęły lokalnie (np. po reorganizacji src/
+# z płaskiego układu na warstwy) — bez tego stare ścieżki zostają jako sieroty.
+DELETE = ["src/**"]
 
 def main():
     repo_id = sys.argv[1] if len(sys.argv) > 1 else "Maggio33/slay-piano-gpt"
@@ -25,7 +30,8 @@ def main():
         repo_id=repo_id,
         repo_type="model",
         ignore_patterns=IGNORE,
-        commit_message="Initial: slay-piano-gpt (0.82M char-level GPT, jigs ABC)",
+        delete_patterns=DELETE,
+        commit_message="Re-sync: warstwowy src/ (core/data/train/generate/compose/tools) + wagi + karta",
     )
     print(f"\nGOTOWE -> https://huggingface.co/{repo_id}")
 
