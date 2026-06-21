@@ -18,6 +18,11 @@ repo: "https://github.com/slayerlabs/micro-models"
 |---|---|---|---|
 | 2026-06-20 | Kompozycja małych modeli (kontrakt · mapper · wariancja) | warsztat dialektyczny | [[Kompozycja-INDEX]] |
 | 2026-06-20 | N-gram → mini-transformer (most) | koncepcja / roadmap | [[Research-NGram-vs-MiniTransformer]] |
+| 2026-06-21 | Granie razem — sprzężone oscylatory + polifonia (oś pionowa) | koncepcja | [[Granie-Razem-Polifonia]] |
+
+## Kotwica strategiczna
+- [[Cele-Globalne-i-Kotwica]] — hierarchia: muzyka = sandbox (Cel #1 know-how) · IFC = produkt (Cel #2). Co przenosi się uczciwie, kolejność budowy IFC, walidator = nagroda RLVR.
+- [[Emergencja-i-Wspolna-Reprezentacja]] — rama teoretyczna kompozycji: warunki konieczne emergencji, prawo zachowania kotwicy, świeży front (relative reps, Platonic, CKA).
 
 ## Baza zrealizowana (fundament)
 - [[Capstone-Muzyka-LOG-Realizacja]] — pierwszy model: n-gram baseline + GPT od zera (val ppl 3,80), opublikowany na HF/GitHub. To na nim stawiamy eksperymenty kompozycji.

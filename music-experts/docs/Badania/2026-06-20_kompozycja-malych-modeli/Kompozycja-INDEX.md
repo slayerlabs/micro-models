@@ -31,12 +31,15 @@ Syntezy = **propozycje; rozstrzygane POMIAREM** (E0/E0.5/E1/E2), nie przekonanie
 
 ## Overview + referencje
 - [[Kompozycja-Malych-Modeli]] — opis koncepcji + **referencje zweryfikowane u źródeł** (deep-research round 1 + dorzut A, 2026-06-20; wszystkie charakterystyki trafne).
+- [[Emergencja-i-Wspolna-Reprezentacja]] — **rama teoretyczna** (NOWE 2026-06-21): warunki konieczne emergencji, czym zastąpić „jednocześnie", prawo zachowania kotwicy, świeży front (relative reps, Platonic, task arithmetic, CKA — cytaty zweryfikowane).
 - Rejestr badań: [[Badania-INDEX]] · sąsiad: [[Research-NGram-vs-MiniTransformer]]
 
-## Plan eksperymentów
-- **E0** self-stitch — waliduje mechanizm mappera (nie tezę); benchmark zerowy.
-- **E0.5** zszycie z **niezależnym seedem** — czy kontrakt wymusza wspólną geometrię (bramka przed E1).
-- **E1** drugi model, ten sam kontrakt, inny styl: **BACH** (BWV 1007–1012 + 1001–1006, monofonia) + **Slayer-style** (kontrast). Mierz perplexity/jakość vs osobno.
-- **Pre-check** (przed E2): wariancja vs CE per token — czy wariancja koreluje z błędem.
-- **E2** wariancja-routing — czy przewyższa naiwne mieszanie.
-- Domena: muzyka (darmowe nuty) → potem IFC.
+## Plan eksperymentów (kolejność wg wartość/wysiłek — zaktualizowano 2026-06-21)
+- ✅ **E0** self-stitch — waliduje mechanizm mappera (nie tezę). PASS.
+- ✅ **E1** stitch reprezentacji walc×reel — **stitch ≈ ensemble** (negatyw; post-hoc liniowy, bez kontraktu). → [[Kompozycja-Eksperymenty]].
+- ⏭️ **E_CKA** (NOWY, tani ~h, decydujący) — CKA/mutual-kNN między niezależnymi modelami: czy mają wspólną geometrię (platońska konwergencja na mikro-skali). **Sweep po skali + baseline.** → [[Emergencja-i-Wspolna-Reprezentacja]].
+- **Pre-check wariancja vs CE** (tani) — czy wariancja koreluje z błędem; bramka przed routingiem.
+- **Kontrakt shared-trunk** ([[25-Syntezy/KMS2-Kontrakt-Vs-Posthoc|KMS2]]) — wspólny zamrożony front+głowa, trenuj tylko tyły, na domenach w **TYM SAMYM metrum** (walc vs mazur — ⚠️ pułapka metrum). Rozstrzyga tezę kompozycji.
+- **Bogatszy mapper** ([[10-Tezy/KMT3-Slownik-Z-Aktywacji|KMT3]]) / słownik / relative reps — dopiero jeśli kontrakt pokaże iskrę.
+- **E0.5** (niezależny seed, jig-v2) — aktywny test wspólnej geometrii przez złączenie (E_CKA mierzy to pasywnie).
+- Oś prostopadła: [[Granie-Razem-Polifonia]] (polifonia, re-sync). Domena: muzyka → potem IFC ([[Cele-Globalne-i-Kotwica]]).

@@ -32,12 +32,16 @@ zlecenie: "Kacper Wikieł — research + paper w LaTeX na bloga Slayer"
 - **Router-na-styku / Branch-Train-Merge (BTM, BTX)** — eksperci trenowani niezależnie na różnych datasetach; mapper uczony na **styku** dwóch domen. Teza Arka: *ile reprezentacji wstrzyknąć = funkcja nakładania się domen*.
 - **Routing przez aktywacje** — czytać, który ekspert „przebija się" z aktywacji/koherencji zamiast osobnego routera (interpretowalność jako sygnał).
 
-## Planowane eksperymenty (na naszych danych)
-1. **Skalowanie n-gram**: perplexity vs rząd 1–6 vs pamięć/liczba kontekstów → *czemu się nie skaluje* (sparsity, eksplozja pamięci).
-2. **NPLM (most)**: mały MLP nad embeddingami ostatnich n znaków, bez attention → miękka generalizacja przy stałym oknie.
-3. **mini-transformer**: nasz GPT (val ppl 3,80).
-4. **mini-MoE/BTM**: ekspert jigi (6/8) vs ekspert reele (4/4) + mapper na styku; trafność routingu + perplexity vs jeden model.
-5. Wspólny wykres: perplexity vs klasa modelu + historia pamięci/parametrów. Ten sam held-out, char-level.
+## Planowane eksperymenty (na naszych danych) — kolejność wg wartość/wysiłek
+**Ścieżka pewna (centrum papera-mostu) — skończona-w-zasięgu, rób ją:**
+1. **NPLM (most) ⭐** — mały MLP nad embeddingami ostatnich n znaków, bez attention → miękka generalizacja przy stałym oknie. ~50 linii, minuty treningu; prawie na pewno ląduje **monotonicznie** między n-gramem a GPT → wykres-spektrum, który sam opowiada tezę. **To centrum.**
+2. **Skalowanie n-gram**: perplexity vs rząd 1–6 vs pamięć/liczba kontekstów → *czemu się nie skaluje* (sparsity, eksplozja pamięci). Tani rozdział.
+3. **mini-transformer**: nasz GPT (val ppl 3,80) — punkt docelowy spektrum.
+4. **kNN-LM** — **opisać jako punkt na spektrum („rozmyty infini-gram"), NIE budować**: char-level datastore na 2,4M znaków = dużo roboty o niepewnym zysku. NPLM daje więcej za mniej.
+5. **Wspólny wykres**: perplexity vs klasa modelu + historia pamięci/parametrów. Ten sam held-out, char-level.
+
+**Ścieżka kompozycji (hazard, osobny profil ryzyka):**
+6. **mini-MoE/BTM** — ekspert vs ekspert + router na styku. ⚠️ **Pułapka metrum:** NIE jig(6/8) vs reel(4/4) — router oszuka po nagłówku `M:` (~100% trafności z jednego tokena). Użyj domen w **TYM SAMYM metrum** (walc vs mazur). Najpierw [[Kompozycja-Eksperymenty]] (E_CKA → shared-trunk) i rama: [[Emergencja-i-Wspolna-Reprezentacja]].
 
 ## Weryfikacja u źródeł (deep-research, 2026-06-20)
 **Teza potwierdzona** (jeden cel, spektrum mechanizmów, most = NPLM/kNN-LM). Cytowania zweryfikowane:

@@ -106,12 +106,18 @@ słownik cech / sparse autoencoder zamiast liniowego \cite{vqvae,sae}; (c) najpi
 modele tej samej architektury są w ogóle liniowo zszywalne \cite{stitch15,bansal21}. Prosty baseline (ensemble
 \cite{ensembles}) jest mocny --- złożoność musi dopiero zasłużyć na siebie.
 
+\paragraph{Asymetria porównania.} Nasz stitch jest \emph{kierunkowy} (front A $\times\,g\,\times$ głowa B), a ensemble \emph{symetryczny} (miesza obie głowy). Uczciwszy test pytania „czy kompozycja reprezentacji bije mieszanie wyjścia'' to \emph{symetryczna} fuzja reprezentacji do wspólnej głowy --- nie unieważnia remisu, ale go niuansuje.
+
+\paragraph{Decydujący tani pomiar następny.} Zanim budować bogatszy mechanizm, warto zmierzyć, czy niezależnie trenowane mikro-modele w ogóle dzielą geometrię reprezentacji --- metryką CKA \cite{cka} / mutual-kNN, i to jako \emph{funkcję skali}. Hipoteza platońska \cite{platonic} przewiduje konwergencję rosnącą z rozmiarem; jej zachowanie na skali $\sim$$10^6$ parametrów jest niezbadane. Brak konwergencji tłumaczyłby nasz remis wprost (różne geometrie $\Rightarrow$ stitch $\approx$ ensemble); jej obecność otwierałaby darmową interoperacyjność przez reprezentacje względne \cite{relreps}. \emph{Uwaga metodyczna do dalszego routingu:} domeny rozłączne po metrum (6/8 vs 4/4) pozwalają routerowi „oszukać'' po jednym tokenie nagłówka --- testy routingu wymagają domen w \emph{tym samym} metrum.
+
 \section{Wnioski}
 Pokazaliśmy, że (i) malutki char-LM uczy się struktury muzycznej z samej predykcji następnego znaku oraz (ii)
 \emph{ensemble} małych ekspertów bije pojedynczy model na zadaniu mieszanym --- kompozycja ma wartość. Nie
 pokazaliśmy (jeszcze), że \emph{stitch na poziomie reprezentacji} bije ten ensemble; ten wynik negatywny wskazuje
-konkretne, sfalsyfikowalne kierunki dalej. Cały kod, wagi i notatki badawcze (dialektyka teza$\leftrightarrow$
-antyteza$\to$synteza) są otwarte w repozytorium.
+konkretne, sfalsyfikowalne kierunki dalej. Lekcję metodologiczną traktujemy jako \emph{główną}, nie poboczną:
+\textbf{setup ewaluacji jest częścią dowodu} --- pierwszy pomiar E1 dał pozorne „stitch bije ensemble'', okazał się
+artefaktem skażonego held-outu (sklejone korpusy $\to$ walidacja niemal czysty reel), i sami go obaliliśmy przed
+publikacją. Cały kod, wagi i notatki badawcze (dialektyka teza$\leftrightarrow$antyteza$\to$synteza) są otwarte w repozytorium.
 
 \begin{thebibliography}{9}
 \bibitem{stitch15} K.~Lenc, A.~Vedaldi. \emph{Understanding image representations by measuring their equivariance and equivalence}. CVPR 2015.
@@ -123,6 +129,9 @@ antyteza$\to$synteza) są otwarte w repozytorium.
 \bibitem{sae} T.~Bricken i in. \emph{Towards Monosemanticity} (sparse autoencoders), 2023; H.~Cunningham i in., arXiv:2309.08600.
 \bibitem{nplm} Y.~Bengio i in. \emph{A Neural Probabilistic Language Model}. JMLR 2003.
 \bibitem{knnlm} U.~Khandelwal i in. \emph{Generalization through Memorization: Nearest Neighbor Language Models}. ICLR 2020.
+\bibitem{platonic} M.~Huh, B.~Cheung, T.~Wang, P.~Isola. \emph{Position: The Platonic Representation Hypothesis}. ICML 2024. arXiv:2405.07987.
+\bibitem{relreps} L.~Moschella i in. \emph{Relative representations enable zero-shot latent space communication}. ICLR 2023. arXiv:2209.15430.
+\bibitem{cka} S.~Kornblith, M.~Norouzi, H.~Lee, G.~Hinton. \emph{Similarity of Neural Network Representations Revisited}. ICML 2019. arXiv:1905.00414.
 \end{thebibliography}
 
 \end{document}
