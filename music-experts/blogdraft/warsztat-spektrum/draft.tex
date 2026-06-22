@@ -1,0 +1,102 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{hyperref}
+
+\title{Jeden cel, trzy mechanizmy:\\
+spektrum jakość\,--\,pamięć\,--\,obliczenia w predykcji następnego znaku}
+\author{kolektyw \textbf{Slayer} \\ \texttt{github.com/slayerlabs/micro-models}}
+\date{czerwiec 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Każdy model językowy realizuje jeden cel --- $p(\text{następny}\mid\text{poprzednie})$ --- ale różnymi
+\emph{mechanizmami}: od twardego zliczania (n-gram) po miękką uwagę (transformer). Na w pełni audytowalnej
+mikro-skali (char-level, korpus muzyki w notacji ABC, trening w minuty na CPU) mierzymy trzech zawodników na
+jednym podziale. Wynik kontrintuicyjny: \textbf{n-gram rzędu 6 osiąga perplexity 3{,}90, niemal jak
+mini-transformer (3{,}80)} --- co \emph{nie} znaczy, że n-gram wygrywa. Perplexity to jeden wymiar; dorzucenie
+\textbf{pamięci} i \textbf{obliczeń} pokazuje, że n-gram i transformer to przeciwne rogi tego samego trójkąta, a
+różnicą, której perplexity nie widzi, jest \textbf{generalizacja}. Raportujemy też, czego \emph{nie} zmierzyliśmy.
+
+\textbf{Status: DRAFT.} Zsyntezowany z notatek dialektycznych w \texttt{warsztat-spektrum/}. Kod i wagi otwarte.
+\end{abstract}
+
+\section{Jeden cel, spektrum mechanizmów}
+n-gram i transformer to nie ,,stary'' i ,,nowy'' model, lecz dwa mechanizmy tego samego celu: \textbf{zliczanie}
+vs \textbf{uwaga}. Między nimi leży ciągłe spektrum. Żeby je zobaczyć, schodzimy na najmniejszy, audytowalny
+koniec: poziom znaku, melodie w notacji ABC, modele trenowane w minuty na CPU --- wszystko na jednym podziale
+train/val, więc perplexity (jak bardzo model jest zaskoczony prawdziwym następnym znakiem; niżej = lepiej) jest
+bezpośrednio porównywalne.
+
+\section{Trzej zawodnicy}
+\begin{itemize}
+  \item \textbf{n-gram} --- zlicza częstości znaków po oknie $k$ i czyta $p$ z tablicy (interpolacja rzędów + backoff).
+  \item \textbf{NPLM} (Bengio i in., 2003) --- ,,neuronowy n-gram'': mały MLP nad embeddingami ostatnich $N$ znaków; stałe okno, ale \emph{uczy się reprezentacji, nie tablicy}.
+  \item \textbf{mini-GPT} --- transformer z uwagą: sam waży, które wcześniejsze znaki są istotne; zmienny, długi kontekst.
+\end{itemize}
+
+\section{Wynik 1: perplexity --- i niespodzianka}
+\begin{center}
+\begin{tabular}{@{}llr@{}}
+\toprule
+Model & mechanizm & val ppl \\
+\midrule
+n-gram rząd 1 & zliczanie, okno 1 & 11{,}86 \\
+n-gram rząd 3 & zliczanie, okno 3 & 5{,}19 \\
+n-gram rząd 6 & zliczanie, okno 6 & \textbf{3{,}90} \\
+NPLM, okno 8 & MLP, stałe okno & 4{,}41 \\
+NPLM, okno 16 & MLP, stałe okno & 4{,}38 \\
+mini-GPT & uwaga, okno 128 & \textbf{3{,}80} \\
+\bottomrule
+\end{tabular}
+\end{center}
+n-gram dobija do transformera przy rzędzie 5--6. Na samym perplexity to prawie remis. To nie koniec historii --- to jej początek.
+
+\section{Wynik 2: trójkąt zasobów, nie jedna liczba}
+\paragraph{Pamięć.} n-gram kupuje jakość pamięcią rosnącą lawinowo: z 52 kontekstów (rząd 1) do \textbf{508 tys.}
+(rząd 6), przy malejącym zysku (rz.\ 5$\to$6: ppl 3{,}95$\to$3{,}90). NPLM: $\sim$41 tys.\ parametrów; mini-GPT: $\sim$800 tys.
+\paragraph{Obliczenia.} mini-GPT robi $\sim$1{,}8 mln FLOPs na token --- o rzędy wielkości więcej niż n-gram
+($\sim$7 odczytów z tablicy). \textbf{Compute jest niemal odwrotnością pamięci.}
+\paragraph{Generalizacja.} n-gram \emph{nie ekstrapoluje}: nieznany kontekst $\to$ backoff do krótszego, w skrajności
+do unigramu --- rekombinuje widziane, nie tworzy nic dla nowego wzorca. Sieci neuronowe uogólniają po podobieństwie
+w przestrzeni embeddingów.
+
+\paragraph{Trójkąt.} To nie ,,kto ma niższy ppl'', lecz wybór, który zasób jest tani: n-gram --- tani compute,
+droga pamięć, zero generalizacji; transformer --- drogi compute, zwarty, generalizuje; NPLM --- most.
+
+\section{Uczciwie: czego NIE zmierzyliśmy}
+n-gram wygląda aż tak dobrze, bo muzyka jest repetytywna --- wiele 6-gramów z walidacji występuje dosłownie
+w treningu. Czystego testu ekstrapolacji (walidacja ze \emph{świeżych} melodii) jeszcze nie zrobiliśmy;
+przewidujemy, że tam n-gram siądzie, a sieci utrzymają. Nie udajemy, że to już pokazaliśmy --- to następny eksperyment.
+
+\section{Most do praktyki Slayera (koncepcyjny)}
+\textbf{Ostrzeżenie:} nie zestawiamy tych liczb z produkcyjnymi --- char-ppl na muzyce a accuracy na polskich
+zadaniach to \emph{różne osie}. Most jest koncepcyjny: przenosi się \textbf{ten sam cel} (predykcja następnego
+tokena, od char-LM po model 9B) i \textbf{ta sama dyscyplina pomiaru} (held-out, dekontaminacja, brak
+benchmaxxingu) --- zmienia się tylko metryka. W skali produkcyjnej ,,mierzenie predykcji następnego znaku''
+staje się polskim leaderboardem (LLMzSzŁ, PES, PoQuAD, FLORES, Belebele) z dekontaminacją korpusów. Napięcie
+pamięć\,vs\,generalizacja z zabawki to to samo napięcie w roadmapie: tani, składalny, suwerenny polski model
+i ewaluacja, której nie da się oszukać.
+
+\section{Spróbuj sam}
+Cały przykład jest uruchamialny na CPU w minuty.
+\begin{verbatim}
+git clone https://github.com/slayerlabs/micro-models
+# music-experts/ : trening eksperta + generacja + porownanie n-gram/NPLM/GPT
+\end{verbatim}
+\textbf{Następny szczebel:} weź ,,good first issue'', odpal benchmark lokalnie i zgłoś wynik --- jesteś w środku,
+z publicznym, podpisanym wkładem.
+
+\section{Jak pracujemy (Slayer)}
+\emph{Żadnej tezy bez dowodu.} Publikujemy też wyniki negatywne, a własne pomiary przepuszczamy przez
+adwersarialny audyt --- przy pokrewnym eksperymencie złapaliśmy tak własny błąd metryki i wycofaliśmy ją,
+zanim cokolwiek ogłosiliśmy.
+
+\end{document}
