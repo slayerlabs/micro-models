@@ -1,0 +1,40 @@
+name: Build PDFs (papers)
+
+on:
+  push:
+    paths:
+      - 'music-experts/**/*.tex'
+      - '.github/workflows/latex.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false          # jeden dokument nie psuje pozostałych
+      matrix:
+        include:
+          - dir: music-experts/paper
+            file: paper.tex
+            name: paper-kompozycja-ekspertow
+          - dir: music-experts/paper
+            file: most-ngram-transformer.tex
+            name: most-ngram-transformer
+          - dir: music-experts/blogdraft/warsztat-spektrum
+            file: draft.tex
+            name: blogdraft-warsztat-spektrum
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Kompilacja ${{ matrix.file }} → PDF
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: ${{ matrix.dir }}
+          root_file: ${{ matrix.file }}
+
+      - name: Wystaw PDF jako artefakt
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.name }}
+          path: ${{ matrix.dir }}/*.pdf
+          if-no-files-found: error
