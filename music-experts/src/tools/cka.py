@@ -150,7 +150,15 @@ def main():
             continue
         cm, cs = mean_std([pair(linear_cka, a, b) for a, b in pairs])
         km, ks = mean_std([pair(mutual_knn, a, b) for a, b in pairs])
-        print(f"{label:>8} (n={len(pairs)} par): CKA {cm:.3f}±{cs:.3f} | mutual-kNN {km:.3f}±{ks:.3f}")
+        # null PER SKALA: dwa losowe modele architektury z tej skali.
+        # (Płaski null liczony tylko na ~0,8M był mylący — fix recenzji 2026-06-23.)
+        cfg_s = models[present[0]][0].cfg
+        rA = reps(random_like(cfg_s, 12345), models[present[0]][1], common)
+        rB = reps(random_like(cfg_s, 99999), models[present[0]][1], common)
+        n0 = len(rA)
+        cka0 = sum(linear_cka(rA[l], rB[l]) for l in range(n0)) / n0
+        knn0 = sum(mutual_knn(rA[l], rB[l]) for l in range(n0)) / n0
+        print(f"{label:>8} (n={len(pairs)} par): CKA {cm:.3f}±{cs:.3f} | kNN {km:.3f}±{ks:.3f}  ||  null/skala: CKA {cka0:.3f} | kNN {knn0:.3f}")
     print("PRH przewiduje: podobieństwo ROŚNIE z rozmiarem. Płasko/szum = brak trendu w tym zakresie.\n")
 
     # kluczowe porównania
