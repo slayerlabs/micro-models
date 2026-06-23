@@ -19,16 +19,19 @@
 \end{abstract}
 
 \section{Jeden cel, spektrum mechanizmów}
-Każdy model języka robi to samo: przewiduje następny token, $p(\text{następny}\mid\text{poprzednie})$. n-gram i transformer to nie „stary" i „nowy" model --- to dwa \textbf{mechanizmy} realizujące ten sam cel: \textbf{twarde zliczanie} vs \textbf{miękka uwaga}. Między nimi leży ciągłe spektrum.
+Wytrenowaliśmy malutki transformer na melodiach --- cztery warstwy, $\sim$0,8 mln parametrów, trening w minuty na CPU. Potem, dla porównania, zwykły \textbf{n-gram}: technologię z lat 90., która tylko \emph{zlicza}. I n-gram \textbf{prawie go dogonił}. Więc po co komu transformery, GPU, miliardy parametrów? Odpowiedź okazała się ciekawsza, niż się spodziewaliśmy --- i o niej jest ten tekst.
 
-To są \textbf{mikro-modele}: sieci dość małe, by zrozumieć je od początku do końca i wytrenować w minuty na CPU. Zeszliśmy na najmniejszy, w pełni audytowalny koniec --- \textbf{poziom znaku}, korpus melodii (jigi w notacji ABC) --- wszystko na \emph{jednym} podziale train/val, więc perplexity (= jak bardzo model jest zaskoczony prawdziwym następnym znakiem; niżej = lepiej) jest bezpośrednio porównywalne.
+Zacznijmy od tego, co łączy zawodników. Każdy model języka robi to samo: przewiduje następny token, $p(\text{następny}\mid\text{poprzednie})$. n-gram i transformer to nie „stary" i „nowy" model --- to dwa \textbf{mechanizmy} tego samego celu: \textbf{twarde zliczanie} vs \textbf{miękka uwaga}. Między nimi leży ciągłe spektrum.
+
+To są \textbf{mikro-modele}: sieci dość małe, by zrozumieć je od początku do końca. Zeszliśmy na najmniejszy, w pełni audytowalny koniec --- \textbf{poziom znaku}, korpus melodii (jigi w notacji ABC) --- wszystko na \emph{jednym} podziale train/val, więc perplexity (= jak bardzo model \emph{zdziwił się} prawdziwym następnym znakiem; niżej = lepiej) jest bezpośrednio porównywalne. Cel mają ten sam --- czas poznać trzech zawodników.
 
 \section{Trzej zawodnicy}
 \begin{itemize}
-  \item \textbf{n-gram} --- zlicza, ile razy po oknie $k$ znaków padł znak $x$, i czyta $p$ z tablicy. Używamy \textbf{interpolacji rzędów} (mieszamy 1\,--\,6-gram z gładkim backoffem; nowsze warianty skalują n-gram aż do bilionów tokenów \cite{infinigram}).
-  \item \textbf{NPLM} \cite{nplm} --- „neuronowy n-gram": mały MLP nad embeddingami $N$ ostatnich znaków. Stałe okno jak n-gram, ale \textbf{uczy się reprezentacji, nie tablicy}.
-  \item \textbf{mini-GPT} \cite{vaswani} --- transformer z uwagą: sam waży, które wcześniejsze znaki są istotne; \textbf{zmienny, długi kontekst}.
+  \item \textbf{n-gram} --- \emph{gigantyczny notes ze zliczeniami}: „po \texttt{abc} w 70\% przypadków padło \texttt{d}". Czyta $p$ z tablicy po oknie $k$ znaków. Szybki, ale notes puchnie wykładniczo i nie radzi sobie z frazą, której nie zapisał. Używamy \textbf{interpolacji rzędów} (1\,--\,6-gram z gładkim backoffem; nowsze warianty skalują to do bilionów tokenów \cite{infinigram}).
+  \item \textbf{NPLM} \cite{nplm} --- ktoś, kto zamiast notesu \emph{nauczył się wzorców} z ostatnich $N$ znaków (mały MLP nad embeddingami). Stałe okno jak n-gram, ale \textbf{uczy się reprezentacji, nie tablicy} --- działa też na nowych kombinacjach.
+  \item \textbf{mini-GPT} \cite{vaswani} --- model, który \emph{sam decyduje, na które wcześniejsze znaki patrzeć} i jak daleko (to właśnie uwaga). Zmienne, długie okno zamiast sztywnego.
 \end{itemize}
+Cel mają identyczny --- różni ich tylko \emph{jak} sięgają po przeszłość. Zmierzmy ich: kto zgaduje lepiej?
 
 \paragraph{Jak interpolujemy n-gram.} Ważona średnia oszacowań z każdego rzędu, renormalizowana po rzędach, których kontekst \emph{był} w treningu:
 \[
@@ -61,7 +64,7 @@ Najdłuższy widziany kontekst dominuje; gdy go brak --- backoff na krótszy. Rz
   \end{tabular}
 \end{table}
 
-n-gram poprawia się z rzędem (11,86 $\to$ 3,90) i \textbf{dobija do GPT} przy rzędzie 5\,--\,6. Na samym perplexity to prawie remis. Koniec historii? Nie --- to dopiero początek.
+n-gram poprawia się z rzędem (11,86 $\to$ 3,90) i \textbf{dobija do GPT} przy rzędzie 5\,--\,6. Na samym perplexity to prawie remis. Więc transformer zbędny? Nie --- bo perplexity to \emph{jedna} liczba. Pytanie brzmi: \textbf{co ona przemilcza?}
 
 \section{Wynik 2: trzy zasoby, nie jedna liczba}
 \subsection{Pamięć}
@@ -111,15 +114,15 @@ Transformer (4 warstwy, $d=128$, kontekst $T=128$), dominujące mnożenia macier
   \end{tabular}
 \end{table}
 
-Transformer robi \textbf{$\sim$23$\times$ więcej} arytmetyki niż NPLM i \textbf{$\sim$90\,000$\times$ więcej} niż n-gram. \textbf{Compute jest niemal odwrotnością pamięci.}
+Transformer robi \textbf{$\sim$23$\times$ więcej} arytmetyki niż NPLM i \textbf{$\sim$90\,000$\times$ więcej} niż n-gram. \textbf{Compute jest niemal odwrotnością pamięci.} \emph{(To szacunki dominujących mnożeń macierzowych --- pomijamy softmax, normalizacje i bias; rząd wielkości się trzyma.)}
 
 \paragraph{Puenta (i tytuł serii).} Te operacje to \textbf{mnożenie i dodawanie --- arytmetyka z liceum}. GPT nie robi egzotycznej matematyki; robi \emph{miliony prostych operacji na jeden znak}. Trudność nie leży w magicznej matmie --- leży w \textbf{SKALI}. „High school is all you need" do zrozumienia \emph{mechanizmu}; reszta to inżynieria skali.
 
 \subsection{Generalizacja}
-n-gram \textbf{nie ekstrapoluje}: nieznany kontekst $\to$ backoff do krótszego, w skrajności do unigramu --- \emph{rekombinuje widziane, nie tworzy nic dla nowego wzorca}. Sieci neuronowe uogólniają po podobieństwie w przestrzeni embeddingów \cite{knnlm}.
+n-gram \textbf{nie ekstrapoluje}: nieznany kontekst $\to$ backoff do krótszego, w skrajności do unigramu --- \emph{rekombinuje widziane, nie tworzy nic dla nowego wzorca}. Sieci neuronowe uogólniają po podobieństwie w przestrzeni embeddingów \cite{knnlm}. Krótko: \textbf{n-gram pamięta, nie uogólnia}. Te trzy osie --- jakość, pamięć, obliczenia --- składają się w jeden obraz.
 
 \section{Trójkąt: jakość \texorpdfstring{$\leftrightarrow$}{<->} pamięć \texorpdfstring{$\leftrightarrow$}{<->} obliczenia}
-To nie „kto ma niższy ppl", lecz \textbf{trójkąt}, a w tle \textbf{generalizacja}:
+\textbf{„Lepszy model" to nie jedna liczba --- to trójkąt: jakość $\leftrightarrow$ pamięć $\leftrightarrow$ obliczenia}, a w tle \textbf{generalizacja}:
 \begin{figure}[h]
   \centering
   \begin{tikzpicture}
