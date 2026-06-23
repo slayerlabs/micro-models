@@ -1,4 +1,4 @@
-# LaTeX build artifacts (PDF-y powstają w CI jako artefakty)
+# LaTeX build artifacts (śmieci — PDF-y SĄ wersjonowane: jeden tex -> jeden pdf)
 *.aux
 *.log
 *.out
@@ -6,4 +6,3 @@
 *.fdb_latexmk
 *.synctex.gz
 *.toc
-*.pdf

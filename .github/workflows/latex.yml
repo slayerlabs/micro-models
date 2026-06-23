@@ -8,34 +8,58 @@ on:
   pull_request:        # bez filtra paths — CI zawsze widoczne jako check na PR
   workflow_dispatch:
 
+permissions:
+  contents: write      # potrzebne, by GITHUB_TOKEN mógł dopisać PDF-y na main
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false          # jeden dokument nie psuje pozostałych
-      matrix:
-        include:
-          - dir: music-experts/paper
-            file: paper.tex
-            name: paper-kompozycja-ekspertow
-          - dir: music-experts/paper
-            file: most-ngram-transformer.tex
-            name: most-ngram-transformer
-          - dir: music-experts/blogdraft/warsztat-spektrum
-            file: draft.tex
-            name: blogdraft-warsztat-spektrum
     steps:
       - uses: actions/checkout@v4
 
-      - name: Kompilacja ${{ matrix.file }} → PDF
+      - name: Kompilacja paper.tex
         uses: xu-cheng/latex-action@v3
         with:
-          working_directory: ${{ matrix.dir }}
-          root_file: ${{ matrix.file }}
+          working_directory: music-experts/paper
+          root_file: paper.tex
 
-      - name: Wystaw PDF jako artefakt
+      - name: Kompilacja most-ngram-transformer.tex
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: music-experts/paper
+          root_file: most-ngram-transformer.tex
+
+      - name: Kompilacja draft.tex
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: music-experts/blogdraft/warsztat-spektrum
+          root_file: draft.tex
+
+      # Podgląd per-run (znika po ~90 dniach) — niezależnie od commita w repo
+      - name: Wystaw PDF-y jako artefakt
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.name }}
-          path: ${{ matrix.dir }}/*.pdf
+          name: pdfy
+          path: |
+            music-experts/paper/paper.pdf
+            music-experts/paper/most-ngram-transformer.pdf
+            music-experts/blogdraft/warsztat-spektrum/draft.pdf
           if-no-files-found: error
+
+      # Dopisz/nadpisz PDF-y w repo (jeden .tex -> jeden .pdf, ta sama nazwa).
+      # Tylko na main i tylko na push (nie na PR). Push GITHUB_TOKENem nie odpala
+      # kolejnego runu -> brak pętli; [skip ci] dla pewności.
+      - name: Commit PDF-ów do repo
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add music-experts/paper/paper.pdf \
+                  music-experts/paper/most-ngram-transformer.pdf \
+                  music-experts/blogdraft/warsztat-spektrum/draft.pdf
+          if git diff --cached --quiet; then
+            echo "PDF-y bez zmian — nic do commita."
+          else
+            git commit -m "ci: rebuild PDF-ów (jeden tex -> jeden pdf) [skip ci]"
+            git push
+          fi
