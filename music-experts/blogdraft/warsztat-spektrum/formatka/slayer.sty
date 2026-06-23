@@ -1,0 +1,41 @@
+% =====================================================================
+%  slayer.sty — FORMATKA (wygląd). Podmienialna bez ruszania treści.
+%  Wspólna formatka Slayer — jedno źródło prawdy dla wszystkich dokumentów.
+% =====================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{formatka/slayer}[2026/06/23 Slayer — empiryczny raport]
+
+% --- Język / kodowanie ---
+\usepackage{lmodern}        % skalowalne fonty — wymagane przez microtype (inaczej pdfTeX font-expansion error)
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{microtype}
+
+% --- Układ strony ---
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{parskip}
+
+% --- Matematyka (ZAWSZE LaTeX, nigdy unicode: $\perp$ nie ⟂, $\Delta$ nie Δ) ---
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+
+% --- Tabele / grafika / wykresy ---
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% --- Podpisy rysunków/tabel ---
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+
+% --- Linki (klikalne, bez ramek) ---
+\usepackage[hidelinks]{hyperref}
+
+% --- Pomocnik podpisu autorem na stronie tytułowej ---
+\newcommand{\slayertitle}[3]{%
+  % #1 = tytuł, #2 = autor (PODPIS), #3 = data
+  {\LARGE\bfseries #1\par}\vspace{0.4cm}%
+  {\large #2\par}{\small #3\par}%
+}
