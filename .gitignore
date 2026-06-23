@@ -1,0 +1,9 @@
+# LaTeX build artifacts (PDF-y powstają w CI jako artefakty)
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+*.pdf

@@ -83,7 +83,8 @@ artefaktem (held-out ze sklejonych korpusów wyszedł niemal czysty reel). Po zb
   ybar, width=11cm, height=6cm,
   symbolic x coords={walc, reel, ensemble, stitch},
   xtick=data, ylabel={val perplexity (niżej = lepiej)},
-  nodes near coords, nodes near coords precision=2,
+  nodes near coords,
+  every node near coord/.append style={/pgf/number format/.cd,fixed,fixed zerofill,precision=2},
   ymin=0, ymax=7.2, bar width=22pt, enlarge x limits=0.22]
 \addplot coordinates {(walc,6.20) (reel,5.87) (ensemble,5.15) (stitch,5.18)};
 \end{axis}

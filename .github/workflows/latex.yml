@@ -5,6 +5,10 @@ on:
     paths:
       - 'music-experts/**/*.tex'
       - '.github/workflows/latex.yml'
+  pull_request:
+    paths:
+      - 'music-experts/**/*.tex'
+      - '.github/workflows/latex.yml'
   workflow_dispatch:
 
 jobs:
