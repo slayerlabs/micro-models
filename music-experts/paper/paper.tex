@@ -65,7 +65,7 @@ w G-dur pojawia się samo, bez błędnych krzyżyków) --- wyłącznie z predykc
 \paragraph{E0 --- self-stitch (mechanizm).} Wstawiamy liniowy mapper $g\in\mathbb{R}^{128\times128}$ na styku po
 bloku 2 tego samego modelu i zamrażamy resztę. $g=$ identyczność daje \emph{dokładnie} baseline (poprawność
 forwardu); $g$ losowy psuje model (ppl $122$), a trening samych 16 tys.\ parametrów $g$ odbudowuje go do
-baseline (Δppl $+0{,}03$). \textbf{Waliduje to mechanizm, nie tezę kompozycji.}
+baseline ($\Delta$ppl $+0{,}03$). \textbf{Waliduje to mechanizm, nie tezę kompozycji.}
 
 \paragraph{Ensemble (płaskie ważenie).} Dwóch ekspertów o wspólnym słowniku; w każdym kroku
 $\text{logits}=\alpha\,A + (1-\alpha)\,B$. Baseline do pobicia.
