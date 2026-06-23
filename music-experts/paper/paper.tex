@@ -10,7 +10,7 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.17}
 
-\title{Kompozycja małych ekspertów muzycznych:\\ baseline'y, bezstratny stitch i uczciwy wynik negatywny}
+\title{Kompozycja małych ekspertów muzycznych:\\ baseline'y, bezstratny self-stitch i uczciwy wynik negatywny}
 \author{Arkadiusz Słota \\ kolektyw \textbf{Slayer} \\ \texttt{github.com/slayerlabs/micro-models}}
 \date{czerwiec 2026}
 
@@ -90,12 +90,13 @@ artefaktem (held-out ze sklejonych korpusów wyszedł niemal czysty reel). Po zb
 \end{axis}
 \end{tikzpicture}
 \caption{Zbalansowany held-out (walc + reel po równo). \textbf{Ensemble bije oba pojedyncze modele;
-stitch reprezentacji $\approx$ ensemble (minimalnie gorszy).}}
+stitch reprezentacji $\approx$ ensemble (minimalnie gorszy).} Wartości z pojedynczego przebiegu ($n{=}1$);
+różnica stitch--ensemble ($0{,}03$) w granicach szumu --- rozrzut po seedach do douczenia.}
 \end{figure}
 
 \noindent Dwa wnioski: \textbf{(1) ensemble (5{,}15) bije oba pojedyncze modele} (walc 6{,}20, reel 5{,}87) ---
 łączenie ekspertów realnie pomaga na zadaniu mieszanym. \textbf{(2) Stitch (5{,}18) $\approx$ ensemble (5{,}15)}
---- liniowy stitch reprezentacji nie pobił prostego baseline'u.
+--- liniowy stitch reprezentacji nie pobił prostego baseline'u (różnica $0{,}03$, pojedynczy przebieg --- traktujemy to jako remis, nie przewagę).
 
 \section{Dyskusja}
 Wynik (2) jest negatywny, ale spodziewany: zrobiliśmy najtrudniejszy przypadek --- \emph{post-hoc}, mapper
@@ -109,7 +110,7 @@ modele tej samej architektury są w ogóle liniowo zszywalne \cite{stitch15,bans
 
 \paragraph{Asymetria porównania.} Nasz stitch jest \emph{kierunkowy} (front A $\times\,g\,\times$ głowa B), a ensemble \emph{symetryczny} (miesza obie głowy). Uczciwszy test pytania „czy kompozycja reprezentacji bije mieszanie wyjścia'' to \emph{symetryczna} fuzja reprezentacji do wspólnej głowy --- nie unieważnia remisu, ale go niuansuje.
 
-\paragraph{Pomiar zgodności reprezentacji (CKA na mikro-skali).} Sprawdziliśmy wprost, czy niezależnie trenowane mikro-modele dzielą geometrię --- metryką CKA \cite{cka}, względem \emph{właściwego} nulla (dwa \emph{losowe} modele tej samej architektury), jako funkcję skali (Rys.~\ref{fig:cka}). \textbf{Tak: zgodność jest wysoka i wczesna} --- CKA modeli same-task (różny seed) $\approx0{,}94$ już od $0{,}05$M, \emph{znacznie} powyżej nulla losowy--losowy ($0{,}44$), równomiernie we wszystkich blokach (nie tylko w warstwie wejściowej); także między stylami (jig--walc $0{,}84$). To wspiera interpretację E1: geometrie są wspólne, więc remis stitch$\approx$ensemble wynika z \textbf{redundancji} (mało komplementarnej informacji), nie z niezgodności; wspólna geometria otwiera za to interoperacyjność przez reprezentacje względne \cite{relreps}. \emph{Uczciwie (po adwersarialnym audycie analizy):} (i) to \emph{stabilność reprezentacji względem inicjalizacji} przy tych samych danych, a nie „platońska konwergencja'' w sensie \cite{platonic} (ta wymaga różnych danych/modalności); (ii) metryka mutual-kNN okazała się \textbf{nieprzydatna na tej skali} --- jej null losowy--losowy ($\approx0{,}68$) jest równie wysoki jak modele trenowane, więc mierzy strukturę wejścia, nie wyuczoną zgodność; raportujemy zatem wyłącznie CKA. \emph{Uwaga do dalszego routingu:} domeny rozłączne po metrum (6/8 vs 4/4) pozwalają routerowi „oszukać'' po jednym tokenie nagłówka --- testy routingu wymagają domen w \emph{tym samym} metrum.
+\paragraph{Pomiar zgodności reprezentacji (CKA na mikro-skali).} Sprawdziliśmy wprost, czy niezależnie trenowane mikro-modele dzielą geometrię --- metryką CKA \cite{cka}, względem \emph{właściwego} nulla (dwa \emph{losowe} modele tej samej architektury), jako funkcję skali (Rys.~\ref{fig:cka}). \textbf{Tak: zgodność jest wysoka i wczesna} --- CKA modeli same-task (różny seed) jest wysokie już od $0{,}05$M ($\approx0{,}92$; plateau $\approx0{,}95$ od $0{,}2$M). Jego null \emph{rośnie} ze skalą ($0{,}26\!\to\!0{,}55$), ale trained \emph{nigdzie} go nie dogania --- gap największy na małej skali. Równomiernie we wszystkich blokach (nie tylko w warstwie wejściowej); także między stylami (jig--walc $0{,}84$). To \emph{osobna seria skali} --- pary modeli same-task o rosnącym rozmiarze, nie ci sami eksperci $0{,}8$M z eksperymentów kompozycji. To wspiera interpretację E1: geometrie są wspólne, więc remis stitch$\approx$ensemble wynika z \textbf{redundancji} (mało komplementarnej informacji), nie z niezgodności; wspólna geometria otwiera za to interoperacyjność przez reprezentacje względne \cite{relreps}. \emph{Uczciwie (po adwersarialnym audycie analizy):} (i) to \emph{stabilność reprezentacji względem inicjalizacji} przy tych samych danych, a nie „platońska konwergencja'' w sensie \cite{platonic} (ta wymaga różnych danych/modalności); (ii) metryka mutual-kNN dała sygnał \textbf{mały i niestabilny}: trenowane modele \emph{krzyżują} swój null (losowy--losowy, $\approx0{,}68$, lekko opadający ze skalą) --- poniżej na $0{,}05$--$0{,}2$M ($0{,}46$/$0{,}59$ vs $\approx0{,}68$), na styk na $0{,}8$M, powyżej dopiero na $1{,}8$M ($0{,}73$ vs $0{,}62$). Taki sygnał (mały, zmieniający znak) nie pozwala na pewny wniosek o wyuczonej zgodności; raportujemy zatem wyłącznie CKA. \emph{Uwaga do dalszego routingu:} domeny rozłączne po metrum (6/8 vs 4/4) pozwalają routerowi „oszukać'' po jednym tokenie nagłówka --- testy routingu wymagają domen w \emph{tym samym} metrum.
 
 \begin{figure}[h]
 \centering
@@ -125,13 +126,13 @@ modele tej samej architektury są w ogóle liniowo zszywalne \cite{stitch15,bans
 \addplot+[mark=square*, error bars/.cd, y dir=both, y explicit] coordinates {
   (0.05,0.462)+-(0,0.016) (0.2,0.589)+-(0,0.005) (0.8,0.669)+-(0,0.015) (1.8,0.730)+-(0,0.004)};
 \addlegendentry{mutual-kNN (trenowane)}
-\addplot[black, dashed, mark=none] coordinates {(0.05,0.441) (1.8,0.441)};
-\addlegendentry{null CKA (losowy--losowy)}
-\addplot[black, dotted, mark=none] coordinates {(0.05,0.684) (1.8,0.684)};
-\addlegendentry{null kNN (losowy--losowy)}
+\addplot[black, dashed, mark=triangle*, mark size=2pt] coordinates {(0.05,0.255) (0.2,0.341) (0.8,0.441) (1.8,0.548)};
+\addlegendentry{null CKA (losowy, per skala)}
+\addplot[black, dotted, mark=triangle, mark size=2pt] coordinates {(0.05,0.669) (0.2,0.686) (0.8,0.684) (1.8,0.619)};
+\addlegendentry{null kNN (losowy, per skala)}
 \end{axis}
 \end{tikzpicture}
-\caption{\textbf{Zgodność reprezentacji niezależnie trenowanych mikro-modeli (same-task, różny seed) w funkcji rozmiaru.} CKA \cite{cka} i mutual-kNN ($k{=}10$) między wyjściami bloków, uśrednione po warstwach; słupki błędu $=\pm$std (próbkowe) po 3 parach seedów. Linie odniesienia: null \emph{losowy--losowy} osobno dla każdej metryki (dwa nietrenowane modele tej samej architektury). \emph{Wniosek (po adwersarialnym audycie analizy):} CKA modeli trenowanych ($\approx0{,}94$) leży \textbf{daleko powyżej} swojego nulla ($0{,}44$) --- realna wspólna geometria, wysoka już na $0{,}05$M. Natomiast mutual-kNN ($0{,}46$--$0{,}73$) jest na poziomie \emph{swojego} nulla ($\approx0{,}68$) --- metryka zdominowana strukturą wejścia, \emph{nie} świadczy o wyuczonej zgodności; dlatego wnioskujemy wyłącznie z CKA. Właściwy null i wybór metryki mają znaczenie.}
+\caption{\textbf{Zgodność reprezentacji niezależnie trenowanych mikro-modeli (same-task, różny seed) w funkcji rozmiaru.} CKA \cite{cka} i mutual-kNN ($k{=}10$) między wyjściami bloków, uśrednione po warstwach; słupki błędu $=\pm$std (próbkowe) po 3 parach seedów. Linie odniesienia: null \emph{losowy--losowy} osobno dla każdej metryki \emph{i skali} (dwa nietrenowane modele architektury danej skali; pojedyncza para). \emph{Wniosek (po adwersarialnym audycie analizy):} CKA modeli trenowanych ($0{,}92\!\to\!0{,}95$) leży \textbf{daleko powyżej} swojego nulla na \emph{każdej} skali, choć null sam rośnie ($0{,}26\!\to\!0{,}55$) --- realna wspólna geometria, gap największy na $0{,}05$M. Natomiast mutual-kNN ($0{,}46$--$0{,}73$) \emph{krzyżuje} swój null ($\approx0{,}68$, opadający do $0{,}62$): poniżej na małej skali, powyżej dopiero na $1{,}8$M --- sygnał mały i niestabilny, \emph{nie} pozwala na pewny wniosek; dlatego wnioskujemy wyłącznie z CKA. Właściwy null \emph{per skala} i wybór metryki mają znaczenie.}
 \label{fig:cka}
 \end{figure}
 
