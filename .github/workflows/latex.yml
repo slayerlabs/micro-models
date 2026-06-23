@@ -4,11 +4,8 @@ on:
   push:
     paths:
       - 'music-experts/**/*.tex'
-      - '.github/workflows/latex.yml'
-  pull_request:
-    paths:
-      - 'music-experts/**/*.tex'
-      - '.github/workflows/latex.yml'
+      - '.github/workflows/**'
+  pull_request:        # bez filtra paths — CI zawsze widoczne jako check na PR
   workflow_dispatch:
 
 jobs:
