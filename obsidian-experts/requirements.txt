@@ -1,0 +1,2 @@
+torch>=2.6
+# tiktoken  # opcjonalnie: porównanie gęstości tokenizera vs GPT-2 (train_tokenizer.py)

@@ -1,0 +1,7 @@
+# surowe dane + generacje = poza repo (odtwarzają się ze skryptów)
+data/
+*.pt
+tokenizer-obsidian*.json
+eval_obsidian*.json
+ngram_obsidian.json
+__pycache__/
