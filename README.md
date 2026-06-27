@@ -18,6 +18,7 @@ czego uczą się malutkie modele, gdzie się łamią i czy wielu małych ekspert
 | Projekt | Co to | Status |
 |---|---|---|
 | [`music-experts/`](music-experts/) | Małe char-level GPT (jig, Bach, walc, reel) trenowane od zera na [notacji ABC](https://abcnotation.com/) + eksperymenty z **kompozycją małych ekspertów** (stitching, ensemble, duet). | aktywny |
+| [`obsidian-experts/`](obsidian-experts/) | Mikro-GPT PL (~2,64 mln param) trenowany od zera na **notatkach dialektycznych** z Obsidiana, rozbitych deterministycznie (AST-T2). Pomiar generalizacji (vs n-gram) + ablacja dekompozycja-vs-surowe. **Wynik: NEGATYWNY robust** (n-gram bije transformer przy ~3 MB; gap 0,10 bita/znak). | iteracja 1 |
 
 *Kolejne projekty mikro-modeli dojdą jako siostrzane foldery.*
 
