@@ -5,3 +5,12 @@ tokenizer-obsidian*.json
 eval_obsidian*.json
 ngram_obsidian.json
 __pycache__/
+
+# LaTeX build artifacts (papier odtwarza się: latexmk -pdf paper/paper.tex)
+paper/*.aux
+paper/*.log
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.out
+paper/*.pdf
+paper/*.synctex.gz

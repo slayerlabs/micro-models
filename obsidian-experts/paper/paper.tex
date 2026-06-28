@@ -1,0 +1,222 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{hyperref}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+\title{Pamięć kontra generalizacja przy mikro-skali:\\ czy dialektyczna dekompozycja vaulta pomaga mikro-modelowi?\\ \large (uczciwy wynik negatywny)}
+\author{Arkadiusz Słota \\ kolektyw \textbf{Slayer} \\ \texttt{github.com/slayerlabs/micro-models}}
+\date{czerwiec 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Sprawdzamy dwie rzeczy na bazie wiedzy autora w Obsidianie (813 notatek dialektycznych, $\sim$3 MB po polsku):
+czy mikro-GPT trenowany \emph{od zera} \textbf{generalizuje} ponad model n-gram, oraz czy
+\textbf{deterministyczna dekompozycja dialektyczna} (schemat AST-T2: Teza/Sedno $\cdot$ Argumentacja $\cdot$
+Założenia $\cdot$ Synteza $\cdot$ Linki) buduje lepsze reprezentacje niż surowy tekst. Na \emph{wspólnym} surowym
+zbiorze held-out (82 notatki) mierzymy bits/char: \textbf{n-gram $2{,}05$ $<$ GPT-raw $2{,}11$ $<$ GPT-decomp
+$2{,}15$} (8000 kroków, blisko konwergencji). Obie falsyfikowalne bramki wychodzą \textbf{negatywnie, ale
+robust}: n-gram \emph{bije} transformer (pamięć $\geq$ generalizacja przy tej skali), a dekompozycja \emph{nie}
+pomaga (stabilna kara $\sim$0{,}035 bita/znak z oceny poza dystrybucją). Po douczeniu z 3000 do 8000 kroków dystans
+do n-gramu zwęził się $0{,}45\!\to\!0{,}10$ --- wynik 3000-krokowy był \textbf{artefaktem niedouczenia}, który
+kontrolujemy. Tłumaczymy to teorią informacji (za mało danych, niska entropia powtarzalnego korpusu) oraz
+kompromisem pamięć/generalizacja; mechanizm (atencja, spadek gradientowy) działa --- model uczy się $55\times$ nad
+losowym. Wskazujemy zasadne przekierowanie: \textbf{pamięć nieparametryczna} (kNN-LM) i adaptacja modeli
+pretrenowanych, a nie trening mikro-modelu od zera. To zarazem \emph{drugi} punkt danych potwierdzający siłę
+n-gramu na repetytywnych korpusach.
+\end{abstract}
+
+\section{Wprowadzenie}
+Interesują nas \emph{mikro-modele} --- sieci dość małe, by zrozumieć je od początku do końca i wytrenować w
+minuty --- oraz pytanie praktyczne: czy ustrukturyzowaną bazę wiedzy (vault Obsidiana pisany dialektycznie:
+Cel $\to$ Teza $\leftrightarrow$ Antyteza $\to$ Synteza) da się \emph{przełożyć na model}, który tę wiedzę nosi.
+Retrieval nad notatkami (RAG, także świadomy grafu linków --- GraphRAG \cite{graphrag}) jest dziś rozwiązany i
+skomercjalizowany; mniej zbadany jest inny koniec: czy \emph{generatywny} model trenowany \emph{od zera} na takiej
+bazie uczy się czegokolwiek ponad pamięć, oraz czy autorska struktura dialektyczna stanowi użyteczny sygnał
+treningowy. Predykcja następnego tokena to wspólny cel od n-gramu po transformer \cite{nplm,vaswani}; my pracujemy
+na jego najmniejszym praktycznym końcu i --- zgodnie z zasadami kolektywu Slayer (twardy pomiar, jawny koszt, brak
+benchmaxxingu) --- raportujemy wynik negatywny.
+
+\paragraph{Wkład.} (1) Deterministyczny dekompozytor vaulta do schematu AST-T2 i \textbf{kontrolowana ablacja}
+(dekompozycja vs.\ surowy tekst, \emph{stały} budżet obliczeń). (2) Dwie falsyfikowalne bramki bits/char na
+wspólnym held-out, obie negatywne \emph{i robust przy konwergencji}. (3) Wyjaśnienie z pierwszych zasad, dlaczego
+mechanizm jest sprawny, a wynik mimo to negatywny, oraz wynikające z danych przekierowanie (kNN-LM). (4) Lekcja
+metodologiczna: \textbf{retrening jako kontrola artefaktu niedouczenia} (3000$\to$8000) odwraca nagłówek wyniku.
+
+\section{Modele, dane i metryka}
+\paragraph{Korpus.} Bierzemy notatki typu rdzenia dialektycznego \{cel, teza, antyteza, synteza, decyzja, fakt,
+powód\} --- \textbf{813 notatek $\to$ 731 treningowych / 82 held-out} (podział 90/10 po \emph{całych} notatkach,
+ziarno stałe). Surowych danych (prywatny vault) nie redystrybuujemy --- odtwarzalne ze skryptu dekompozytora.
+
+\paragraph{Architektura.} Transformer dekoderowy: \textbf{4 warstwy, 4 głowice, $d_\text{model}=192$, okno 128
+znaków}, $\sim$2{,}64 mln parametrów. Trening: cross-entropy, AdamW ($\text{lr}=3\cdot10^{-4}$), warmup + cosine.
+\textbf{Identyczne hiperparametry dla obu ramion ablacji} (stały compute). Tokenizer: własny byte-level BPE,
+4096 scaleń, słownik 4352 --- osobny per ramię.
+
+\paragraph{Baseline.} N-gram znakowy z interpolacją liniową rzędów $0\ldots6$ (wagi $\propto 2^o$, podłoga add-$k$,
+$k=0{,}01$). To \textbf{pamięć nieparametryczna}: dokładna statystyka widzianych kontekstów, zero błędu aproksymacji.
+
+\paragraph{Metryka (tokenizer-niezależna).} Raportujemy \textbf{bits/char}:
+\[
+\text{bits/char} \;=\; \frac{\sum_i \text{CE}_i\ [\text{nat}]}{N_\text{znaków}\cdot \ln 2},
+\]
+czyli sumę cross-entropy po tokenach podzieloną przez liczbę \emph{znaków} surowego held-out i $\ln 2$. Dzięki temu
+n-gram (znakowy) i dwa GPT (różne BPE) są porównywalne na \emph{tym samym} surowym tekście. Drugie ramię modelu
+(decomp) oceniamy również na surowym held-out --- czyli lekko \emph{poza} jego dystrybucją (uczony z markerami):
+test konserwatywny, ale uczciwy.
+
+\section{Dekompozycja dialektyczna (AST-T2)}
+Każdą notatkę rozkładamy \emph{deterministycznie} (bez LLM) na rekord z markerami
+\texttt{\#\#\# TYP / TYTUL / SEDNO / ZALOZENIA / ARGUMENTACJA / SYNTEZA / LINKI}. Kluczowa gwarancja:
+\texttt{ARGUMENTACJA} zawiera \emph{całe} body po usunięciu frontmatter, wiodącego cytatu i sekcji ,,Powiązania''
+--- czyli rekord jest \textbf{bezstratny} nawet gdy ekstrakcja Sedna/Syntezy zawiedzie. Dla każdej notatki mamy dwa
+warianty tekstu na \emph{tej samej} liście notatek (uczciwa ablacja):
+\begin{itemize}
+  \item \textbf{decomp} --- rekord z markerami (struktura jawna),
+  \item \textbf{raw} --- sam wyczyszczony content (\texttt{clean\_text}: usunięte \texttt{[[\ldots]]}, znaczniki,
+  zwinięte białe znaki).
+\end{itemize}
+
+\section{Bramki (falsyfikowalne)}
+\begin{itemize}
+  \item \textbf{Nauka:} val perplexity $<$ $\tfrac12\cdot$ słownik (czy model uczy się ponad losowe zgadywanie).
+  \item \textbf{Generalizacja:} $\text{bits/char}(\text{GPT-decomp}) < \text{bits/char}(\text{n-gram})$ --- czy model
+  uczy gładkiej funkcji, a nie tablicy look-up.
+  \item \textbf{Ablacja:} $\text{bits/char}(\text{GPT-decomp}) < \text{bits/char}(\text{GPT-raw})$ --- czy
+  dekompozycja realnie pomaga.
+\end{itemize}
+
+\section{Wyniki}
+\paragraph{Dane i nauka.} Korpus decomp 3{,}50 MB / raw 3{,}05 MB / held-out 0{,}34 MB; \texttt{ARGUMENTACJA}
+bezstratna 731/731. \textbf{Bramka nauki zaliczona}: val ppl @8000 $\approx$ 77 (decomp 77{,}1 / raw 77{,}6) wobec
+losowego baseline'u 4352 --- \textbf{redukcja $55\times$}; luka train$\leftrightarrow$val 1{,}78$\times$ (lekki
+overfit, spodziewany przy tej skali danych).
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lrr}
+\toprule
+rząd $M$ & bits/char & \#kontekstów \\
+\midrule
+1 & 4{,}376 & 294 \\
+3 & 2{,}811 & 53\,879 \\
+5 & 2{,}119 & 494\,973 \\
+6 & \textbf{2{,}046} & 864\,911 \\
+\bottomrule
+\end{tabular}
+\caption{Baseline n-gram: bits/char spada z rzędem, ale \textbf{pamięć eksploduje} (rząd 6 = 865 tys.\
+kontekstów). To podłoga pamięci, którą transformer ma pobić.}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lrrl}
+\toprule
+model & bits/char @3000 & bits/char @8000 & val ppl @8000 \\
+\midrule
+n-gram (M=6) & 2{,}046 & \textbf{2{,}046} & --- \\
+GPT-raw      & 2{,}461 & \textbf{2{,}110} & 77{,}6 \\
+GPT-decomp   & 2{,}496 & \textbf{2{,}147} & 77{,}1 \\
+\bottomrule
+\end{tabular}
+\caption{Główny wynik na wspólnym surowym held-out. Po douczeniu (3000$\to$8000) dystans GPT do n-gramu maleje, ale
+\textbf{się nie zamyka}; dekompozycja pozostaje minimalnie gorsza od surowego tekstu.}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  ybar, width=12cm, height=6.5cm,
+  symbolic x coords={n-gram, GPT-raw, GPT-decomp},
+  xtick=data, ylabel={bits/char (niżej = lepiej)},
+  nodes near coords,
+  every node near coord/.append style={font=\footnotesize,/pgf/number format/.cd,fixed,fixed zerofill,precision=2},
+  ymin=0, ymax=2.95, bar width=16pt, enlarge x limits=0.3, legend pos=north west]
+\addplot coordinates {(n-gram,2.0458) (GPT-raw,2.4613) (GPT-decomp,2.4961)};
+\addplot coordinates {(n-gram,2.0458) (GPT-raw,2.1103) (GPT-decomp,2.1468)};
+\legend{3000 kroków, 8000 kroków}
+\end{axis}
+\end{tikzpicture}
+\caption{\textbf{Obie bramki negatywne, ale robust.} N-gram (pamięć) bije oba transformery; dekompozycja $\geq$
+surowy tekst. Douczenie zwęziło lukę GPT$\to$n-gram z $0{,}45$ do $0{,}10$ bita/znak --- transformer \emph{prawie}
+dorównuje, ale nie przekracza progu.}
+\end{figure}
+
+\paragraph{Werdykt.} \emph{Generalizacja:} $2{,}147 \geq 2{,}046$ --- \textbf{negatywna} (blisko). \emph{Ablacja:}
+$2{,}147 \geq 2{,}110$ --- \textbf{negatywna} (stabilna kara $\sim$0{,}035 @3000 i @8000). Próbki generacyjne:
+model-decomp odtwarza \emph{strukturę} (markery, odwołania sekcji, identyfikatory), model-raw odtwarza
+\emph{słownictwo dialektyczne}; oba lokalnie wiarygodne, globalnie niespójne --- nauczyły się stylu i szkieletu,
+nie znaczenia.
+
+\section{Dyskusja --- dlaczego mechanizm działa, a wynik jest negatywny}
+\paragraph{To nie awaria atencji ani spadku gradientowego.} Model się uczył (strata malała, bramka nauki $55\times$).
+Wąskim gardłem jest \emph{informacja w danych}, nie mechanizm.
+\begin{enumerate}
+  \item \textbf{Za mało danych.} $\sim$1 mln tokenów na 2{,}64 mln parametrów. Reguła compute-optymalna to
+  $\sim$20 tokenów/parametr \cite{chinchilla} $\Rightarrow$ potrzeba rzędu $50$ mln tokenów; jesteśmy
+  $\sim$20$\times$ pod-danio.
+  \item \textbf{Niska entropia (powtarzalność).} Vault dzieli masę boilerplate'u (nagłówki sekcji, słownictwo
+  domenowe, identyfikatory). Efektywna informacja $\ll$ 3 MB; n-gram po prostu \emph{pamięta} powtarzalne ciągi, a
+  held-out z tych samych projektów je współdzieli.
+  \item \textbf{Pamięć vs.\ generalizacja.} N-gram to pamięć nieparametryczna (zero błędu na widzianych
+  kontekstach); transformer kompresuje stratnie w stałe wagi. Na repetytywnych danych dokładna pamięć wygrywa ze
+  stratną kompresją; przewaga transformera (zmienny, daleki kontekst) nie ma czego nagradzać.
+\end{enumerate}
+
+\paragraph{Dlaczego dekompozycja nie pomaga.} Markery dodają \emph{przewidywalne} tokeny (sztucznie obniżają stratę
+na korpusie decomp), ale nie dokładają generalizowalnej informacji o języku; oceniane na surowym tekście są
+\emph{poza dystrybucją} --- stąd stabilna kara. Struktura pomaga tylko jako \emph{indukcyjny bias} dopasowany do
+zadania; do predykcji surowego następnego znaku markery dialektyczne nim nie są.
+
+\paragraph{Zakres (uczciwie).} Wynik \textbf{nie} dotyczy dekompozycji \emph{przy wnioskowaniu} (rozbijanie zadania
+na trywialne kroki dla małego modelu --- mechanizm odrębny i potwierdzony gdzie indziej). \textbf{Nie} jest też
+ogólnym obaleniem wartości struktury --- test był konserwatywny i mikro-skalowy.
+
+\paragraph{Przekierowanie (wynika z danych).} Skoro n-gram wygrywa pamięcią, a transformer wnosi generalizację,
+zasadne jest ich \emph{połączenie}: \textbf{kNN-LM} \cite{knnlm} --- transformer plus nieparametryczny datastore
+najbliższych sąsiadów (jak n-gram, lecz w przestrzeni reprezentacji; granicznie: infini-gram \cite{infinigram}).
+Wiedza z vaulta wchodziłaby wtedy \emph{przez datastore, nie przez wagi} --- dodanie notatki rozszerza pamięć modelu
+bez retreningu. Druga droga to adaptacja modelu \emph{pretrenowanego} (zna język), nie trening od zera.
+
+\section{Ograniczenia (warunki obalenia)}
+\begin{itemize}
+  \item \textbf{Jedna baza, jedno ziarno.} Wynik na jednym vaulcie; replikacja na innych korpusach otwarta.
+  \item \textbf{Konserwatywna ablacja.} Model-decomp oceniany na surowym held-out (poza dystrybucją); test
+  faworyzuje raw. Wygrana decomp byłaby tym mocniejsza --- ale jej nie ma.
+  \item \textbf{Mikro-skala.} Bramka generalizacji jest \emph{zależna od skali}: zwężanie luki $0{,}45\!\to\!0{,}10$
+  sugeruje, że większy korpus/model/dłuższy trening mogłyby przekroczyć próg. Obalenie wniosku ,,pamięć $\geq$
+  generalizacja'': pokazać korpus/skalę, gdzie GPT-decomp $<$ n-gram.
+\end{itemize}
+
+\section{Wnioski}
+Na ustrukturyzowanej bazie wiedzy $\sim$3 MB mikro-transformer trenowany od zera \textbf{nie bije} prostego n-gramu
+(pamięć $\geq$ generalizacja), a dialektyczna dekompozycja \textbf{nie} buduje lepszych reprezentacji do
+modelowania surowego tekstu --- i jest to wynik \emph{robust przy konwergencji}, nie artefakt zbyt krótkiego
+treningu (co pokazujemy, raportując zarówno 3000, jak i 8000 kroków). Mechanizm (atencja, gradient) jest sprawny;
+ogranicza nas informacja w danych (mało + powtarzalnie), zgodnie z prawami skalowania i kompromisem
+pamięć/generalizacja. Najcenniejszy negatyw to taki, który przekierowuje wysiłek: dane wskazują na połączenie
+pamięci nieparametrycznej z generalizacją (kNN-LM) oraz adaptację modeli pretrenowanych --- zamiast trenowania
+mikro-modeli wiedzy od zera. Kod, korpus-przepis i notatki dialektyczne (teza $\leftrightarrow$ antyteza $\to$
+synteza) są otwarte w repozytorium.
+
+\begin{thebibliography}{9}
+\bibitem{vaswani} A.~Vaswani i in. \emph{Attention Is All You Need}. NeurIPS 2017.
+\bibitem{nplm} Y.~Bengio i in. \emph{A Neural Probabilistic Language Model}. JMLR 2003.
+\bibitem{knnlm} U.~Khandelwal i in. \emph{Generalization through Memorization: Nearest Neighbor Language Models}. ICLR 2020. arXiv:1911.00172.
+\bibitem{infinigram} J.~Liu i in. \emph{Infini-gram: Scaling Unbounded $n$-gram Language Models to a Trillion Tokens}. COLM 2024. arXiv:2401.17377.
+\bibitem{chinchilla} J.~Hoffmann i in. \emph{Training Compute-Optimal Large Language Models} (Chinchilla). NeurIPS 2022. arXiv:2203.15556.
+\bibitem{graphrag} D.~Edge i in. \emph{From Local to Global: A Graph RAG Approach to Query-Focused Summarization}. arXiv:2404.16130, 2024.
+\bibitem{argmining} J.~Lawrence, C.~Reed. \emph{Argument Mining: A Survey}. Computational Linguistics 45(4), 2019.
+\bibitem{spektrum} A.~Słota. \emph{Od n-gramu do transformera: spektrum mechanizmów predykcji następnego znaku}. Kolektyw Slayer, 2026.
+\end{thebibliography}
+
+\end{document}
