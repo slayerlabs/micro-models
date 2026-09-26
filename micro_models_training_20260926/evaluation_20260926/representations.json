@@ -1,0 +1,58 @@
+{
+  "split": "validation",
+  "observations": 1536,
+  "layers": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "CKA": {
+    "GPT_A__GPT_B": [
+      0.8974413465968621,
+      0.8697092069247059,
+      0.9085625165894711,
+      0.9571041612184633
+    ],
+    "GPT_A__random_A": [
+      0.5436450624471817,
+      0.4824169172808125,
+      0.4667058851966694,
+      0.46633474196462105
+    ],
+    "random_A__random_B": [
+      0.7056379711578391,
+      0.6631000865091258,
+      0.6087329223228349,
+      0.6008496453490747
+    ],
+    "shuffled_alignment": [
+      0.00769158200480146,
+      0.006528169389062672,
+      0.004789762390783171,
+      0.003166498368572273
+    ],
+    "self": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "mean_CKA": {
+    "GPT_A__GPT_B": 0.9082043078323756,
+    "GPT_A__random_A": 0.4897756517223212,
+    "random_A__random_B": 0.6445801563347187,
+    "shuffled_alignment": 0.0055440030383048945,
+    "self": 1.0
+  },
+  "checks": {
+    "feature_vs_gram_formula_difference": 1.1102230246251565e-16,
+    "E0_identity_max_absolute_logit_difference": 0.0
+  },
+  "limitations": [
+    "One trained pair, one random pair, no scale sweep or uncertainty estimates",
+    "Shared tokens and positions contribute to representation similarity",
+    "Identity control checks wiring, not ability to learn a mapper or cross-model stitching"
+  ]
+}

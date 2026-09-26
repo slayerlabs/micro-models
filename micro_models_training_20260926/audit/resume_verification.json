@@ -1,0 +1,43 @@
+{
+  "manifest_sha256": "92c0801ccc5f9b0e099d17209e675c0fbeb3d8cbed0b0994990e3a1d1868da5f",
+  "method": "Two disposable updates: continuous vs torch.save/torch.load restore between updates",
+  "diagnostic_only": true,
+  "actual_run_steps_changed": false,
+  "test_evaluated": false,
+  "runs": [
+    {
+      "run": "gpt_92c0801c_seed_20260926",
+      "checkpoint_unchanged": true,
+      "sampler_matches": true,
+      "loss_difference": 0.0,
+      "maximum_parameter_difference": 0.0,
+      "optimizer_steps_after_disposable_updates": [
+        2002
+      ],
+      "passed": true
+    },
+    {
+      "run": "gpt_92c0801c_seed_20260927",
+      "checkpoint_unchanged": true,
+      "sampler_matches": true,
+      "loss_difference": 0.0,
+      "maximum_parameter_difference": 0.0,
+      "optimizer_steps_after_disposable_updates": [
+        2002
+      ],
+      "passed": true
+    },
+    {
+      "run": "nplm_92c0801c_seed_20260926",
+      "checkpoint_unchanged": true,
+      "sampler_matches": true,
+      "loss_difference": 0.0,
+      "maximum_parameter_difference": 0.0,
+      "optimizer_steps_after_disposable_updates": [
+        2002
+      ],
+      "passed": true
+    }
+  ],
+  "passed": true
+}

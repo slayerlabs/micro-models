@@ -1,0 +1,20 @@
+{
+  "validation": {
+    "unseen_pitches": [],
+    "unseen_durations_quarter_notes": {
+      "1/8": 4,
+      "7": 1
+    },
+    "events_with_unseen_duration": 5,
+    "total_events": 1866
+  },
+  "test": {
+    "unseen_pitches": [],
+    "unseen_durations_quarter_notes": {
+      "1/8": 4,
+      "14": 1
+    },
+    "events_with_unseen_duration": 5,
+    "total_events": 1756
+  }
+}

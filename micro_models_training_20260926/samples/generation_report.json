@@ -1,0 +1,251 @@
+{
+  "manifest_sha256": "92c0801ccc5f9b0e099d17209e675c0fbeb3d8cbed0b0994990e3a1d1868da5f",
+  "test_evaluated": false,
+  "protocol": {
+    "prompt": "X:1\nM:4/4\nL:1/4\nK:G\n",
+    "seeds": [
+      2026092601,
+      2026092602
+    ],
+    "max_new_tokens": 384,
+    "temperature": 0.8,
+    "top_k": 20,
+    "masked_tokens": [
+      "PAD",
+      "BOS"
+    ],
+    "selection": "All two predeclared seeds for every neural model; no retries, no editing, no grammar repair"
+  },
+  "samples": [
+    {
+      "model_run": "gpt_92c0801c_seed_20260926",
+      "checkpoint_step": 1600,
+      "checkpoint_sha256": "03267b60001e7ef395d9683c3578578418c54c237b47317e37e95e1dbfd0f3dc",
+      "sample_seed": 2026092601,
+      "abc": "samples/gpt_92c0801c_seed_20260926_sample_1.abc",
+      "text_sha256": "9c591e0ef70410a74fbfda1d30073158ecc53a75a650e59b8213db901c10b233",
+      "generated_tokens": 384,
+      "stop_reason": "token_limit",
+      "deterministic_repeat_checked": true,
+      "parser_accepted": true,
+      "midi_written": true,
+      "notes": 97,
+      "measures": 33,
+      "interior_measures_checked": 31,
+      "incorrect_interior_measures": [
+        {
+          "index": 1,
+          "beats": 2.5,
+          "expected": 4.0
+        },
+        {
+          "index": 3,
+          "beats": 3.5,
+          "expected": 4.0
+        },
+        {
+          "index": 4,
+          "beats": 3.5,
+          "expected": 4.0
+        },
+        {
+          "index": 5,
+          "beats": 3.5,
+          "expected": 4.0
+        }
+      ],
+      "notation_midi_export": {
+        "succeeded": false,
+        "error_type": "StreamException"
+      },
+      "midi_reopened": true,
+      "midi": "samples/gpt_92c0801c_seed_20260926_sample_1.mid",
+      "midi_policy": "Sequential note/rest rendering; ABC barline positions are not retained",
+      "midi_sha256": "4ec48aa5149cb385ff041ec6a9b7b3894e4ed6e7014dd68dce0bc8f95175cc01",
+      "warnings": []
+    },
+    {
+      "model_run": "gpt_92c0801c_seed_20260926",
+      "checkpoint_step": 1600,
+      "checkpoint_sha256": "03267b60001e7ef395d9683c3578578418c54c237b47317e37e95e1dbfd0f3dc",
+      "sample_seed": 2026092602,
+      "abc": "samples/gpt_92c0801c_seed_20260926_sample_2.abc",
+      "text_sha256": "01e64fdfc429a74f839f4682fe00d215685390f2570910734fc0618a8ab21c37",
+      "generated_tokens": 384,
+      "stop_reason": "token_limit",
+      "deterministic_repeat_checked": false,
+      "parser_accepted": true,
+      "midi_written": true,
+      "notes": 109,
+      "measures": 38,
+      "interior_measures_checked": 36,
+      "incorrect_interior_measures": [],
+      "notation_midi_export": {
+        "succeeded": false,
+        "error_type": "StreamException"
+      },
+      "midi_reopened": true,
+      "midi": "samples/gpt_92c0801c_seed_20260926_sample_2.mid",
+      "midi_policy": "Sequential note/rest rendering; ABC barline positions are not retained",
+      "midi_sha256": "783060d4f5fe67c602f8250cd65bddf75097dbce4c2f9a8f4f0a67956d819ba1",
+      "warnings": []
+    },
+    {
+      "model_run": "gpt_92c0801c_seed_20260927",
+      "checkpoint_step": 1800,
+      "checkpoint_sha256": "d9ed56696eeda897487abc64fb6a930f4e026aa01a0d6e49e90169543c5a0fb7",
+      "sample_seed": 2026092601,
+      "abc": "samples/gpt_92c0801c_seed_20260927_sample_1.abc",
+      "text_sha256": "b01709c8eeb191e3374adeb4d5193066eabd47475b0b5325d8b0f7db1bd610bd",
+      "generated_tokens": 377,
+      "stop_reason": "EOS",
+      "deterministic_repeat_checked": true,
+      "parser_accepted": true,
+      "midi_written": true,
+      "notes": 96,
+      "measures": 34,
+      "interior_measures_checked": 32,
+      "incorrect_interior_measures": [
+        {
+          "index": 1,
+          "beats": 2.5,
+          "expected": 4.0
+        },
+        {
+          "index": 4,
+          "beats": 2.5,
+          "expected": 4.0
+        },
+        {
+          "index": 5,
+          "beats": 3.5,
+          "expected": 4.0
+        }
+      ],
+      "notation_midi_export": {
+        "succeeded": false,
+        "error_type": "StreamException"
+      },
+      "midi_reopened": true,
+      "midi": "samples/gpt_92c0801c_seed_20260927_sample_1.mid",
+      "midi_policy": "Sequential note/rest rendering; ABC barline positions are not retained",
+      "midi_sha256": "2bf0854cb724f9add603e23a28719822049d8e1950d462ee46798904582d910b",
+      "warnings": []
+    },
+    {
+      "model_run": "gpt_92c0801c_seed_20260927",
+      "checkpoint_step": 1800,
+      "checkpoint_sha256": "d9ed56696eeda897487abc64fb6a930f4e026aa01a0d6e49e90169543c5a0fb7",
+      "sample_seed": 2026092602,
+      "abc": "samples/gpt_92c0801c_seed_20260927_sample_2.abc",
+      "text_sha256": "b018098b2bc996f942dfb10c6ccdacb9c1d167542927366cc498452c93b33426",
+      "generated_tokens": 176,
+      "stop_reason": "EOS",
+      "deterministic_repeat_checked": false,
+      "parser_accepted": true,
+      "midi_written": true,
+      "notes": 41,
+      "measures": 14,
+      "interior_measures_checked": 12,
+      "incorrect_interior_measures": [],
+      "notation_midi_export": {
+        "succeeded": false,
+        "error_type": "StreamException"
+      },
+      "midi_reopened": true,
+      "midi": "samples/gpt_92c0801c_seed_20260927_sample_2.mid",
+      "midi_policy": "Sequential note/rest rendering; ABC barline positions are not retained",
+      "midi_sha256": "cd84fbb4d2ed6296572ca215d9174c596601c9ce7759fcde5388566f95ba2ceb",
+      "warnings": []
+    },
+    {
+      "model_run": "nplm_92c0801c_seed_20260926",
+      "checkpoint_step": 1200,
+      "checkpoint_sha256": "345fc024600bb167651bd891114dffd1d9983305c7b49edb43556d642b5b133a",
+      "sample_seed": 2026092601,
+      "abc": "samples/nplm_92c0801c_seed_20260926_sample_1.abc",
+      "text_sha256": "645524ed749630db55f148e382061042c19e6e49cf801df45db63fa5c8b06a62",
+      "generated_tokens": 38,
+      "stop_reason": "EOS",
+      "deterministic_repeat_checked": true,
+      "parser_accepted": true,
+      "midi_written": true,
+      "notes": 7,
+      "measures": 4,
+      "interior_measures_checked": 2,
+      "incorrect_interior_measures": [
+        {
+          "index": 1,
+          "beats": 2.0,
+          "expected": 4.0
+        },
+        {
+          "index": 2,
+          "beats": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "notation_midi_export": {
+        "succeeded": true,
+        "file": "samples/nplm_92c0801c_seed_20260926_sample_1_notation.mid"
+      },
+      "midi_reopened": true,
+      "midi": "samples/nplm_92c0801c_seed_20260926_sample_1.mid",
+      "midi_policy": "Sequential note/rest rendering; ABC barline positions are not retained",
+      "midi_sha256": "298d359823ab0c0faf2aafc562171ac64ed88b03f5beb242930e7d96a890eefe",
+      "warnings": []
+    },
+    {
+      "model_run": "nplm_92c0801c_seed_20260926",
+      "checkpoint_step": 1200,
+      "checkpoint_sha256": "345fc024600bb167651bd891114dffd1d9983305c7b49edb43556d642b5b133a",
+      "sample_seed": 2026092602,
+      "abc": "samples/nplm_92c0801c_seed_20260926_sample_2.abc",
+      "text_sha256": "1b2756eb361c0322072cf81eded50526526c859d57c8d2b66c35a4c3523c05b1",
+      "generated_tokens": 139,
+      "stop_reason": "EOS",
+      "deterministic_repeat_checked": false,
+      "parser_accepted": true,
+      "midi_written": true,
+      "notes": 32,
+      "measures": 10,
+      "interior_measures_checked": 8,
+      "incorrect_interior_measures": [
+        {
+          "index": 1,
+          "beats": 2.0,
+          "expected": 4.0
+        },
+        {
+          "index": 7,
+          "beats": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "notation_midi_export": {
+        "succeeded": true,
+        "file": "samples/nplm_92c0801c_seed_20260926_sample_2_notation.mid"
+      },
+      "midi_reopened": true,
+      "midi": "samples/nplm_92c0801c_seed_20260926_sample_2.mid",
+      "midi_policy": "Sequential note/rest rendering; ABC barline positions are not retained",
+      "midi_sha256": "00f5814342b23c07b98b80f977fba82316cd0c3afe90d466b54ad0ad6c25ac04",
+      "warnings": []
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "parser_accepted": 6,
+    "midi_reopened": 6,
+    "EOS": 4,
+    "samples_with_incorrect_interior_measures": 4,
+    "original_notation_midi_exports": 2
+  },
+  "limitations": [
+    "Six fixed diagnostic samples are not a population-level music quality evaluation.",
+    "music21 can accept imperfect ABC; parsing or valid MIDI does not prove correct meter or musicality.",
+    "Primary MIDI is a sequential rendering of parsed pitches/durations at 90 BPM; original ABC bar positions are not retained.",
+    "A _notation.mid file is included only when the original parsed notation can be exported directly.",
+    "Token-limit endings are not presented as model-chosen complete pieces."
+  ]
+}

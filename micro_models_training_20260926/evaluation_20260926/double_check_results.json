@@ -1,0 +1,10 @@
+{
+  "validation_per_record_alignment": true,
+  "test_per_record_alignment": true,
+  "scalar_vs_vector_aggregation_max_PPL_difference": 8.881784197001252e-16,
+  "primary_bootstrap_independent_CI_max_difference": 3.8163916471489756e-17,
+  "all_90_predeclared_samples_present_and_unchanged": true,
+  "frozen_weights_unchanged": true,
+  "notebook_outputs_present": true,
+  "passed": true
+}

@@ -1,0 +1,2260 @@
+{
+  "nll_per_char": 0.4359066800958288,
+  "ppl": 1.5463644814306088,
+  "bits_per_char": 0.628880405664624,
+  "body_nll_per_char": 0.46262069622473195,
+  "body_ppl": 1.5882308062103827,
+  "characters_scored": 67016,
+  "body_characters_scored": 61148,
+  "record_count": 281,
+  "per_record": [
+    {
+      "id": "chor001",
+      "family_id": "family_8f97c448b416ae73",
+      "nll": 111.30582848090125,
+      "chars": 244,
+      "body_nll": 106.52050773717201,
+      "body_chars": 224
+    },
+    {
+      "id": "chor002",
+      "family_id": "family_b7cdb37f6d5b4968",
+      "nll": 95.35599827878104,
+      "chars": 247,
+      "body_nll": 92.5406200293146,
+      "body_chars": 227
+    },
+    {
+      "id": "chor003",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 100.09094876065501,
+      "chars": 227,
+      "body_nll": 94.62955006894117,
+      "body_chars": 204
+    },
+    {
+      "id": "chor004",
+      "family_id": "family_9aaf72eabda0474b",
+      "nll": 81.7015355479416,
+      "chars": 191,
+      "body_nll": 77.34211423435772,
+      "body_chars": 171
+    },
+    {
+      "id": "chor005",
+      "family_id": "family_2e6f51fb6ef06d0d",
+      "nll": 152.38338637368906,
+      "chars": 372,
+      "body_nll": 149.9578062885903,
+      "body_chars": 352
+    },
+    {
+      "id": "chor006",
+      "family_id": "family_714e9e345bcb9575",
+      "nll": 48.27541665350509,
+      "chars": 122,
+      "body_nll": 45.043936829140875,
+      "body_chars": 102
+    },
+    {
+      "id": "chor008",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 173.90527719674355,
+      "chars": 325,
+      "body_nll": 168.66929107683245,
+      "body_chars": 302
+    },
+    {
+      "id": "chor009",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 90.69698997940395,
+      "chars": 222,
+      "body_nll": 88.27140989430518,
+      "body_chars": 202
+    },
+    {
+      "id": "chor010",
+      "family_id": "family_22e998dde2d43a47",
+      "nll": 107.52872761253457,
+      "chars": 204,
+      "body_nll": 105.4603170065675,
+      "body_chars": 183
+    },
+    {
+      "id": "chor012",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 73.87110335715988,
+      "chars": 168,
+      "body_nll": 68.52216277626576,
+      "body_chars": 147
+    },
+    {
+      "id": "chor014",
+      "family_id": "family_fd5940b847f4b1ea",
+      "nll": 106.75745080819615,
+      "chars": 258,
+      "body_nll": 104.33187072309738,
+      "body_chars": 238
+    },
+    {
+      "id": "chor016",
+      "family_id": "family_3fdc3a3ec629b19d",
+      "nll": 142.38290036214585,
+      "chars": 321,
+      "body_nll": 139.5772965749993,
+      "body_chars": 300
+    },
+    {
+      "id": "chor018",
+      "family_id": "family_8164849a25170c45",
+      "nll": 91.43534106940206,
+      "chars": 208,
+      "body_nll": 89.00976098430328,
+      "body_chars": 188
+    },
+    {
+      "id": "chor019",
+      "family_id": "family_ee48f1e4ab109d20",
+      "nll": 61.478056016105256,
+      "chars": 151,
+      "body_nll": 57.98889265197795,
+      "body_chars": 128
+    },
+    {
+      "id": "chor020",
+      "family_id": "family_74f325b502b30cc7",
+      "nll": 101.28530162641255,
+      "chars": 242,
+      "body_nll": 98.58393329372848,
+      "body_chars": 222
+    },
+    {
+      "id": "chor021",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 80.75665794927045,
+      "chars": 181,
+      "body_nll": 78.68824734330337,
+      "body_chars": 160
+    },
+    {
+      "id": "chor022",
+      "family_id": "family_5080df2c425986bb",
+      "nll": 145.09338130161996,
+      "chars": 322,
+      "body_nll": 141.26887575192086,
+      "body_chars": 301
+    },
+    {
+      "id": "chor023",
+      "family_id": "family_e65315dd710fce87",
+      "nll": 76.85327181976754,
+      "chars": 207,
+      "body_nll": 74.78486121380047,
+      "body_chars": 186
+    },
+    {
+      "id": "chor024",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 99.0179116536383,
+      "chars": 217,
+      "body_nll": 96.31654332095422,
+      "body_chars": 197
+    },
+    {
+      "id": "chor027",
+      "family_id": "family_90d2e189af987254",
+      "nll": 95.03385522482495,
+      "chars": 210,
+      "body_nll": 91.82243627311982,
+      "body_chars": 189
+    },
+    {
+      "id": "chor029",
+      "family_id": "family_6f1fa260689228fe",
+      "nll": 66.02440726007262,
+      "chars": 206,
+      "body_nll": 63.59882717497385,
+      "body_chars": 186
+    },
+    {
+      "id": "chor031",
+      "family_id": "family_86d62b306586d70b",
+      "nll": 103.3338475317214,
+      "chars": 263,
+      "body_nll": 101.26543692575433,
+      "body_chars": 242
+    },
+    {
+      "id": "chor032",
+      "family_id": "family_720e013d09c67e2a",
+      "nll": 93.1701802350126,
+      "chars": 206,
+      "body_nll": 90.35480198554615,
+      "body_chars": 186
+    },
+    {
+      "id": "chor033",
+      "family_id": "family_ad3046137f899ca7",
+      "nll": 97.86310758588297,
+      "chars": 179,
+      "body_nll": 95.7946969799159,
+      "body_chars": 158
+    },
+    {
+      "id": "chor034",
+      "family_id": "family_7f1d6570e85b9f2a",
+      "nll": 111.27187165870782,
+      "chars": 231,
+      "body_nll": 104.76169781562203,
+      "body_chars": 208
+    },
+    {
+      "id": "chor035",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 76.66107464636661,
+      "chars": 184,
+      "body_nll": 73.84569639690017,
+      "body_chars": 164
+    },
+    {
+      "id": "chor036",
+      "family_id": "family_8a405b0fcdefed77",
+      "nll": 112.67165249368554,
+      "chars": 252,
+      "body_nll": 109.8562742442191,
+      "body_chars": 232
+    },
+    {
+      "id": "chor038",
+      "family_id": "family_77bf3ec7fed65323",
+      "nll": 77.62181009387496,
+      "chars": 160,
+      "body_nll": 73.79730454417586,
+      "body_chars": 139
+    },
+    {
+      "id": "chor039",
+      "family_id": "family_d10830e2d5fe8df6",
+      "nll": 88.89293055606322,
+      "chars": 205,
+      "body_nll": 86.03976710805728,
+      "body_chars": 184
+    },
+    {
+      "id": "chor041",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 116.5911204209151,
+      "chars": 237,
+      "body_nll": 114.52270981494803,
+      "body_chars": 216
+    },
+    {
+      "id": "chor042",
+      "family_id": "family_35e573db8d05b2fd",
+      "nll": 56.2653461502523,
+      "chars": 147,
+      "body_nll": 53.44996790078585,
+      "body_chars": 127
+    },
+    {
+      "id": "chor043",
+      "family_id": "family_cda644a3b4826386",
+      "nll": 207.92712356684024,
+      "chars": 337,
+      "body_nll": 203.56770225325636,
+      "body_chars": 317
+    },
+    {
+      "id": "chor044",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 55.21181170842101,
+      "chars": 152,
+      "body_nll": 52.51044337573694,
+      "body_chars": 132
+    },
+    {
+      "id": "chor045",
+      "family_id": "family_1001a2e2407a79f5",
+      "nll": 116.70756335190708,
+      "chars": 309,
+      "body_nll": 113.90195956476055,
+      "body_chars": 288
+    },
+    {
+      "id": "chor046",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 67.35020229400106,
+      "chars": 179,
+      "body_nll": 64.648833961317,
+      "body_chars": 159
+    },
+    {
+      "id": "chor047",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 86.34223636956267,
+      "chars": 218,
+      "body_nll": 83.29386809362222,
+      "body_chars": 197
+    },
+    {
+      "id": "chor049",
+      "family_id": "family_81935b39dfcad8ae",
+      "nll": 115.06689861453924,
+      "chars": 225,
+      "body_nll": 112.00471365690828,
+      "body_chars": 202
+    },
+    {
+      "id": "chor050",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 104.94622493644783,
+      "chars": 270,
+      "body_nll": 101.71474511208362,
+      "body_chars": 250
+    },
+    {
+      "id": "chor051",
+      "family_id": "family_fab207c0bc8c0082",
+      "nll": 83.21527284877084,
+      "chars": 210,
+      "body_nll": 80.78969276367206,
+      "body_chars": 190
+    },
+    {
+      "id": "chor053",
+      "family_id": "family_fe1ff5b2e514b778",
+      "nll": 98.13501419166278,
+      "chars": 191,
+      "body_nll": 93.16146449802909,
+      "body_chars": 170
+    },
+    {
+      "id": "chor055",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 66.43774843494248,
+      "chars": 170,
+      "body_nll": 63.63214464779594,
+      "body_chars": 149
+    },
+    {
+      "id": "chor057",
+      "family_id": "family_3a441c1f448b24ac",
+      "nll": 74.44983231852893,
+      "chars": 155,
+      "body_nll": 72.38142171256186,
+      "body_chars": 134
+    },
+    {
+      "id": "chor058",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 153.01761434340006,
+      "chars": 380,
+      "body_nll": 150.316246010716,
+      "body_chars": 360
+    },
+    {
+      "id": "chor059",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 80.158249140517,
+      "chars": 202,
+      "body_nll": 77.55413675303862,
+      "body_chars": 181
+    },
+    {
+      "id": "chor060",
+      "family_id": "family_71c313cda846fba9",
+      "nll": 103.1194501582795,
+      "chars": 244,
+      "body_nll": 100.41808182559544,
+      "body_chars": 224
+    },
+    {
+      "id": "chor061",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 113.16707473222414,
+      "chars": 259,
+      "body_nll": 109.34256918252504,
+      "body_chars": 238
+    },
+    {
+      "id": "chor062",
+      "family_id": "family_8a405b0fcdefed77",
+      "nll": 70.45576212747619,
+      "chars": 169,
+      "body_nll": 67.65015834032965,
+      "body_chars": 148
+    },
+    {
+      "id": "chor063",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 74.3125715940314,
+      "chars": 255,
+      "body_nll": 71.49719334456495,
+      "body_chars": 235
+    },
+    {
+      "id": "chor064",
+      "family_id": "family_6f1fa260689228fe",
+      "nll": 61.79413756390204,
+      "chars": 197,
+      "body_nll": 59.36855747880327,
+      "body_chars": 177
+    },
+    {
+      "id": "chor065",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 73.8323782438365,
+      "chars": 191,
+      "body_nll": 71.40679815873773,
+      "body_chars": 171
+    },
+    {
+      "id": "chor066",
+      "family_id": "family_43ad0ac21c5a0cd8",
+      "nll": 123.66568594177443,
+      "chars": 293,
+      "body_nll": 121.59727533580735,
+      "body_chars": 272
+    },
+    {
+      "id": "chor067",
+      "family_id": "family_6f1fa260689228fe",
+      "nll": 68.3815909304285,
+      "chars": 215,
+      "body_nll": 65.95601084532973,
+      "body_chars": 195
+    },
+    {
+      "id": "chor069",
+      "family_id": "family_b1ec27f37aa26bdb",
+      "nll": 197.8418931281958,
+      "chars": 474,
+      "body_nll": 195.41631304309703,
+      "body_chars": 454
+    },
+    {
+      "id": "chor071",
+      "family_id": "family_48a833776e0867e0",
+      "nll": 139.27110558108416,
+      "chars": 349,
+      "body_nll": 136.4179421330782,
+      "body_chars": 328
+    },
+    {
+      "id": "chor072",
+      "family_id": "family_177cf1a047f45c36",
+      "nll": 67.81077081763578,
+      "chars": 190,
+      "body_nll": 65.2066584301574,
+      "body_chars": 169
+    },
+    {
+      "id": "chor074",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 105.07069505192703,
+      "chars": 207,
+      "body_nll": 101.83921522756282,
+      "body_chars": 187
+    },
+    {
+      "id": "chor075",
+      "family_id": "family_1f14bd52a898b807",
+      "nll": 98.13241540099625,
+      "chars": 181,
+      "body_nll": 95.0840471250558,
+      "body_chars": 160
+    },
+    {
+      "id": "chor076",
+      "family_id": "family_6f1fa260689228fe",
+      "nll": 86.60908870186904,
+      "chars": 228,
+      "body_nll": 84.18350861677027,
+      "body_chars": 208
+    },
+    {
+      "id": "chor077",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 102.47172803869762,
+      "chars": 249,
+      "body_nll": 99.65634978923117,
+      "body_chars": 229
+    },
+    {
+      "id": "chor078",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 72.72476464251667,
+      "chars": 202,
+      "body_nll": 69.91916085537014,
+      "body_chars": 181
+    },
+    {
+      "id": "chor079",
+      "family_id": "family_68d65f3576f1265a",
+      "nll": 114.36806663376774,
+      "chars": 249,
+      "body_nll": 109.01912605287362,
+      "body_chars": 228
+    },
+    {
+      "id": "chor080",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 64.79096235710676,
+      "chars": 198,
+      "body_nll": 62.089594024422695,
+      "body_chars": 178
+    },
+    {
+      "id": "chor081",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 89.11692935420069,
+      "chars": 254,
+      "body_nll": 87.04851874823362,
+      "body_chars": 233
+    },
+    {
+      "id": "chor082",
+      "family_id": "family_6dfaa0a0e7d76e42",
+      "nll": 137.12155039255777,
+      "chars": 283,
+      "body_nll": 133.63238702843046,
+      "body_chars": 260
+    },
+    {
+      "id": "chor083",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 119.5852683241792,
+      "chars": 312,
+      "body_nll": 116.76989007471275,
+      "body_chars": 292
+    },
+    {
+      "id": "chor084",
+      "family_id": "family_8a405b0fcdefed77",
+      "nll": 122.52831402468655,
+      "chars": 312,
+      "body_nll": 119.7129357752201,
+      "body_chars": 292
+    },
+    {
+      "id": "chor085",
+      "family_id": "family_fab207c0bc8c0082",
+      "nll": 126.60701196581431,
+      "chars": 253,
+      "body_nll": 122.24759065223043,
+      "body_chars": 233
+    },
+    {
+      "id": "chor087",
+      "family_id": "family_a7ba3bdd8b12c568",
+      "nll": 119.08102038959987,
+      "chars": 195,
+      "body_nll": 114.59797657102172,
+      "body_chars": 172
+    },
+    {
+      "id": "chor089",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 78.62858798874731,
+      "chars": 236,
+      "body_nll": 75.82298420160078,
+      "body_chars": 215
+    },
+    {
+      "id": "chor090",
+      "family_id": "family_f349a5c7b8d9a069",
+      "nll": 112.53854874383251,
+      "chars": 232,
+      "body_nll": 107.55257180586341,
+      "body_chars": 211
+    },
+    {
+      "id": "chor091",
+      "family_id": "family_213809dc31116199",
+      "nll": 243.92937484689537,
+      "chars": 522,
+      "body_nll": 235.3398332916695,
+      "body_chars": 500
+    },
+    {
+      "id": "chor093",
+      "family_id": "family_6f1fa260689228fe",
+      "nll": 86.06446312134358,
+      "chars": 191,
+      "body_nll": 81.07848618337448,
+      "body_chars": 170
+    },
+    {
+      "id": "chor094",
+      "family_id": "family_ec6ea4a1f207cc65",
+      "nll": 81.66497998013074,
+      "chars": 205,
+      "body_nll": 79.06086759265236,
+      "body_chars": 184
+    },
+    {
+      "id": "chor095",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 68.77502853473197,
+      "chars": 213,
+      "body_nll": 65.56360958302685,
+      "body_chars": 192
+    },
+    {
+      "id": "chor096",
+      "family_id": "family_fab207c0bc8c0082",
+      "nll": 94.99506706350076,
+      "chars": 213,
+      "body_nll": 91.94669878756031,
+      "body_chars": 192
+    },
+    {
+      "id": "chor097",
+      "family_id": "family_8a405b0fcdefed77",
+      "nll": 128.1440695394158,
+      "chars": 309,
+      "body_nll": 125.32869128994935,
+      "body_chars": 289
+    },
+    {
+      "id": "chor099",
+      "family_id": "family_e65315dd710fce87",
+      "nll": 67.05886271337295,
+      "chars": 206,
+      "body_nll": 64.99045210740587,
+      "body_chars": 185
+    },
+    {
+      "id": "chor100",
+      "family_id": "family_1bf4299d9240adb0",
+      "nll": 114.76879577277577,
+      "chars": 261,
+      "body_nll": 112.1646833852974,
+      "body_chars": 240
+    },
+    {
+      "id": "chor101",
+      "family_id": "family_9c5ce3c224473d93",
+      "nll": 66.91896073494354,
+      "chars": 178,
+      "body_nll": 63.70754178323841,
+      "body_chars": 157
+    },
+    {
+      "id": "chor102",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 129.5844052908651,
+      "chars": 250,
+      "body_nll": 124.79908454713586,
+      "body_chars": 230
+    },
+    {
+      "id": "chor103",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 57.93463783583502,
+      "chars": 223,
+      "body_nll": 54.72321888412989,
+      "body_chars": 202
+    },
+    {
+      "id": "chor104",
+      "family_id": "family_8a405b0fcdefed77",
+      "nll": 77.35427548174266,
+      "chars": 180,
+      "body_nll": 74.54867169459612,
+      "body_chars": 159
+    },
+    {
+      "id": "chor105",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 79.10099274340791,
+      "chars": 202,
+      "body_nll": 76.29538895626138,
+      "body_chars": 181
+    },
+    {
+      "id": "chor106",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 109.87370477370132,
+      "chars": 279,
+      "body_nll": 107.05832652423487,
+      "body_chars": 259
+    },
+    {
+      "id": "chor107",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 183.23494809397016,
+      "chars": 383,
+      "body_nll": 179.41044254427106,
+      "body_chars": 362
+    },
+    {
+      "id": "chor108",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 82.91405599593782,
+      "chars": 203,
+      "body_nll": 79.08955044623872,
+      "body_chars": 182
+    },
+    {
+      "id": "chor109",
+      "family_id": "family_5370a7293d79a710",
+      "nll": 170.9601775681149,
+      "chars": 362,
+      "body_nll": 165.9866278744812,
+      "body_chars": 341
+    },
+    {
+      "id": "chor110",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 107.54362082227453,
+      "chars": 247,
+      "body_nll": 103.06057700369638,
+      "body_chars": 224
+    },
+    {
+      "id": "chor111",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 102.23331651051922,
+      "chars": 241,
+      "body_nll": 100.16490590455214,
+      "body_chars": 220
+    },
+    {
+      "id": "chor112",
+      "family_id": "family_8a405b0fcdefed77",
+      "nll": 70.11958109151237,
+      "chars": 161,
+      "body_nll": 67.31397730436584,
+      "body_chars": 140
+    },
+    {
+      "id": "chor113",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 118.59150249321465,
+      "chars": 283,
+      "body_nll": 113.35551637330354,
+      "body_chars": 260
+    },
+    {
+      "id": "chor114",
+      "family_id": "family_a58248b90602b891",
+      "nll": 70.23422864952954,
+      "chars": 197,
+      "body_nll": 68.16581804356247,
+      "body_chars": 176
+    },
+    {
+      "id": "chor115",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 62.89342311096334,
+      "chars": 232,
+      "body_nll": 60.0878193238168,
+      "body_chars": 211
+    },
+    {
+      "id": "chor117",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 75.63455013570274,
+      "chars": 214,
+      "body_nll": 70.32667586141906,
+      "body_chars": 193
+    },
+    {
+      "id": "chor118",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 104.01684076292804,
+      "chars": 253,
+      "body_nll": 100.80542181122291,
+      "body_chars": 232
+    },
+    {
+      "id": "chor119",
+      "family_id": "family_43ad0ac21c5a0cd8",
+      "nll": 156.3231878954466,
+      "chars": 367,
+      "body_nll": 151.84014407686846,
+      "body_chars": 344
+    },
+    {
+      "id": "chor120",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 68.40075290493041,
+      "chars": 247,
+      "body_nll": 65.59514911778388,
+      "body_chars": 226
+    },
+    {
+      "id": "chor121",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 129.79764963037633,
+      "chars": 334,
+      "body_nll": 126.98227138090988,
+      "body_chars": 314
+    },
+    {
+      "id": "chor122",
+      "family_id": "family_ced1247427dc0fef",
+      "nll": 174.69546864114272,
+      "chars": 372,
+      "body_nll": 170.21242482256457,
+      "body_chars": 349
+    },
+    {
+      "id": "chor123",
+      "family_id": "family_e65315dd710fce87",
+      "nll": 113.60927944194555,
+      "chars": 293,
+      "body_nll": 111.54086883597847,
+      "body_chars": 272
+    },
+    {
+      "id": "chor125",
+      "family_id": "family_2c12907555eab77a",
+      "nll": 65.76308908862484,
+      "chars": 218,
+      "body_nll": 63.337509003526065,
+      "body_chars": 198
+    },
+    {
+      "id": "chor126",
+      "family_id": "family_1bf4299d9240adb0",
+      "nll": 110.28869087511157,
+      "chars": 261,
+      "body_nll": 108.2202802691445,
+      "body_chars": 240
+    },
+    {
+      "id": "chor127",
+      "family_id": "family_e2c78fe9c2676fd7",
+      "nll": 78.20542766012295,
+      "chars": 186,
+      "body_nll": 73.81651029703062,
+      "body_chars": 163
+    },
+    {
+      "id": "chor129",
+      "family_id": "family_8e98bdfbb305508e",
+      "nll": 93.19376777007892,
+      "chars": 213,
+      "body_nll": 90.34060432207298,
+      "body_chars": 192
+    },
+    {
+      "id": "chor130",
+      "family_id": "family_203cedfab63a8d9a",
+      "nll": 69.47366172164402,
+      "chars": 113,
+      "body_nll": 66.62049827363808,
+      "body_chars": 92
+    },
+    {
+      "id": "chor131",
+      "family_id": "family_2b2b4aa72f0d03a2",
+      "nll": 77.8669408566966,
+      "chars": 147,
+      "body_nll": 75.44136077159783,
+      "body_chars": 127
+    },
+    {
+      "id": "chor132",
+      "family_id": "family_4b86f67f944a176b",
+      "nll": 235.85929445241163,
+      "chars": 555,
+      "body_nll": 233.79088384644456,
+      "body_chars": 534
+    },
+    {
+      "id": "chor133",
+      "family_id": "family_9770438318d01f9a",
+      "nll": 194.20488232841672,
+      "chars": 435,
+      "body_nll": 191.14269737078575,
+      "body_chars": 412
+    },
+    {
+      "id": "chor134",
+      "family_id": "family_a7ba3bdd8b12c568",
+      "nll": 94.48714578806175,
+      "chars": 208,
+      "body_nll": 91.4387775121213,
+      "body_chars": 187
+    },
+    {
+      "id": "chor135",
+      "family_id": "family_b892298952ed83ef",
+      "nll": 126.64340084079959,
+      "chars": 271,
+      "body_nll": 123.94203250811552,
+      "body_chars": 251
+    },
+    {
+      "id": "chor136",
+      "family_id": "family_0a0a18149e1f2c2a",
+      "nll": 60.61377046765119,
+      "chars": 152,
+      "body_nll": 58.18819038255242,
+      "body_chars": 132
+    },
+    {
+      "id": "chor137",
+      "family_id": "family_c4469c1310161dd3",
+      "nll": 125.65622579491537,
+      "chars": 271,
+      "body_nll": 123.2306457098166,
+      "body_chars": 251
+    },
+    {
+      "id": "chor138",
+      "family_id": "family_fab207c0bc8c0082",
+      "nll": 65.5148365042478,
+      "chars": 183,
+      "body_nll": 62.66167305624185,
+      "body_chars": 162
+    },
+    {
+      "id": "chor139",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 93.92530607676235,
+      "chars": 236,
+      "body_nll": 91.49972599166358,
+      "body_chars": 216
+    },
+    {
+      "id": "chor140",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 93.61359289582833,
+      "chars": 174,
+      "body_nll": 89.6778971276508,
+      "body_chars": 154
+    },
+    {
+      "id": "chor141",
+      "family_id": "family_0482dd8cc95b069f",
+      "nll": 75.54035526823645,
+      "chars": 175,
+      "body_nll": 72.72497701877,
+      "body_chars": 155
+    },
+    {
+      "id": "chor142",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 106.30262509895329,
+      "chars": 243,
+      "body_nll": 103.25425682301284,
+      "body_chars": 222
+    },
+    {
+      "id": "chor143",
+      "family_id": "family_40c876233f30bfbc",
+      "nll": 153.54187877182267,
+      "chars": 356,
+      "body_nll": 148.81331863724336,
+      "body_chars": 336
+    },
+    {
+      "id": "chor145",
+      "family_id": "family_ec6ea4a1f207cc65",
+      "nll": 89.6031656674204,
+      "chars": 221,
+      "body_nll": 87.53475506145332,
+      "body_chars": 200
+    },
+    {
+      "id": "chor146",
+      "family_id": "family_8a405b0fcdefed77",
+      "nll": 83.73347562602248,
+      "chars": 194,
+      "body_nll": 81.66506502005541,
+      "body_chars": 173
+    },
+    {
+      "id": "chor148",
+      "family_id": "family_65ae17bc34d1f663",
+      "nll": 86.70698110521698,
+      "chars": 193,
+      "body_nll": 84.28140102011821,
+      "body_chars": 173
+    },
+    {
+      "id": "chor149",
+      "family_id": "family_52a3df71062b8477",
+      "nll": 117.89900477109768,
+      "chars": 192,
+      "body_nll": 113.26519171322798,
+      "body_chars": 171
+    },
+    {
+      "id": "chor151",
+      "family_id": "family_f3a17b70cad0f48c",
+      "nll": 60.577890635253425,
+      "chars": 130,
+      "body_nll": 58.15231055015465,
+      "body_chars": 110
+    },
+    {
+      "id": "chor152",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 89.91066938381482,
+      "chars": 216,
+      "body_nll": 87.20930105113075,
+      "body_chars": 196
+    },
+    {
+      "id": "chor153",
+      "family_id": "family_133238ddadffe7f1",
+      "nll": 101.77331527916613,
+      "chars": 227,
+      "body_nll": 99.07194694648206,
+      "body_chars": 207
+    },
+    {
+      "id": "chor154",
+      "family_id": "family_642b729f577cd752",
+      "nll": 61.76043312620095,
+      "chars": 137,
+      "body_nll": 57.37151576310862,
+      "body_chars": 114
+    },
+    {
+      "id": "chor155",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 112.22329525665555,
+      "chars": 233,
+      "body_nll": 106.50398220715579,
+      "body_chars": 210
+    },
+    {
+      "id": "chor156",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 75.41649557977871,
+      "chars": 179,
+      "body_nll": 72.60111733031226,
+      "body_chars": 159
+    },
+    {
+      "id": "chor157",
+      "family_id": "family_a346d2c5ec44bf43",
+      "nll": 81.55830554620115,
+      "chars": 158,
+      "body_nll": 78.32682572183694,
+      "body_chars": 138
+    },
+    {
+      "id": "chor158",
+      "family_id": "family_dd159042aeef2fe9",
+      "nll": 135.492511527209,
+      "chars": 285,
+      "body_nll": 133.06693144211022,
+      "body_chars": 265
+    },
+    {
+      "id": "chor159",
+      "family_id": "family_1a92e813e795e098",
+      "nll": 57.88276329457949,
+      "chars": 146,
+      "body_nll": 55.45718320948072,
+      "body_chars": 126
+    },
+    {
+      "id": "chor160",
+      "family_id": "family_fab207c0bc8c0082",
+      "nll": 79.94616680861509,
+      "chars": 165,
+      "body_nll": 75.55724944552276,
+      "body_chars": 142
+    },
+    {
+      "id": "chor162",
+      "family_id": "family_bf600c629288f4d1",
+      "nll": 118.59040959804042,
+      "chars": 238,
+      "body_nll": 115.52822464040946,
+      "body_chars": 215
+    },
+    {
+      "id": "chor163",
+      "family_id": "family_77e1940968243b1d",
+      "nll": 70.39093060714731,
+      "chars": 162,
+      "body_nll": 67.78681821966893,
+      "body_chars": 141
+    },
+    {
+      "id": "chor165",
+      "family_id": "family_a648e15bec85c89b",
+      "nll": 106.27722130209804,
+      "chars": 205,
+      "body_nll": 103.04574147773383,
+      "body_chars": 185
+    },
+    {
+      "id": "chor166",
+      "family_id": "family_4ec5d18c2358dcae",
+      "nll": 111.18191637222117,
+      "chars": 205,
+      "body_nll": 107.69275300809386,
+      "body_chars": 182
+    },
+    {
+      "id": "chor169",
+      "family_id": "family_bd834b9e59ed29e4",
+      "nll": 91.40410967423304,
+      "chars": 220,
+      "body_nll": 88.58873142476659,
+      "body_chars": 200
+    },
+    {
+      "id": "chor171",
+      "family_id": "family_eab01f0d098ed528",
+      "nll": 91.90083927602973,
+      "chars": 188,
+      "body_nll": 88.41167591190242,
+      "body_chars": 165
+    },
+    {
+      "id": "chor172",
+      "family_id": "family_6c26fb4cd76bd9ef",
+      "nll": 99.09617539592364,
+      "chars": 226,
+      "body_nll": 96.49206300844526,
+      "body_chars": 205
+    },
+    {
+      "id": "chor173",
+      "family_id": "family_d92f15d30ba087e5",
+      "nll": 98.84519028270734,
+      "chars": 201,
+      "body_nll": 92.81766267119383,
+      "body_chars": 180
+    },
+    {
+      "id": "chor176",
+      "family_id": "family_108530f3b945db40",
+      "nll": 80.8476709805982,
+      "chars": 220,
+      "body_nll": 76.11911084601888,
+      "body_chars": 200
+    },
+    {
+      "id": "chor177",
+      "family_id": "family_65ae17bc34d1f663",
+      "nll": 92.46997072354498,
+      "chars": 191,
+      "body_nll": 89.65459247407853,
+      "body_chars": 171
+    },
+    {
+      "id": "chor179",
+      "family_id": "family_369b0cbb135dc2cc",
+      "nll": 122.97822836596242,
+      "chars": 299,
+      "body_nll": 119.15372281626333,
+      "body_chars": 278
+    },
+    {
+      "id": "chor180",
+      "family_id": "family_4134e5fc8e1e3b4b",
+      "nll": 56.112394059560756,
+      "chars": 133,
+      "body_nll": 53.050209101929795,
+      "body_chars": 110
+    },
+    {
+      "id": "chor181",
+      "family_id": "family_96bd468822123730",
+      "nll": 105.550339929865,
+      "chars": 253,
+      "body_nll": 102.69717648185906,
+      "body_chars": 232
+    },
+    {
+      "id": "chor182",
+      "family_id": "family_86d62b306586d70b",
+      "nll": 95.1118454810894,
+      "chars": 264,
+      "body_nll": 92.50773309361102,
+      "body_chars": 243
+    },
+    {
+      "id": "chor183",
+      "family_id": "family_6d999acd19b7b81e",
+      "nll": 79.08441885612046,
+      "chars": 179,
+      "body_nll": 76.65883877102169,
+      "body_chars": 159
+    },
+    {
+      "id": "chor185",
+      "family_id": "family_adc9f399de5111a1",
+      "nll": 100.63733243992101,
+      "chars": 167,
+      "body_nll": 97.57514748229005,
+      "body_chars": 144
+    },
+    {
+      "id": "chor186",
+      "family_id": "family_18cd9d0528ad81d0",
+      "nll": 64.86345035957129,
+      "chars": 173,
+      "body_nll": 61.80126540194033,
+      "body_chars": 150
+    },
+    {
+      "id": "chor187",
+      "family_id": "family_0db305fac22edfa2",
+      "nll": 78.9853023586511,
+      "chars": 144,
+      "body_nll": 74.59638499555876,
+      "body_chars": 121
+    },
+    {
+      "id": "chor188",
+      "family_id": "family_910e040dfdf3564b",
+      "nll": 91.52389135831254,
+      "chars": 174,
+      "body_nll": 86.79533122373323,
+      "body_chars": 154
+    },
+    {
+      "id": "chor190",
+      "family_id": "family_6f1a455fb2a55e41",
+      "nll": 72.412454599591,
+      "chars": 165,
+      "body_nll": 70.34404399362393,
+      "body_chars": 144
+    },
+    {
+      "id": "chor191",
+      "family_id": "family_a58248b90602b891",
+      "nll": 67.30615700055569,
+      "chars": 174,
+      "body_nll": 65.23774639458861,
+      "body_chars": 153
+    },
+    {
+      "id": "chor192",
+      "family_id": "family_08fd54dd30686456",
+      "nll": 74.1536060966755,
+      "chars": 163,
+      "body_nll": 69.1676291587064,
+      "body_chars": 142
+    },
+    {
+      "id": "chor193",
+      "family_id": "family_2807711d3dc311e3",
+      "nll": 117.80567288921156,
+      "chars": 197,
+      "body_nll": 115.73726228324449,
+      "body_chars": 176
+    },
+    {
+      "id": "chor194",
+      "family_id": "family_df8c608a46abeed2",
+      "nll": 196.4457872758412,
+      "chars": 219,
+      "body_nll": 186.5754475534486,
+      "body_chars": 198
+    },
+    {
+      "id": "chor197",
+      "family_id": "family_11a5c97d9a582634",
+      "nll": 241.60489771346874,
+      "chars": 543,
+      "body_nll": 238.54271275583778,
+      "body_chars": 520
+    },
+    {
+      "id": "chor198",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 128.73538624506182,
+      "chars": 306,
+      "body_nll": 126.66697563909474,
+      "body_chars": 285
+    },
+    {
+      "id": "chor199",
+      "family_id": "family_915e9b250ea9c77b",
+      "nll": 91.7708835136873,
+      "chars": 217,
+      "body_nll": 86.05157046418753,
+      "body_chars": 194
+    },
+    {
+      "id": "chor200",
+      "family_id": "family_c675022a7594b8f9",
+      "nll": 93.2386150426446,
+      "chars": 219,
+      "body_nll": 89.30291927446706,
+      "body_chars": 199
+    },
+    {
+      "id": "chor202",
+      "family_id": "family_353e7a55f82423d7",
+      "nll": 159.2193305811852,
+      "chars": 306,
+      "body_nll": 156.51796224850114,
+      "body_chars": 286
+    },
+    {
+      "id": "chor203",
+      "family_id": "family_321920a8e6e29780",
+      "nll": 98.18300110175915,
+      "chars": 210,
+      "body_nll": 92.46368805225939,
+      "body_chars": 187
+    },
+    {
+      "id": "chor204",
+      "family_id": "family_8a405b0fcdefed77",
+      "nll": 75.90733583669862,
+      "chars": 159,
+      "body_nll": 73.30322344922024,
+      "body_chars": 138
+    },
+    {
+      "id": "chor205",
+      "family_id": "family_36f08f1c03e4bc46",
+      "nll": 361.0389478642046,
+      "chars": 758,
+      "body_nll": 354.5287740211188,
+      "body_chars": 735
+    },
+    {
+      "id": "chor206",
+      "family_id": "family_18b4d2d4a662ca86",
+      "nll": 158.88215532368486,
+      "chars": 330,
+      "body_nll": 155.39299195955755,
+      "body_chars": 307
+    },
+    {
+      "id": "chor207",
+      "family_id": "family_ce2f216ecf3eef1e",
+      "nll": 86.80208692089218,
+      "chars": 172,
+      "body_nll": 81.05686003123265,
+      "body_chars": 151
+    },
+    {
+      "id": "chor208",
+      "family_id": "family_59f71380406ee380",
+      "nll": 137.7801417280789,
+      "chars": 251,
+      "body_nll": 131.64919674050907,
+      "body_chars": 230
+    },
+    {
+      "id": "chor209",
+      "family_id": "family_26ae7550619e0ced",
+      "nll": 206.82894484084318,
+      "chars": 345,
+      "body_nll": 201.84296790287408,
+      "body_chars": 324
+    },
+    {
+      "id": "chor211",
+      "family_id": "family_ef4aee4308b88a27",
+      "nll": 115.05330616378887,
+      "chars": 262,
+      "body_nll": 111.11761039561134,
+      "body_chars": 242
+    },
+    {
+      "id": "chor212",
+      "family_id": "family_9c48cc3586098bac",
+      "nll": 94.01386909126086,
+      "chars": 206,
+      "body_nll": 90.18936354156176,
+      "body_chars": 185
+    },
+    {
+      "id": "chor214",
+      "family_id": "family_2e65f843bd83da8f",
+      "nll": 174.68038065696055,
+      "chars": 385,
+      "body_nll": 172.61197005099348,
+      "body_chars": 364
+    },
+    {
+      "id": "chor215",
+      "family_id": "family_213809dc31116199",
+      "nll": 213.97604041443992,
+      "chars": 485,
+      "body_nll": 211.37192802696154,
+      "body_chars": 464
+    },
+    {
+      "id": "chor216",
+      "family_id": "family_28d545cf6893dec7",
+      "nll": 156.30948860100398,
+      "chars": 280,
+      "body_nll": 153.49411035153753,
+      "body_chars": 260
+    },
+    {
+      "id": "chor217",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 85.03574182289594,
+      "chars": 166,
+      "body_nll": 78.71654638863401,
+      "body_chars": 146
+    },
+    {
+      "id": "chor218",
+      "family_id": "family_fc478d4a92f4a68d",
+      "nll": 102.00118846931218,
+      "chars": 223,
+      "body_nll": 98.51202510518488,
+      "body_chars": 200
+    },
+    {
+      "id": "chor219",
+      "family_id": "family_232cdf0a0888b6ab",
+      "nll": 86.48251707186864,
+      "chars": 179,
+      "body_nll": 83.4341487959282,
+      "body_chars": 158
+    },
+    {
+      "id": "chor220",
+      "family_id": "family_8d489f3d703bb401",
+      "nll": 173.80575834561023,
+      "chars": 356,
+      "body_nll": 168.0605314559507,
+      "body_chars": 335
+    },
+    {
+      "id": "chor221",
+      "family_id": "family_3971a153ee2fed9b",
+      "nll": 83.17252499873939,
+      "chars": 161,
+      "body_nll": 81.10411439277232,
+      "body_chars": 140
+    },
+    {
+      "id": "chor222",
+      "family_id": "family_1af19038395745a8",
+      "nll": 119.7028722287796,
+      "chars": 209,
+      "body_nll": 114.91755148505035,
+      "body_chars": 189
+    },
+    {
+      "id": "chor224",
+      "family_id": "family_7d297c0a6652e063",
+      "nll": 69.66869589540511,
+      "chars": 161,
+      "body_nll": 66.4372160710409,
+      "body_chars": 141
+    },
+    {
+      "id": "chor225",
+      "family_id": "family_066c6b52ab857148",
+      "nll": 79.31903069827422,
+      "chars": 181,
+      "body_nll": 76.71491831079584,
+      "body_chars": 160
+    },
+    {
+      "id": "chor226",
+      "family_id": "family_fbc25d26e6cf2103",
+      "nll": 69.56804762683532,
+      "chars": 179,
+      "body_nll": 66.96393523935694,
+      "body_chars": 158
+    },
+    {
+      "id": "chor228",
+      "family_id": "family_7a500660b16188a0",
+      "nll": 43.83057982586979,
+      "chars": 105,
+      "body_nll": 41.76216921990272,
+      "body_chars": 84
+    },
+    {
+      "id": "chor229",
+      "family_id": "family_ccd7f03ddd4513a5",
+      "nll": 133.15427934159743,
+      "chars": 294,
+      "body_nll": 130.55016695411905,
+      "body_chars": 273
+    },
+    {
+      "id": "chor230",
+      "family_id": "family_04cfff8159efbcf5",
+      "nll": 85.99438966111848,
+      "chars": 202,
+      "body_nll": 83.3902772736401,
+      "body_chars": 181
+    },
+    {
+      "id": "chor231",
+      "family_id": "family_60df2c986cef277e",
+      "nll": 94.71938909576784,
+      "chars": 207,
+      "body_nll": 90.3304717326755,
+      "body_chars": 184
+    },
+    {
+      "id": "chor232",
+      "family_id": "family_fed5472d48be418c",
+      "nll": 113.71074234556727,
+      "chars": 224,
+      "body_nll": 110.64855738793631,
+      "body_chars": 201
+    },
+    {
+      "id": "chor233",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 62.4602621825652,
+      "chars": 189,
+      "body_nll": 59.644883933098754,
+      "body_chars": 169
+    },
+    {
+      "id": "chor234",
+      "family_id": "family_cc16d3f31f92409d",
+      "nll": 245.29131361465988,
+      "chars": 403,
+      "body_nll": 240.56275348008057,
+      "body_chars": 383
+    },
+    {
+      "id": "chor235",
+      "family_id": "family_e0c158d42b05b0c1",
+      "nll": 138.67203523817443,
+      "chars": 265,
+      "body_nll": 135.44055541381022,
+      "body_chars": 245
+    },
+    {
+      "id": "chor236",
+      "family_id": "family_987cd1d1ec26851f",
+      "nll": 78.05976569959057,
+      "chars": 183,
+      "body_nll": 75.20660225158463,
+      "body_chars": 162
+    },
+    {
+      "id": "chor237",
+      "family_id": "family_c1c149d5dbb761c8",
+      "nll": 145.3390783030136,
+      "chars": 287,
+      "body_nll": 141.8499149388863,
+      "body_chars": 264
+    },
+    {
+      "id": "chor238",
+      "family_id": "family_34d513f3483059ed",
+      "nll": 77.4299697889337,
+      "chars": 188,
+      "body_nll": 74.57680634092776,
+      "body_chars": 167
+    },
+    {
+      "id": "chor239",
+      "family_id": "family_46323c4a598b8716",
+      "nll": 80.96578141198916,
+      "chars": 194,
+      "body_nll": 77.03008564381162,
+      "body_chars": 174
+    },
+    {
+      "id": "chor240",
+      "family_id": "family_ec8b5cb925749c0d",
+      "nll": 63.790642148745974,
+      "chars": 133,
+      "body_nll": 61.7222315427789,
+      "body_chars": 112
+    },
+    {
+      "id": "chor241",
+      "family_id": "family_e80748ecbbd5fc2f",
+      "nll": 222.0247129108884,
+      "chars": 524,
+      "body_nll": 218.96252795325745,
+      "body_chars": 501
+    },
+    {
+      "id": "chor242",
+      "family_id": "family_221c52c011fc4add",
+      "nll": 72.52067868461381,
+      "chars": 178,
+      "body_nll": 69.66751523660787,
+      "body_chars": 157
+    },
+    {
+      "id": "chor243",
+      "family_id": "family_66e6d3a721144359",
+      "nll": 99.74240787736198,
+      "chars": 204,
+      "body_nll": 94.7688581837283,
+      "body_chars": 183
+    },
+    {
+      "id": "chor245",
+      "family_id": "family_22a2e7109d39abb4",
+      "nll": 70.96237039593325,
+      "chars": 177,
+      "body_nll": 68.35825800845487,
+      "body_chars": 156
+    },
+    {
+      "id": "chor246",
+      "family_id": "family_2db16faecd309b02",
+      "nll": 97.02203370577627,
+      "chars": 217,
+      "body_nll": 94.5964536206775,
+      "body_chars": 197
+    },
+    {
+      "id": "chor248",
+      "family_id": "family_9aaf72eabda0474b",
+      "nll": 86.1259514072699,
+      "chars": 218,
+      "body_nll": 83.70037132217112,
+      "body_chars": 198
+    },
+    {
+      "id": "chor249",
+      "family_id": "family_2c12907555eab77a",
+      "nll": 76.8912745774087,
+      "chars": 227,
+      "body_nll": 74.46569449230992,
+      "body_chars": 207
+    },
+    {
+      "id": "chor250",
+      "family_id": "family_74f325b502b30cc7",
+      "nll": 95.96090560765515,
+      "chars": 268,
+      "body_nll": 93.25953727497108,
+      "body_chars": 248
+    },
+    {
+      "id": "chor251",
+      "family_id": "family_d18e6ed6f331ecff",
+      "nll": 196.90074768742124,
+      "chars": 364,
+      "body_nll": 194.29663529994286,
+      "body_chars": 343
+    },
+    {
+      "id": "chor253",
+      "family_id": "family_eca6ed3b8c20082f",
+      "nll": 134.65047679034979,
+      "chars": 296,
+      "body_nll": 132.0463644028714,
+      "body_chars": 275
+    },
+    {
+      "id": "chor254",
+      "family_id": "family_6f1fa260689228fe",
+      "nll": 105.58427111786659,
+      "chars": 221,
+      "body_nll": 101.64857534968905,
+      "body_chars": 201
+    },
+    {
+      "id": "chor255",
+      "family_id": "family_fab207c0bc8c0082",
+      "nll": 109.0848256530262,
+      "chars": 228,
+      "body_nll": 106.38345732034213,
+      "body_chars": 208
+    },
+    {
+      "id": "chor256",
+      "family_id": "family_6f1fa260689228fe",
+      "nll": 73.70114380419182,
+      "chars": 198,
+      "body_nll": 70.48972485248669,
+      "body_chars": 177
+    },
+    {
+      "id": "chor260",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 82.8453946263362,
+      "chars": 215,
+      "body_nll": 79.63397567463107,
+      "body_chars": 194
+    },
+    {
+      "id": "chor262",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 84.21537562165395,
+      "chars": 201,
+      "body_nll": 80.72621225752664,
+      "body_chars": 178
+    },
+    {
+      "id": "chor263",
+      "family_id": "family_fab207c0bc8c0082",
+      "nll": 68.37537969246841,
+      "chars": 210,
+      "body_nll": 65.52221624446247,
+      "body_chars": 189
+    },
+    {
+      "id": "chor264",
+      "family_id": "family_db02b2b02dfb1b78",
+      "nll": 148.63872658986293,
+      "chars": 351,
+      "body_nll": 145.4273076381578,
+      "body_chars": 330
+    },
+    {
+      "id": "chor265",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 92.98593362883912,
+      "chars": 241,
+      "body_nll": 90.18032984169258,
+      "body_chars": 220
+    },
+    {
+      "id": "chor267",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 79.53536764639648,
+      "chars": 201,
+      "body_nll": 76.48699937045603,
+      "body_chars": 180
+    },
+    {
+      "id": "chor270",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 84.31462113140515,
+      "chars": 198,
+      "body_nll": 82.24621052543807,
+      "body_chars": 177
+    },
+    {
+      "id": "chor271",
+      "family_id": "family_81fa9fff5f1a6c64",
+      "nll": 198.11084238365038,
+      "chars": 382,
+      "body_nll": 195.25767893564444,
+      "body_chars": 361
+    },
+    {
+      "id": "chor272",
+      "family_id": "family_b7cdb37f6d5b4968",
+      "nll": 126.52604874047029,
+      "chars": 291,
+      "body_nll": 123.31462978876516,
+      "body_chars": 270
+    },
+    {
+      "id": "chor273",
+      "family_id": "family_74f325b502b30cc7",
+      "nll": 83.92576742841266,
+      "chars": 251,
+      "body_nll": 81.22439909572859,
+      "body_chars": 231
+    },
+    {
+      "id": "chor275",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 56.83107993234171,
+      "chars": 238,
+      "body_nll": 54.01570168287526,
+      "body_chars": 218
+    },
+    {
+      "id": "chor277",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 191.31769843419806,
+      "chars": 426,
+      "body_nll": 187.38200266602053,
+      "body_chars": 406
+    },
+    {
+      "id": "chor280",
+      "family_id": "family_292d925f71b6906f",
+      "nll": 192.5122930669786,
+      "chars": 454,
+      "body_nll": 189.81092473429453,
+      "body_chars": 434
+    },
+    {
+      "id": "chor283",
+      "family_id": "family_fab207c0bc8c0082",
+      "nll": 55.89650447928943,
+      "chars": 186,
+      "body_nll": 53.04334103128349,
+      "body_chars": 165
+    },
+    {
+      "id": "chor285",
+      "family_id": "family_86d62b306586d70b",
+      "nll": 92.70623769092344,
+      "chars": 234,
+      "body_nll": 90.63782708495637,
+      "body_chars": 213
+    },
+    {
+      "id": "chor286",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 65.1635695392506,
+      "chars": 208,
+      "body_nll": 62.357965752104064,
+      "body_chars": 187
+    },
+    {
+      "id": "chor287",
+      "family_id": "family_ad3046137f899ca7",
+      "nll": 78.27589139431439,
+      "chars": 141,
+      "body_nll": 76.20748078834731,
+      "body_chars": 120
+    },
+    {
+      "id": "chor288",
+      "family_id": "family_fab207c0bc8c0082",
+      "nll": 96.14621506378171,
+      "chars": 213,
+      "body_nll": 89.80663457927221,
+      "body_chars": 190
+    },
+    {
+      "id": "chor289",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 71.33723484023358,
+      "chars": 264,
+      "body_nll": 68.12581588852845,
+      "body_chars": 243
+    },
+    {
+      "id": "chor290",
+      "family_id": "family_9aaf72eabda0474b",
+      "nll": 88.89400844269039,
+      "chars": 227,
+      "body_nll": 84.53458712910651,
+      "body_chars": 207
+    },
+    {
+      "id": "chor291",
+      "family_id": "family_fab207c0bc8c0082",
+      "nll": 115.63553104447783,
+      "chars": 273,
+      "body_nll": 112.93416271179376,
+      "body_chars": 253
+    },
+    {
+      "id": "chor292",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 79.9726064043025,
+      "chars": 209,
+      "body_nll": 76.92423812836205,
+      "body_chars": 188
+    },
+    {
+      "id": "chor293",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 76.18983633371317,
+      "chars": 164,
+      "body_nll": 73.7642562486144,
+      "body_chars": 144
+    },
+    {
+      "id": "chor298",
+      "family_id": "family_6f1fa260689228fe",
+      "nll": 118.19294001841627,
+      "chars": 236,
+      "body_nll": 111.87374458415434,
+      "body_chars": 216
+    },
+    {
+      "id": "chor299",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 137.6468002792244,
+      "chars": 304,
+      "body_nll": 133.8222947295253,
+      "body_chars": 283
+    },
+    {
+      "id": "chor300",
+      "family_id": "family_ec6ea4a1f207cc65",
+      "nll": 81.71898445744955,
+      "chars": 203,
+      "body_nll": 79.65057385148248,
+      "body_chars": 182
+    },
+    {
+      "id": "chor301",
+      "family_id": "family_86d62b306586d70b",
+      "nll": 86.23921169761161,
+      "chars": 233,
+      "body_nll": 83.63509931013323,
+      "body_chars": 212
+    },
+    {
+      "id": "chor303",
+      "family_id": "family_9c5ce3c224473d93",
+      "nll": 67.87876475981102,
+      "chars": 166,
+      "body_nll": 64.6472849354468,
+      "body_chars": 146
+    },
+    {
+      "id": "chor309",
+      "family_id": "family_2e6f51fb6ef06d0d",
+      "nll": 179.6951291836922,
+      "chars": 373,
+      "body_nll": 174.3872549094085,
+      "body_chars": 352
+    },
+    {
+      "id": "chor310",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 72.94518640627575,
+      "chars": 170,
+      "body_nll": 68.58576509269187,
+      "body_chars": 150
+    },
+    {
+      "id": "chor311",
+      "family_id": "family_e65d3c599762ad34",
+      "nll": 84.54763145986362,
+      "chars": 198,
+      "body_nll": 81.31615163549941,
+      "body_chars": 178
+    },
+    {
+      "id": "chor312",
+      "family_id": "family_fab207c0bc8c0082",
+      "nll": 112.99300849307838,
+      "chars": 283,
+      "body_nll": 110.29164016039431,
+      "body_chars": 263
+    },
+    {
+      "id": "chor313",
+      "family_id": "family_2c12907555eab77a",
+      "nll": 71.06369591827752,
+      "chars": 233,
+      "body_nll": 68.63811583317874,
+      "body_chars": 213
+    },
+    {
+      "id": "chor314",
+      "family_id": "family_bf600c629288f4d1",
+      "nll": 107.80444304897719,
+      "chars": 254,
+      "body_nll": 104.95127960097125,
+      "body_chars": 233
+    },
+    {
+      "id": "chor315",
+      "family_id": "family_fab207c0bc8c0082",
+      "nll": 129.219864503415,
+      "chars": 264,
+      "body_nll": 126.79428441831624,
+      "body_chars": 244
+    },
+    {
+      "id": "chor316",
+      "family_id": "family_714e9e345bcb9575",
+      "nll": 121.33932925008503,
+      "chars": 195,
+      "body_nll": 116.55400850635579,
+      "body_chars": 175
+    },
+    {
+      "id": "chor320",
+      "family_id": "family_203cedfab63a8d9a",
+      "nll": 71.03131275550186,
+      "chars": 127,
+      "body_nll": 62.44177120027598,
+      "body_chars": 105
+    },
+    {
+      "id": "chor321",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 55.13776793600482,
+      "chars": 182,
+      "body_nll": 52.53365554852644,
+      "body_chars": 161
+    },
+    {
+      "id": "chor324",
+      "family_id": "family_fab207c0bc8c0082",
+      "nll": 55.50476881151917,
+      "chars": 180,
+      "body_nll": 52.65160536351323,
+      "body_chars": 159
+    },
+    {
+      "id": "chor325",
+      "family_id": "family_81935b39dfcad8ae",
+      "nll": 120.37596807222144,
+      "chars": 235,
+      "body_nll": 117.31378311459048,
+      "body_chars": 212
+    },
+    {
+      "id": "chor326",
+      "family_id": "family_2c12907555eab77a",
+      "nll": 81.3497715431422,
+      "chars": 209,
+      "body_nll": 78.53439329367575,
+      "body_chars": 189
+    },
+    {
+      "id": "chor329",
+      "family_id": "family_9aaf72eabda0474b",
+      "nll": 107.0967416795902,
+      "chars": 242,
+      "body_nll": 104.67116159449142,
+      "body_chars": 222
+    },
+    {
+      "id": "chor330",
+      "family_id": "family_720e013d09c67e2a",
+      "nll": 81.97103311645333,
+      "chars": 198,
+      "body_nll": 79.54545303135455,
+      "body_chars": 178
+    },
+    {
+      "id": "chor332",
+      "family_id": "family_a58248b90602b891",
+      "nll": 107.76775877288492,
+      "chars": 278,
+      "body_nll": 105.69934816691784,
+      "body_chars": 257
+    },
+    {
+      "id": "chor333",
+      "family_id": "family_3fdc3a3ec629b19d",
+      "nll": 149.25430151957426,
+      "chars": 330,
+      "body_nll": 146.5529331868902,
+      "body_chars": 310
+    },
+    {
+      "id": "chor335",
+      "family_id": "family_9aaf72eabda0474b",
+      "nll": 110.81291690249782,
+      "chars": 236,
+      "body_nll": 107.5814370781336,
+      "body_chars": 216
+    },
+    {
+      "id": "chor336",
+      "family_id": "family_86d62b306586d70b",
+      "nll": 93.40556260882659,
+      "chars": 233,
+      "body_nll": 90.59995882168005,
+      "body_chars": 212
+    },
+    {
+      "id": "chor337",
+      "family_id": "family_fab207c0bc8c0082",
+      "nll": 174.76406616447093,
+      "chars": 329,
+      "body_nll": 171.53258634010672,
+      "body_chars": 309
+    },
+    {
+      "id": "chor339",
+      "family_id": "family_8a405b0fcdefed77",
+      "nll": 62.53954201304077,
+      "chars": 161,
+      "body_nll": 60.4711314070737,
+      "body_chars": 140
+    },
+    {
+      "id": "chor340",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 89.01785936833403,
+      "chars": 205,
+      "body_nll": 85.96949109239358,
+      "body_chars": 184
+    },
+    {
+      "id": "chor341",
+      "family_id": "family_b7cdb37f6d5b4968",
+      "nll": 119.2796928639691,
+      "chars": 310,
+      "body_nll": 116.46431461450265,
+      "body_chars": 290
+    },
+    {
+      "id": "chor343",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 136.33475881043705,
+      "chars": 263,
+      "body_nll": 130.95652598880406,
+      "body_chars": 243
+    },
+    {
+      "id": "chor344",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 79.37157857391867,
+      "chars": 188,
+      "body_nll": 76.9459984888199,
+      "body_chars": 168
+    },
+    {
+      "id": "chor345",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 91.21583201199974,
+      "chars": 223,
+      "body_nll": 89.14742140603266,
+      "body_chars": 202
+    },
+    {
+      "id": "chor346",
+      "family_id": "family_ee4650bb4d835675",
+      "nll": 137.10110894740865,
+      "chars": 283,
+      "body_nll": 134.2479454994027,
+      "body_chars": 262
+    },
+    {
+      "id": "chor347",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 98.1696326762858,
+      "chars": 226,
+      "body_nll": 95.74405259118703,
+      "body_chars": 206
+    },
+    {
+      "id": "chor348",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 96.81572298763422,
+      "chars": 216,
+      "body_nll": 92.88002721945668,
+      "body_chars": 196
+    },
+    {
+      "id": "chor350",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 80.93200833155788,
+      "chars": 204,
+      "body_nll": 77.72058937985275,
+      "body_chars": 183
+    },
+    {
+      "id": "chor352",
+      "family_id": "family_3fdc3a3ec629b19d",
+      "nll": 137.63527379575407,
+      "chars": 339,
+      "body_nll": 135.566863189787,
+      "body_chars": 318
+    },
+    {
+      "id": "chor353",
+      "family_id": "family_2c12907555eab77a",
+      "nll": 70.80000888024006,
+      "chars": 227,
+      "body_nll": 68.37442879514128,
+      "body_chars": 207
+    },
+    {
+      "id": "chor355",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 67.82343916794343,
+      "chars": 223,
+      "body_nll": 64.6120202162383,
+      "body_chars": 202
+    },
+    {
+      "id": "chor356",
+      "family_id": "family_fab207c0bc8c0082",
+      "nll": 82.0092008885349,
+      "chars": 198,
+      "body_nll": 78.96083261259446,
+      "body_chars": 177
+    },
+    {
+      "id": "chor357",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 106.72225943290323,
+      "chars": 243,
+      "body_nll": 102.3333420698109,
+      "body_chars": 220
+    },
+    {
+      "id": "chor358",
+      "family_id": "family_70bb715bd36df03e",
+      "nll": 123.06088136120889,
+      "chars": 234,
+      "body_nll": 120.4567689737305,
+      "body_chars": 213
+    },
+    {
+      "id": "chor360",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 93.3236680565351,
+      "chars": 210,
+      "body_nll": 84.73412650130922,
+      "body_chars": 188
+    },
+    {
+      "id": "chor362",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 95.25155672840265,
+      "chars": 236,
+      "body_nll": 92.82597664330387,
+      "body_chars": 216
+    },
+    {
+      "id": "chor363",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 62.8574828877463,
+      "chars": 264,
+      "body_nll": 60.04210463827985,
+      "body_chars": 244
+    },
+    {
+      "id": "chor364",
+      "family_id": "family_a58248b90602b891",
+      "nll": 129.09035325288642,
+      "chars": 262,
+      "body_nll": 126.28474946573988,
+      "body_chars": 241
+    },
+    {
+      "id": "chor365",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 64.8122888766411,
+      "chars": 198,
+      "body_nll": 61.99691062717466,
+      "body_chars": 178
+    },
+    {
+      "id": "chor366",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 87.348363191325,
+      "chars": 287,
+      "body_nll": 84.53298494185856,
+      "body_chars": 267
+    },
+    {
+      "id": "chor367",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 62.30869541478387,
+      "chars": 208,
+      "body_nll": 59.50309162763733,
+      "body_chars": 187
+    },
+    {
+      "id": "chor368",
+      "family_id": "family_5338c17585ae8b6c",
+      "nll": 130.5310221679356,
+      "chars": 204,
+      "body_nll": 125.80246203335628,
+      "body_chars": 184
+    },
+    {
+      "id": "chor370",
+      "family_id": "family_1001a2e2407a79f5",
+      "nll": 126.79476443861677,
+      "chars": 304,
+      "body_nll": 124.72635383264969,
+      "body_chars": 283
+    }
+  ]
+}

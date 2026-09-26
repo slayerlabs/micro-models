@@ -1,0 +1,2439 @@
+{
+  "status": "completed",
+  "music21": "10.5.0",
+  "torch": "2.14.0+cpu",
+  "protocol_sha256": "9b88b8a1e5510b5d91b9066fd73e3879c1c60aad2bbde1bccc3f9c3b06e3d564",
+  "summary": {
+    "NPLM": {
+      "samples": 30,
+      "parser_accepted": 29,
+      "EOS": 25,
+      "with_interior_meter_errors": 14,
+      "without_testable_meter": 1,
+      "bad_measures": 45,
+      "interior_measures": 405,
+      "complete_and_meter_check_pass": 15,
+      "median_generated_tokens": 130.0
+    },
+    "GPT_A": {
+      "samples": 30,
+      "parser_accepted": 30,
+      "EOS": 19,
+      "with_interior_meter_errors": 21,
+      "without_testable_meter": 0,
+      "bad_measures": 53,
+      "interior_measures": 833,
+      "complete_and_meter_check_pass": 7,
+      "median_generated_tokens": 354.5
+    },
+    "GPT_B": {
+      "samples": 30,
+      "parser_accepted": 27,
+      "EOS": 12,
+      "with_interior_meter_errors": 22,
+      "without_testable_meter": 3,
+      "bad_measures": 64,
+      "interior_measures": 728,
+      "complete_and_meter_check_pass": 3,
+      "median_generated_tokens": 384.0
+    }
+  },
+  "samples": [
+    {
+      "model": "NPLM",
+      "prompt_index": 1,
+      "seed": 8200,
+      "stop": "EOS",
+      "tokens": 136,
+      "file": "raw_samples/NPLM_prompt1_seed8200.abc",
+      "sha256": "b99ce5305f88925bc31132ccf01fdc7fdb856ed64579fce13c41569954f9bede",
+      "parser_accepted": true,
+      "interior_measures": 9,
+      "bad_interior_measures": 3,
+      "has_testable_meter": true,
+      "notes": 33,
+      "bad_details": [
+        {
+          "measure": 5,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 6,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 7,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 1,
+      "seed": 8201,
+      "stop": "EOS",
+      "tokens": 172,
+      "file": "raw_samples/NPLM_prompt1_seed8201.abc",
+      "sha256": "e97cb6c6c536025605ad88df77ab4c5a7ad2d2ff0478b6976314c763b0082bf9",
+      "parser_accepted": true,
+      "interior_measures": 11,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 42,
+      "bad_details": [
+        {
+          "measure": 11,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 1,
+      "seed": 8202,
+      "stop": "EOS",
+      "tokens": 83,
+      "file": "raw_samples/NPLM_prompt1_seed8202.abc",
+      "sha256": "3d505f63e84c22f68a8ea0fbff696ae2fb74e816af0483bb0a39c23aba292681",
+      "parser_accepted": true,
+      "interior_measures": 5,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 21,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 1,
+      "seed": 8203,
+      "stop": "EOS",
+      "tokens": 130,
+      "file": "raw_samples/NPLM_prompt1_seed8203.abc",
+      "sha256": "c63a8ed7cc7aca4441aa2c3cf57e7fafe46b3e75aeb1092a0469f14e60f787f3",
+      "parser_accepted": true,
+      "interior_measures": 9,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 35,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 1,
+      "seed": 8204,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/NPLM_prompt1_seed8204.abc",
+      "sha256": "7ed384abd25a08a53e43233679dc92e173613db09d31074f24bc6d3d1e122b74",
+      "parser_accepted": true,
+      "interior_measures": 24,
+      "bad_interior_measures": 5,
+      "has_testable_meter": true,
+      "notes": 93,
+      "bad_details": [
+        {
+          "measure": 9,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 10,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 11,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 12,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 23,
+          "duration": 2.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 1,
+      "seed": 8205,
+      "stop": "EOS",
+      "tokens": 310,
+      "file": "raw_samples/NPLM_prompt1_seed8205.abc",
+      "sha256": "e3f8e3b60d504a8eca790df67cb5c9d3a8dbf530292c3f9ffe8e84703efa9ed1",
+      "parser_accepted": true,
+      "interior_measures": 24,
+      "bad_interior_measures": 11,
+      "has_testable_meter": true,
+      "notes": 75,
+      "bad_details": [
+        {
+          "measure": 4,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 5,
+          "duration": 1.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 9,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 10,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 12,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 13,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 14,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 15,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 16,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 23,
+          "duration": 2.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 24,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 1,
+      "seed": 8206,
+      "stop": "EOS",
+      "tokens": 86,
+      "file": "raw_samples/NPLM_prompt1_seed8206.abc",
+      "sha256": "df9e781b7cede4605791974070a2833863d1f2a744734a179a5f5d6f4427d5e7",
+      "parser_accepted": true,
+      "interior_measures": 5,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 22,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 1,
+      "seed": 8207,
+      "stop": "EOS",
+      "tokens": 168,
+      "file": "raw_samples/NPLM_prompt1_seed8207.abc",
+      "sha256": "552f770787fbaa866305adb08c49aa063635abf054d18859a4834d14bccb4b2e",
+      "parser_accepted": true,
+      "interior_measures": 12,
+      "bad_interior_measures": 6,
+      "has_testable_meter": true,
+      "notes": 37,
+      "bad_details": [
+        {
+          "measure": 2,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 3,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 4,
+          "duration": 1.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 8,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 9,
+          "duration": 1.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 11,
+          "duration": 2.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 1,
+      "seed": 8208,
+      "stop": "EOS",
+      "tokens": 31,
+      "file": "raw_samples/NPLM_prompt1_seed8208.abc",
+      "sha256": "acc87037c5a703cf48585af6c6758bd13efd133ae04c979fc91011fc0d663f1a",
+      "parser_accepted": true,
+      "interior_measures": 1,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 7,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 1,
+      "seed": 8209,
+      "stop": "EOS",
+      "tokens": 121,
+      "file": "raw_samples/NPLM_prompt1_seed8209.abc",
+      "sha256": "70f654e0be7e20f42b3227f101d782c29cc5b2a8ee4309b93b13b97bd30ddaf4",
+      "parser_accepted": true,
+      "interior_measures": 7,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 31,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 2,
+      "seed": 8200,
+      "stop": "EOS",
+      "tokens": 51,
+      "file": "raw_samples/NPLM_prompt2_seed8200.abc",
+      "sha256": "eb84a6493e4e8da3d9d2fe634a1fe14b6b2faf38f24d9a70a8bf8112e181efe6",
+      "parser_accepted": true,
+      "interior_measures": 2,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 12,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 2,
+      "seed": 8201,
+      "stop": "EOS",
+      "tokens": 172,
+      "file": "raw_samples/NPLM_prompt2_seed8201.abc",
+      "sha256": "9c61c425244bc19b14f0aefc1224316a43681e72cd081226459c2b049f1a44f8",
+      "parser_accepted": true,
+      "interior_measures": 11,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 42,
+      "bad_details": [
+        {
+          "measure": 11,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 2,
+      "seed": 8202,
+      "stop": "EOS",
+      "tokens": 51,
+      "file": "raw_samples/NPLM_prompt2_seed8202.abc",
+      "sha256": "9dbe0a2e0844ca727324a4be57a3ff871691171d4e4569c3eee93c9c58f1500a",
+      "parser_accepted": true,
+      "interior_measures": 3,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 13,
+      "bad_details": [
+        {
+          "measure": 3,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 2,
+      "seed": 8203,
+      "stop": "EOS",
+      "tokens": 130,
+      "file": "raw_samples/NPLM_prompt2_seed8203.abc",
+      "sha256": "e364a5436a87b2a70d177d7e3d88118e75ead7ccbab2241e920a8291b175043e",
+      "parser_accepted": true,
+      "interior_measures": 9,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 35,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 2,
+      "seed": 8204,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/NPLM_prompt2_seed8204.abc",
+      "sha256": "37a8a661ebabedbf5e69f3ce7a5afab9f3c0128ca5311898e828bd03a1cf438c",
+      "parser_accepted": true,
+      "interior_measures": 24,
+      "bad_interior_measures": 5,
+      "has_testable_meter": true,
+      "notes": 93,
+      "bad_details": [
+        {
+          "measure": 9,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 10,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 11,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 12,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 23,
+          "duration": 2.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 2,
+      "seed": 8205,
+      "stop": "EOS",
+      "tokens": 59,
+      "file": "raw_samples/NPLM_prompt2_seed8205.abc",
+      "sha256": "62aa39fb45f52774f4a2a2f653164559847c676367f1d573773f3a698f2a50f1",
+      "parser_accepted": true,
+      "interior_measures": 3,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 16,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 2,
+      "seed": 8206,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/NPLM_prompt2_seed8206.abc",
+      "sha256": "abf31c3d3761505a28acb0ec960168870ce4f6e663739afd3dadf02833f119f7",
+      "parser_accepted": true,
+      "interior_measures": 29,
+      "bad_interior_measures": 3,
+      "has_testable_meter": true,
+      "notes": 98,
+      "bad_details": [
+        {
+          "measure": 1,
+          "duration": 2.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 16,
+          "duration": 1.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 23,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 2,
+      "seed": 8207,
+      "stop": "EOS",
+      "tokens": 130,
+      "file": "raw_samples/NPLM_prompt2_seed8207.abc",
+      "sha256": "c772b4c9da58592f976c72f336332d165e8241a63b946ddb2e1d2415cfbecd1d",
+      "parser_accepted": true,
+      "interior_measures": 8,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 32,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 2,
+      "seed": 8208,
+      "stop": "EOS",
+      "tokens": 34,
+      "file": "raw_samples/NPLM_prompt2_seed8208.abc",
+      "sha256": "ad510e55b2d9b7cf7739c8475bb5fdc37a98a291e8b4d2208ef38057f71ed87d",
+      "parser_accepted": true,
+      "interior_measures": 1,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 9,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 2,
+      "seed": 8209,
+      "stop": "EOS",
+      "tokens": 121,
+      "file": "raw_samples/NPLM_prompt2_seed8209.abc",
+      "sha256": "027b4cd3ad0206967d39d5a4febfd649eaf6b98604bca58d8dc09db72d79bfd0",
+      "parser_accepted": true,
+      "interior_measures": 7,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 31,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 3,
+      "seed": 8200,
+      "stop": "EOS",
+      "tokens": 51,
+      "file": "raw_samples/NPLM_prompt3_seed8200.abc",
+      "sha256": "270a75f85058758920f95b6800adeddb2c0523af9caf5fcbed2bf8ca294cbf05",
+      "parser_accepted": true,
+      "interior_measures": 4,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 12,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 3,
+      "seed": 8201,
+      "stop": "EOS",
+      "tokens": 150,
+      "file": "raw_samples/NPLM_prompt3_seed8201.abc",
+      "sha256": "6ddecdb2fb1e75233c4d6e1e2ee6bd9ea37fb74afdff5e269bbb4f07969be11c",
+      "parser_accepted": true,
+      "interior_measures": 13,
+      "bad_interior_measures": 2,
+      "has_testable_meter": true,
+      "notes": 34,
+      "bad_details": [
+        {
+          "measure": 1,
+          "duration": 2.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 9,
+          "duration": 2.0,
+          "expected": 3.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 3,
+      "seed": 8202,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/NPLM_prompt3_seed8202.abc",
+      "sha256": "3027e645fa411d7a98b9e2dfed2cd8a583dc1f2fe671fb09d65d6695ce6b33f9",
+      "parser_accepted": true,
+      "interior_measures": 46,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 98,
+      "bad_details": [
+        {
+          "measure": 21,
+          "duration": 2.5,
+          "expected": 3.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 3,
+      "seed": 8203,
+      "stop": "EOS",
+      "tokens": 130,
+      "file": "raw_samples/NPLM_prompt3_seed8203.abc",
+      "sha256": "36538f2181fc0082847f954beae4652050c84167fa6404a56a99ad107d713f4a",
+      "parser_accepted": true,
+      "interior_measures": 18,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 36,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 3,
+      "seed": 8204,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/NPLM_prompt3_seed8204.abc",
+      "sha256": "deb4210142145c658ccc4548e13336d80250305f4ab406a83039b937f58a3ba7",
+      "parser_accepted": true,
+      "interior_measures": 39,
+      "bad_interior_measures": 2,
+      "has_testable_meter": true,
+      "notes": 92,
+      "bad_details": [
+        {
+          "measure": 16,
+          "duration": 1.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 37,
+          "duration": 2.0,
+          "expected": 3.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 3,
+      "seed": 8205,
+      "stop": "EOS",
+      "tokens": 310,
+      "file": "raw_samples/NPLM_prompt3_seed8205.abc",
+      "sha256": "ddca81b55847d1fbe55eb56e133c2db7c795d6b48adb361cd7df2c341500b66b",
+      "parser_accepted": true,
+      "interior_measures": 31,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 79,
+      "bad_details": [
+        {
+          "measure": 30,
+          "duration": 2.0,
+          "expected": 3.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 3,
+      "seed": 8206,
+      "stop": "EOS",
+      "tokens": 154,
+      "file": "raw_samples/NPLM_prompt3_seed8206.abc",
+      "sha256": "11cd957993f4a33ee10e5f78113002e1b8e185e6ea10537cdca83ac7b52fbeae",
+      "parser_accepted": true,
+      "interior_measures": 17,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 39,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 3,
+      "seed": 8207,
+      "stop": "EOS",
+      "tokens": 168,
+      "file": "raw_samples/NPLM_prompt3_seed8207.abc",
+      "sha256": "6971dbcfbf63b24c0349ac1854cbd4fe811f1e60a351dd885290663639e1d637",
+      "parser_accepted": true,
+      "interior_measures": 18,
+      "bad_interior_measures": 3,
+      "has_testable_meter": true,
+      "notes": 38,
+      "bad_details": [
+        {
+          "measure": 5,
+          "duration": 1.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 13,
+          "duration": 1.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 16,
+          "duration": 2.0,
+          "expected": 3.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 3,
+      "seed": 8208,
+      "stop": "EOS",
+      "tokens": 66,
+      "file": "raw_samples/NPLM_prompt3_seed8208.abc",
+      "sha256": "1563e7e2545c17ff0abfd7b343013ee59fbc04b50b2f8c803cb95e1969297ffc",
+      "parser_accepted": false,
+      "interior_measures": 0,
+      "bad_interior_measures": 0,
+      "has_testable_meter": false,
+      "error": "AccidentalException: nn is not a supported accidental type",
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "NPLM",
+      "prompt_index": 3,
+      "seed": 8209,
+      "stop": "EOS",
+      "tokens": 121,
+      "file": "raw_samples/NPLM_prompt3_seed8209.abc",
+      "sha256": "e308312429d084b9fdf9bd74379f3861f50c722c67c275245c4483de494f3852",
+      "parser_accepted": true,
+      "interior_measures": 15,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 32,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 1,
+      "seed": 8200,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_A_prompt1_seed8200.abc",
+      "sha256": "1bb2089c29b7db324be9d470764ce7932ef0c53557ed0bd8d98a8fe05c833fec",
+      "parser_accepted": true,
+      "interior_measures": 42,
+      "bad_interior_measures": 5,
+      "has_testable_meter": true,
+      "notes": 96,
+      "bad_details": [
+        {
+          "measure": 2,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 5,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 7,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 8,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 12,
+          "duration": 2.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 1,
+      "seed": 8201,
+      "stop": "EOS",
+      "tokens": 168,
+      "file": "raw_samples/GPT_A_prompt1_seed8201.abc",
+      "sha256": "2be8719ed4154b6e6440ef9d8fa76d90c7a52c52dd72ef497bc726226ba378cc",
+      "parser_accepted": true,
+      "interior_measures": 14,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 46,
+      "bad_details": [
+        {
+          "measure": 6,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 1,
+      "seed": 8202,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_A_prompt1_seed8202.abc",
+      "sha256": "3ea9ea4396d3239019d6b643fc9fae06c1e832037f980fa3b2d61d7ba6b5e9de",
+      "parser_accepted": true,
+      "interior_measures": 33,
+      "bad_interior_measures": 2,
+      "has_testable_meter": true,
+      "notes": 105,
+      "bad_details": [
+        {
+          "measure": 3,
+          "duration": 3.5,
+          "expected": 4.0
+        },
+        {
+          "measure": 6,
+          "duration": 2.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 1,
+      "seed": 8203,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_A_prompt1_seed8203.abc",
+      "sha256": "60e22dd227fa5cfd91c36dfcdc990f1d3795a98c229f76655af4ab7bfd2bdc70",
+      "parser_accepted": true,
+      "interior_measures": 38,
+      "bad_interior_measures": 2,
+      "has_testable_meter": true,
+      "notes": 104,
+      "bad_details": [
+        {
+          "measure": 6,
+          "duration": 3.75,
+          "expected": 4.0
+        },
+        {
+          "measure": 7,
+          "duration": 2.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 1,
+      "seed": 8204,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_A_prompt1_seed8204.abc",
+      "sha256": "986d945b505135e07c23e86cd45ee709baf4c0c614e83287164df8c42b841bcb",
+      "parser_accepted": true,
+      "interior_measures": 30,
+      "bad_interior_measures": 3,
+      "has_testable_meter": true,
+      "notes": 99,
+      "bad_details": [
+        {
+          "measure": 8,
+          "duration": 3.5,
+          "expected": 4.0
+        },
+        {
+          "measure": 18,
+          "duration": 3.5,
+          "expected": 4.0
+        },
+        {
+          "measure": 28,
+          "duration": 3.5,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 1,
+      "seed": 8205,
+      "stop": "EOS",
+      "tokens": 353,
+      "file": "raw_samples/GPT_A_prompt1_seed8205.abc",
+      "sha256": "19435a4d52392548c567be877c83439fe910371a1563b6f9a3958e85399f06d0",
+      "parser_accepted": true,
+      "interior_measures": 30,
+      "bad_interior_measures": 3,
+      "has_testable_meter": true,
+      "notes": 93,
+      "bad_details": [
+        {
+          "measure": 1,
+          "duration": 3.5,
+          "expected": 4.0
+        },
+        {
+          "measure": 2,
+          "duration": 3.5,
+          "expected": 4.0
+        },
+        {
+          "measure": 4,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 1,
+      "seed": 8206,
+      "stop": "EOS",
+      "tokens": 239,
+      "file": "raw_samples/GPT_A_prompt1_seed8206.abc",
+      "sha256": "937e9e076b1465f0a099871ae8a2279759b21ecd815b301ad80bbd9b38017cbf",
+      "parser_accepted": true,
+      "interior_measures": 25,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 67,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 1,
+      "seed": 8207,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_A_prompt1_seed8207.abc",
+      "sha256": "868b9c24505012c8a32668ee71560240056a6b1a54146a6eb696551f604f5292",
+      "parser_accepted": true,
+      "interior_measures": 29,
+      "bad_interior_measures": 5,
+      "has_testable_meter": true,
+      "notes": 99,
+      "bad_details": [
+        {
+          "measure": 3,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 8,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 11,
+          "duration": 3.5,
+          "expected": 4.0
+        },
+        {
+          "measure": 14,
+          "duration": 2.5,
+          "expected": 4.0
+        },
+        {
+          "measure": 28,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 1,
+      "seed": 8208,
+      "stop": "EOS",
+      "tokens": 321,
+      "file": "raw_samples/GPT_A_prompt1_seed8208.abc",
+      "sha256": "ae9cd84766f5ca7ba7f5293853bb26445b0d158393a6390dfcaca26764bd6c00",
+      "parser_accepted": true,
+      "interior_measures": 28,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 88,
+      "bad_details": [
+        {
+          "measure": 5,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 1,
+      "seed": 8209,
+      "stop": "EOS",
+      "tokens": 361,
+      "file": "raw_samples/GPT_A_prompt1_seed8209.abc",
+      "sha256": "9e3c932017bd8895c27f88b9a648b0efe97142c9fd33078c3f5df8b9b987bab1",
+      "parser_accepted": true,
+      "interior_measures": 34,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 102,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 2,
+      "seed": 8200,
+      "stop": "EOS",
+      "tokens": 179,
+      "file": "raw_samples/GPT_A_prompt2_seed8200.abc",
+      "sha256": "40b2054a47f90f5b864be320fb295271a79e48af02b3142ed7951097b3b98ed8",
+      "parser_accepted": true,
+      "interior_measures": 14,
+      "bad_interior_measures": 3,
+      "has_testable_meter": true,
+      "notes": 48,
+      "bad_details": [
+        {
+          "measure": 4,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 6,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 7,
+          "duration": 3.5,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 2,
+      "seed": 8201,
+      "stop": "EOS",
+      "tokens": 168,
+      "file": "raw_samples/GPT_A_prompt2_seed8201.abc",
+      "sha256": "27be78f515fc26b075ad93cc79fe4357309b523d3d2bc7ad5e6ff3aabc951b49",
+      "parser_accepted": true,
+      "interior_measures": 12,
+      "bad_interior_measures": 2,
+      "has_testable_meter": true,
+      "notes": 43,
+      "bad_details": [
+        {
+          "measure": 3,
+          "duration": 3.75,
+          "expected": 4.0
+        },
+        {
+          "measure": 4,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 2,
+      "seed": 8202,
+      "stop": "EOS",
+      "tokens": 245,
+      "file": "raw_samples/GPT_A_prompt2_seed8202.abc",
+      "sha256": "8b7e42758a7a585332ad4f24d28a7c078eec85b9113e4955cf8bcd50efdec8aa",
+      "parser_accepted": true,
+      "interior_measures": 17,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 62,
+      "bad_details": [
+        {
+          "measure": 14,
+          "duration": 3.5,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 2,
+      "seed": 8203,
+      "stop": "EOS",
+      "tokens": 348,
+      "file": "raw_samples/GPT_A_prompt2_seed8203.abc",
+      "sha256": "62c4a205ab467669658233cd2a4ac5dc620188b8591fffdf2027f165f4d64ab6",
+      "parser_accepted": true,
+      "interior_measures": 31,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 99,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 2,
+      "seed": 8204,
+      "stop": "EOS",
+      "tokens": 248,
+      "file": "raw_samples/GPT_A_prompt2_seed8204.abc",
+      "sha256": "df12fe284775ff773e7f4e9b54bc2eee7a561760ad9c10d876a4cab07e23140b",
+      "parser_accepted": true,
+      "interior_measures": 18,
+      "bad_interior_measures": 5,
+      "has_testable_meter": true,
+      "notes": 61,
+      "bad_details": [
+        {
+          "measure": 9,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 10,
+          "duration": 2.5,
+          "expected": 4.0
+        },
+        {
+          "measure": 11,
+          "duration": 3.5,
+          "expected": 4.0
+        },
+        {
+          "measure": 17,
+          "duration": 3.5,
+          "expected": 4.0
+        },
+        {
+          "measure": 18,
+          "duration": 3.5,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 2,
+      "seed": 8205,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_A_prompt2_seed8205.abc",
+      "sha256": "a12993ba3b5363da88d2a310e8bd20634dbed28f4d35fa6e699dc3a908a7a6df",
+      "parser_accepted": true,
+      "interior_measures": 32,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 104,
+      "bad_details": [
+        {
+          "measure": 9,
+          "duration": 3.5,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 2,
+      "seed": 8206,
+      "stop": "EOS",
+      "tokens": 107,
+      "file": "raw_samples/GPT_A_prompt2_seed8206.abc",
+      "sha256": "952904ac01d50f47346ae403defa21fd668f4869dd2117c002c279d0ea5f8671",
+      "parser_accepted": true,
+      "interior_measures": 8,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 30,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 2,
+      "seed": 8207,
+      "stop": "EOS",
+      "tokens": 363,
+      "file": "raw_samples/GPT_A_prompt2_seed8207.abc",
+      "sha256": "53f4eb6288115bbb3ea2e93edea41588b4847626f31c0036cc6b7d32d6b31360",
+      "parser_accepted": true,
+      "interior_measures": 27,
+      "bad_interior_measures": 3,
+      "has_testable_meter": true,
+      "notes": 94,
+      "bad_details": [
+        {
+          "measure": 5,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 17,
+          "duration": 3.5,
+          "expected": 4.0
+        },
+        {
+          "measure": 18,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 2,
+      "seed": 8208,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_A_prompt2_seed8208.abc",
+      "sha256": "5ab05fb3d1fce5ed53c4b5c6d7cad565fa3c4a5bc6f22cf011d2350bd0d32705",
+      "parser_accepted": true,
+      "interior_measures": 34,
+      "bad_interior_measures": 3,
+      "has_testable_meter": true,
+      "notes": 104,
+      "bad_details": [
+        {
+          "measure": 7,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 14,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 15,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 2,
+      "seed": 8209,
+      "stop": "EOS",
+      "tokens": 356,
+      "file": "raw_samples/GPT_A_prompt2_seed8209.abc",
+      "sha256": "d24567b50b73bb72758b455e6d8a137747fbe719a563e50a743c85c879d2ab6b",
+      "parser_accepted": true,
+      "interior_measures": 35,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 103,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 3,
+      "seed": 8200,
+      "stop": "EOS",
+      "tokens": 108,
+      "file": "raw_samples/GPT_A_prompt3_seed8200.abc",
+      "sha256": "058f99e5a90c3de9a9e9d67c2a1d1ded0e90f46f14c09b2c41f5185e359c33d6",
+      "parser_accepted": true,
+      "interior_measures": 11,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 27,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 3,
+      "seed": 8201,
+      "stop": "EOS",
+      "tokens": 108,
+      "file": "raw_samples/GPT_A_prompt3_seed8201.abc",
+      "sha256": "b6fe4e2d97129570b2c03fe09ae82f1f4f8ad9b535410693ff8f1cddf923c403",
+      "parser_accepted": true,
+      "interior_measures": 12,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 28,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 3,
+      "seed": 8202,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_A_prompt3_seed8202.abc",
+      "sha256": "ea0c78057ba02c94007d8a098f3573793cbd8f7fafcd08e3eeec25f160afc455",
+      "parser_accepted": true,
+      "interior_measures": 41,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 92,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 3,
+      "seed": 8203,
+      "stop": "EOS",
+      "tokens": 276,
+      "file": "raw_samples/GPT_A_prompt3_seed8203.abc",
+      "sha256": "0aa3f5e5d8941a61fc46d07408e109d7e0f76f6fffb4c7e5a062415e55f94913",
+      "parser_accepted": true,
+      "interior_measures": 32,
+      "bad_interior_measures": 2,
+      "has_testable_meter": true,
+      "notes": 79,
+      "bad_details": [
+        {
+          "measure": 5,
+          "duration": 2.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 12,
+          "duration": 1.0,
+          "expected": 3.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 3,
+      "seed": 8204,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_A_prompt3_seed8204.abc",
+      "sha256": "d53487ac759043a2a55ed0e963791123fafb046aa2097743e547a22eb87e2311",
+      "parser_accepted": true,
+      "interior_measures": 39,
+      "bad_interior_measures": 3,
+      "has_testable_meter": true,
+      "notes": 94,
+      "bad_details": [
+        {
+          "measure": 3,
+          "duration": 2.5,
+          "expected": 3.0
+        },
+        {
+          "measure": 5,
+          "duration": 2.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 23,
+          "duration": 1.0,
+          "expected": 3.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 3,
+      "seed": 8205,
+      "stop": "EOS",
+      "tokens": 108,
+      "file": "raw_samples/GPT_A_prompt3_seed8205.abc",
+      "sha256": "4693b10e7cc29a0aee0b774909938fcfad808b46ee90ca6301f6bc4a40aff480",
+      "parser_accepted": true,
+      "interior_measures": 13,
+      "bad_interior_measures": 2,
+      "has_testable_meter": true,
+      "notes": 26,
+      "bad_details": [
+        {
+          "measure": 3,
+          "duration": 1.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 9,
+          "duration": 1.0,
+          "expected": 3.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 3,
+      "seed": 8206,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_A_prompt3_seed8206.abc",
+      "sha256": "0ba5a6b5f002cf46099ddc641af8fd2b62771fbf926d32069ddd55c98f54a206",
+      "parser_accepted": true,
+      "interior_measures": 52,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 103,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 3,
+      "seed": 8207,
+      "stop": "EOS",
+      "tokens": 108,
+      "file": "raw_samples/GPT_A_prompt3_seed8207.abc",
+      "sha256": "9da86758ff2ae8ec8d414a3b363622d8ddafc7c9785710eb2d6cb35332ea761f",
+      "parser_accepted": true,
+      "interior_measures": 12,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 26,
+      "bad_details": [
+        {
+          "measure": 10,
+          "duration": 2.0,
+          "expected": 3.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 3,
+      "seed": 8208,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_A_prompt3_seed8208.abc",
+      "sha256": "98387724b0b17e24613a48fcd6914d10240f5b4a4c0cd617c8ecb8db63cf0031",
+      "parser_accepted": true,
+      "interior_measures": 46,
+      "bad_interior_measures": 4,
+      "has_testable_meter": true,
+      "notes": 90,
+      "bad_details": [
+        {
+          "measure": 4,
+          "duration": 2.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 5,
+          "duration": 2.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 17,
+          "duration": 1.5,
+          "expected": 3.0
+        },
+        {
+          "measure": 28,
+          "duration": 1.5,
+          "expected": 3.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_A",
+      "prompt_index": 3,
+      "seed": 8209,
+      "stop": "EOS",
+      "tokens": 375,
+      "file": "raw_samples/GPT_A_prompt3_seed8209.abc",
+      "sha256": "bf233519482fb27eb94e83ad1bd2a76199d083352ac319a712869c559c21bef9",
+      "parser_accepted": true,
+      "interior_measures": 44,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 100,
+      "bad_details": [
+        {
+          "measure": 9,
+          "duration": 1.0,
+          "expected": 3.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 1,
+      "seed": 8200,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_B_prompt1_seed8200.abc",
+      "sha256": "076ff7849aa8772569804f4f5ee0b9e136d2398e5edbaecfa9803e3034f7010b",
+      "parser_accepted": true,
+      "interior_measures": 38,
+      "bad_interior_measures": 4,
+      "has_testable_meter": true,
+      "notes": 106,
+      "bad_details": [
+        {
+          "measure": 4,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 5,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 11,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 16,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 1,
+      "seed": 8201,
+      "stop": "EOS",
+      "tokens": 108,
+      "file": "raw_samples/GPT_B_prompt1_seed8201.abc",
+      "sha256": "bd4c7cc0c1723d8c05f1dfcb63a8c53a950f02d7031fe0ab06f595211dc39d2c",
+      "parser_accepted": true,
+      "interior_measures": 8,
+      "bad_interior_measures": 4,
+      "has_testable_meter": true,
+      "notes": 27,
+      "bad_details": [
+        {
+          "measure": 4,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 5,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 6,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 7,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 1,
+      "seed": 8202,
+      "stop": "EOS",
+      "tokens": 108,
+      "file": "raw_samples/GPT_B_prompt1_seed8202.abc",
+      "sha256": "43397817097946ecf9db9b64f70e00630ade99507222ba1320e1e098dc5b6646",
+      "parser_accepted": true,
+      "interior_measures": 7,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 30,
+      "bad_details": [
+        {
+          "measure": 1,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 1,
+      "seed": 8203,
+      "stop": "EOS",
+      "tokens": 175,
+      "file": "raw_samples/GPT_B_prompt1_seed8203.abc",
+      "sha256": "6d8ab6598bd99dd7a5341c553ebc273ee35b43404872ee3022cd183b95e365be",
+      "parser_accepted": true,
+      "interior_measures": 15,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 50,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 1,
+      "seed": 8204,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_B_prompt1_seed8204.abc",
+      "sha256": "461a0a4b288c174bbc1df114f20548e506d4fc6a73845964f1c68a38cbf0b739",
+      "parser_accepted": true,
+      "interior_measures": 31,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 99,
+      "bad_details": [
+        {
+          "measure": 8,
+          "duration": 3.5,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 1,
+      "seed": 8205,
+      "stop": "EOS",
+      "tokens": 108,
+      "file": "raw_samples/GPT_B_prompt1_seed8205.abc",
+      "sha256": "f8f61488ecb791ba4dddf24d7ca31b0ebad688856aca33b84fa500fa161c05d3",
+      "parser_accepted": true,
+      "interior_measures": 6,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 22,
+      "bad_details": [
+        {
+          "measure": 4,
+          "duration": 1.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 1,
+      "seed": 8206,
+      "stop": "EOS",
+      "tokens": 163,
+      "file": "raw_samples/GPT_B_prompt1_seed8206.abc",
+      "sha256": "f2db9794470ad8c0e0a9c7c6ef5f95a4ee3b23aa41aa75457019a6482b24ccef",
+      "parser_accepted": true,
+      "interior_measures": 14,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 44,
+      "bad_details": [
+        {
+          "measure": 5,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 1,
+      "seed": 8207,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_B_prompt1_seed8207.abc",
+      "sha256": "989072ea7be473c1c14cbc92d06a5b9981ea601c57c9c2e07d942248f02eac7f",
+      "parser_accepted": true,
+      "interior_measures": 28,
+      "bad_interior_measures": 2,
+      "has_testable_meter": true,
+      "notes": 99,
+      "bad_details": [
+        {
+          "measure": 3,
+          "duration": 3.5,
+          "expected": 4.0
+        },
+        {
+          "measure": 6,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 1,
+      "seed": 8208,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_B_prompt1_seed8208.abc",
+      "sha256": "613b35d453965d1f8987a9b5f864451186ec2845496a60321887ede97ce96787",
+      "parser_accepted": true,
+      "interior_measures": 34,
+      "bad_interior_measures": 3,
+      "has_testable_meter": true,
+      "notes": 99,
+      "bad_details": [
+        {
+          "measure": 4,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 6,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 7,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 1,
+      "seed": 8209,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_B_prompt1_seed8209.abc",
+      "sha256": "e3b0bfda614edb84cb7d87b7e55b2c32011b0808a7d6226a399880c03c434b0d",
+      "parser_accepted": true,
+      "interior_measures": 43,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 106,
+      "bad_details": [
+        {
+          "measure": 7,
+          "duration": 1.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 2,
+      "seed": 8200,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_B_prompt2_seed8200.abc",
+      "sha256": "2020cbf1cc583536cc6cc446bee8edf3160de2e14482a66b23ac5dd25655d5ed",
+      "parser_accepted": true,
+      "interior_measures": 30,
+      "bad_interior_measures": 5,
+      "has_testable_meter": true,
+      "notes": 99,
+      "bad_details": [
+        {
+          "measure": 4,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 6,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 10,
+          "duration": 1.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 17,
+          "duration": 1.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 28,
+          "duration": 3.5,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 2,
+      "seed": 8201,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_B_prompt2_seed8201.abc",
+      "sha256": "3b995d60ea2bdac5342b7a09a0ea3aff1fffb46530a98099396618fa5a585ef8",
+      "parser_accepted": true,
+      "interior_measures": 36,
+      "bad_interior_measures": 2,
+      "has_testable_meter": true,
+      "notes": 101,
+      "bad_details": [
+        {
+          "measure": 3,
+          "duration": 1.75,
+          "expected": 4.0
+        },
+        {
+          "measure": 6,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 2,
+      "seed": 8202,
+      "stop": "EOS",
+      "tokens": 136,
+      "file": "raw_samples/GPT_B_prompt2_seed8202.abc",
+      "sha256": "1a8527d3ff82e45d82eaa16b2939d7ef0fedd415a7229a9496947889c0f74561",
+      "parser_accepted": true,
+      "interior_measures": 11,
+      "bad_interior_measures": 4,
+      "has_testable_meter": true,
+      "notes": 36,
+      "bad_details": [
+        {
+          "measure": 3,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 4,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 5,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 9,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 2,
+      "seed": 8203,
+      "stop": "EOS",
+      "tokens": 107,
+      "file": "raw_samples/GPT_B_prompt2_seed8203.abc",
+      "sha256": "873e5802dbf342c2b31e36553a9a40b53d66ca7ed46584c94cacf9d4487f4ac3",
+      "parser_accepted": true,
+      "interior_measures": 8,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 30,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 2,
+      "seed": 8204,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_B_prompt2_seed8204.abc",
+      "sha256": "5e6c3f2e27a97b8c2fc96252bd03969f03fb064df69ff727552a04467cfb5dae",
+      "parser_accepted": true,
+      "interior_measures": 27,
+      "bad_interior_measures": 4,
+      "has_testable_meter": true,
+      "notes": 93,
+      "bad_details": [
+        {
+          "measure": 5,
+          "duration": 3.5,
+          "expected": 4.0
+        },
+        {
+          "measure": 15,
+          "duration": 3.5,
+          "expected": 4.0
+        },
+        {
+          "measure": 16,
+          "duration": 2.5,
+          "expected": 4.0
+        },
+        {
+          "measure": 19,
+          "duration": 3.5,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 2,
+      "seed": 8205,
+      "stop": "EOS",
+      "tokens": 336,
+      "file": "raw_samples/GPT_B_prompt2_seed8205.abc",
+      "sha256": "2541c12e718e3432c7b0c2383da460ac5aabbf7a14fc743001bdae4f98b32ec4",
+      "parser_accepted": true,
+      "interior_measures": 29,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 90,
+      "bad_details": [
+        {
+          "measure": 3,
+          "duration": 3.5,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 2,
+      "seed": 8206,
+      "stop": "EOS",
+      "tokens": 217,
+      "file": "raw_samples/GPT_B_prompt2_seed8206.abc",
+      "sha256": "29d0dd2ddfc5aff313339b24fd33651ca19f705f6cef4a136b29f6b86001bf24",
+      "parser_accepted": true,
+      "interior_measures": 19,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 62,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": true
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 2,
+      "seed": 8207,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_B_prompt2_seed8207.abc",
+      "sha256": "01c0f5bd215755ffe74f1d83e73d65dcdc627e548067badb40089ec0ffde97cd",
+      "parser_accepted": true,
+      "interior_measures": 30,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 97,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 2,
+      "seed": 8208,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_B_prompt2_seed8208.abc",
+      "sha256": "c34caf622f68fe55dca5efb660cb9015981271bc8825d65b89559659838dd505",
+      "parser_accepted": true,
+      "interior_measures": 35,
+      "bad_interior_measures": 4,
+      "has_testable_meter": true,
+      "notes": 105,
+      "bad_details": [
+        {
+          "measure": 3,
+          "duration": 3.5,
+          "expected": 4.0
+        },
+        {
+          "measure": 6,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 7,
+          "duration": 3.0,
+          "expected": 4.0
+        },
+        {
+          "measure": 21,
+          "duration": 1.5,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 2,
+      "seed": 8209,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_B_prompt2_seed8209.abc",
+      "sha256": "d14ff44bd91f987b108c8bb456f9281dfcd4f71fe4bdf673af737deedfe62cdb",
+      "parser_accepted": true,
+      "interior_measures": 31,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 97,
+      "bad_details": [
+        {
+          "measure": 7,
+          "duration": 3.0,
+          "expected": 4.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 3,
+      "seed": 8200,
+      "stop": "EOS",
+      "tokens": 108,
+      "file": "raw_samples/GPT_B_prompt3_seed8200.abc",
+      "sha256": "7321f234038e413ba2da36a1bc6ce576801076d9d7bdb1c5bc239e9bc47fc956",
+      "parser_accepted": false,
+      "interior_measures": 0,
+      "bad_interior_measures": 0,
+      "has_testable_meter": false,
+      "error": "AccidentalException: nn is not a supported accidental type",
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 3,
+      "seed": 8201,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_B_prompt3_seed8201.abc",
+      "sha256": "2f2d53eb7a531e154750629aaaedaa12e4713fe0aca9c36bc3583e709bb8e753",
+      "parser_accepted": true,
+      "interior_measures": 27,
+      "bad_interior_measures": 18,
+      "has_testable_meter": true,
+      "notes": 99,
+      "bad_details": [
+        {
+          "measure": 4,
+          "duration": 2.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 7,
+          "duration": 2.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 11,
+          "duration": 1.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 13,
+          "duration": 2.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 14,
+          "duration": 5.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 15,
+          "duration": 1.5,
+          "expected": 3.0
+        },
+        {
+          "measure": 16,
+          "duration": 5.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 17,
+          "duration": 4.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 18,
+          "duration": 6.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 19,
+          "duration": 9.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 20,
+          "duration": 4.75,
+          "expected": 3.0
+        },
+        {
+          "measure": 21,
+          "duration": 5.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 22,
+          "duration": 5.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 23,
+          "duration": 4.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 24,
+          "duration": 5.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 25,
+          "duration": 5.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 26,
+          "duration": 5.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 27,
+          "duration": 6.0,
+          "expected": 3.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 3,
+      "seed": 8202,
+      "stop": "EOS",
+      "tokens": 203,
+      "file": "raw_samples/GPT_B_prompt3_seed8202.abc",
+      "sha256": "131c33f49a8fa219af4e905f9aaa4895cf165eca685c365ca71ce17b88f4d441",
+      "parser_accepted": true,
+      "interior_measures": 26,
+      "bad_interior_measures": 3,
+      "has_testable_meter": true,
+      "notes": 50,
+      "bad_details": [
+        {
+          "measure": 6,
+          "duration": 2.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 8,
+          "duration": 2.0,
+          "expected": 3.0
+        },
+        {
+          "measure": 13,
+          "duration": 1.0,
+          "expected": 3.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 3,
+      "seed": 8203,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_B_prompt3_seed8203.abc",
+      "sha256": "ac20d1e4d6a3c79b00af942a654c0113fa1d960968f4bf2e7fb431233cd9c0c0",
+      "parser_accepted": true,
+      "interior_measures": 35,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 94,
+      "bad_details": [
+        {
+          "measure": 2,
+          "duration": 2.0,
+          "expected": 3.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 3,
+      "seed": 8204,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_B_prompt3_seed8204.abc",
+      "sha256": "769a80fe9a9b0f9ff26dbe6ae0702ecd45f8ce69b93ae37af57985061f1a8bd2",
+      "parser_accepted": true,
+      "interior_measures": 42,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 100,
+      "bad_details": [
+        {
+          "measure": 8,
+          "duration": 2.0,
+          "expected": 3.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 3,
+      "seed": 8205,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_B_prompt3_seed8205.abc",
+      "sha256": "c4495e3dc411f3d0c7b1b330710fa87814ba014af740022f778a2b8ddb7efbca",
+      "parser_accepted": true,
+      "interior_measures": 40,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 102,
+      "bad_details": [
+        {
+          "measure": 6,
+          "duration": 1.0,
+          "expected": 3.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 3,
+      "seed": 8206,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_B_prompt3_seed8206.abc",
+      "sha256": "1d41b6634ac7b04bb676aee6ebc7a214d4ee7d1d84108f43f5aa00b7670c3042",
+      "parser_accepted": false,
+      "interior_measures": 0,
+      "bad_interior_measures": 0,
+      "has_testable_meter": false,
+      "error": "AccidentalException: nn is not a supported accidental type",
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 3,
+      "seed": 8207,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_B_prompt3_seed8207.abc",
+      "sha256": "fadeea33b982d051dc9a213b2c5ce3312653796031d52730d5ceb011880202da",
+      "parser_accepted": true,
+      "interior_measures": 42,
+      "bad_interior_measures": 1,
+      "has_testable_meter": true,
+      "notes": 103,
+      "bad_details": [
+        {
+          "measure": 6,
+          "duration": 2.0,
+          "expected": 3.0
+        }
+      ],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 3,
+      "seed": 8208,
+      "stop": "EOS",
+      "tokens": 242,
+      "file": "raw_samples/GPT_B_prompt3_seed8208.abc",
+      "sha256": "56eb6110e06e4d489543386972c03574762e602b80b0f1db1d82c08474a7164e",
+      "parser_accepted": false,
+      "interior_measures": 0,
+      "bad_interior_measures": 0,
+      "has_testable_meter": false,
+      "error": "AccidentalException: nn is not a supported accidental type",
+      "complete_and_meter_check_pass": false
+    },
+    {
+      "model": "GPT_B",
+      "prompt_index": 3,
+      "seed": 8209,
+      "stop": "token_limit",
+      "tokens": 384,
+      "file": "raw_samples/GPT_B_prompt3_seed8209.abc",
+      "sha256": "de26be38cdb95030084039530f7c502b6881194cbe183adae38944a1466f84e9",
+      "parser_accepted": true,
+      "interior_measures": 36,
+      "bad_interior_measures": 0,
+      "has_testable_meter": true,
+      "notes": 93,
+      "bad_details": [],
+      "warnings": [],
+      "complete_and_meter_check_pass": false
+    }
+  ],
+  "limitations": [
+    "90 fixed samples, 3 prompts, no population-wide musical quality estimate",
+    "Parser acceptance is not strict ABC validation; missing/extra bars may be normalized",
+    "First/last measures excluded; extremely short pieces do not pass composite measure",
+    "No human listening study, no learned judge, no grammar correction",
+    "Composite complete-and-meter check is diagnostic, not musicality"
+  ]
+}

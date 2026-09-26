@@ -1,0 +1,11 @@
+{
+  "do_not_use_for_training_or_evaluation": true,
+  "reason": "Manual review found short contour variants chor130/chor320 below initial 88% near-duplicate threshold. Threshold lowered to 80%; all earlier runs invalidated and restarted from scratch.",
+  "suspect_pair_similarity": 0.8205128205128205,
+  "final_threshold": 0.8,
+  "final_manifest_sha256": "92c0801ccc5f9b0e099d17209e675c0fbeb3d8cbed0b0994990e3a1d1868da5f",
+  "old_weights_reused": false,
+  "new_runs_have_manifest_id_in_directory": true,
+  "scope": "Superseded initial 88% split and its runs only; final manifest below passed a new audit",
+  "initial_runs_terminated": true
+}

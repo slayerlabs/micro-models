@@ -1,0 +1,11 @@
+{
+  "state": "completed",
+  "step": 2000,
+  "planned_steps": 2000,
+  "best_step": 1200,
+  "best_validation_body_ppl": 1.8969843434984355,
+  "best_training_body_ppl": 1.5882308062103827,
+  "elapsed_seconds": 61.735246771000675,
+  "processed_target_tokens": 3621776,
+  "test_evaluated": false
+}

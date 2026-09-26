@@ -1,0 +1,319 @@
+{
+  "audit_version": 1,
+  "checks": {
+    "unique_representative_ids": true,
+    "all_370_sources_accounted_once": true,
+    "all_source_hashes_match": true,
+    "all_record_lengths_match": true,
+    "all_text_hashes_match": true,
+    "no_unrecognized_characters": true,
+    "headers_do_not_contain_identity": true,
+    "soprano_is_highest_mean_voice": true,
+    "zero_overlap_train:validation": true,
+    "zero_overlap_train:test": true,
+    "zero_overlap_validation:test": true,
+    "character_JS_under_0_06_bits": true,
+    "mode_TV_under_0_15": true,
+    "meter_TV_under_0_15": true,
+    "split_shares_within_5_percentage_points": true,
+    "ABC_roundtrip_all_pitches_and_durations": true,
+    "all_targets_once_no_tail_omission_no_record_crossing": true,
+    "uniform_metric_matches_analytic_value_all_lengths": true,
+    "causal_mask_does_not_expose_future_tokens": true
+  },
+  "details": {
+    "all_source_hashes_match": [],
+    "zero_overlap_train:validation": {
+      "id": 0,
+      "family_id": 0,
+      "text_sha256": 0,
+      "melody_sha256": 0,
+      "transposed_sha256": 0,
+      "title": 0,
+      "work": 0,
+      "shared_24_interval_fragments": 0,
+      "shared_128_character_fragments": 0,
+      "near_matches_alternative_algorithm": 0
+    },
+    "zero_overlap_train:test": {
+      "id": 0,
+      "family_id": 0,
+      "text_sha256": 0,
+      "melody_sha256": 0,
+      "transposed_sha256": 0,
+      "title": 0,
+      "work": 0,
+      "shared_24_interval_fragments": 0,
+      "shared_128_character_fragments": 0,
+      "near_matches_alternative_algorithm": 0
+    },
+    "zero_overlap_validation:test": {
+      "id": 0,
+      "family_id": 0,
+      "text_sha256": 0,
+      "melody_sha256": 0,
+      "transposed_sha256": 0,
+      "title": 0,
+      "work": 0,
+      "shared_24_interval_fragments": 0,
+      "shared_128_character_fragments": 0,
+      "near_matches_alternative_algorithm": 0
+    },
+    "nearest_cross_split_pairs": {
+      "train:validation": {
+        "maximum_alternative_contour_similarity": 0.6575342465753424,
+        "nearest_pair": [
+          "chor090",
+          "chor040"
+        ]
+      },
+      "train:test": {
+        "maximum_alternative_contour_similarity": 0.7045454545454546,
+        "nearest_pair": [
+          "chor326",
+          "chor144"
+        ]
+      },
+      "validation:test": {
+        "maximum_alternative_contour_similarity": 0.6153846153846154,
+        "nearest_pair": [
+          "chor073",
+          "chor068"
+        ]
+      }
+    },
+    "split_shares_within_5_percentage_points": {
+      "train": {
+        "records": 0.7982954545454546,
+        "chars": 0.7980090260660403
+      },
+      "validation": {
+        "records": 0.10227272727272728,
+        "chars": 0.10316864930518344
+      },
+      "test": {
+        "records": 0.09943181818181818,
+        "chars": 0.09882232462877624
+      }
+    },
+    "distribution": {
+      "mode": {
+        "train": {
+          "counts": {
+            "major": 137,
+            "dorian": 28,
+            "minor": 107,
+            "phrygian": 2,
+            "mixolydian": 7
+          },
+          "total_variation": 0.007218537690067939,
+          "jensen_shannon_bits": 9.528549885599291e-05
+        },
+        "validation": {
+          "counts": {
+            "major": 18,
+            "dorian": 4,
+            "minor": 13,
+            "mixolydian": 1
+          },
+          "total_variation": 0.019570707070707075,
+          "jensen_shannon_bits": 0.0031269492771162817
+        },
+        "test": {
+          "counts": {
+            "major": 18,
+            "minor": 12,
+            "dorian": 4,
+            "mixolydian": 1
+          },
+          "total_variation": 0.0378246753246753,
+          "jensen_shannon_bits": 0.0038473383482875547
+        }
+      },
+      "meter": {
+        "train": {
+          "counts": {
+            "3/4": 28,
+            "4/4": 252,
+            "3/2": 1
+          },
+          "total_variation": 0.0009301197023616871,
+          "jensen_shannon_bits": 2.935553194862578e-05
+        },
+        "validation": {
+          "counts": {
+            "3/4": 4,
+            "4/4": 32
+          },
+          "total_variation": 0.011679292929292944,
+          "jensen_shannon_bits": 0.0016700166700637934
+        },
+        "test": {
+          "counts": {
+            "4/4": 32,
+            "3/4": 3
+          },
+          "total_variation": 0.01655844155844155,
+          "jensen_shannon_bits": 0.001841932031143806
+        }
+      },
+      "key_sharps": {
+        "train": {
+          "counts": {
+            "1": 54,
+            "3": 27,
+            "4": 5,
+            "-1": 39,
+            "-3": 12,
+            "0": 63,
+            "2": 37,
+            "-2": 42,
+            "-4": 2
+          },
+          "total_variation": 0.012101666127466819,
+          "jensen_shannon_bits": 0.0001983719861891468
+        },
+        "validation": {
+          "counts": {
+            "3": 3,
+            "-3": 2,
+            "2": 7,
+            "1": 6,
+            "0": 7,
+            "-2": 5,
+            "-1": 5,
+            "4": 1
+          },
+          "total_variation": 0.07607323232323232,
+          "jensen_shannon_bits": 0.010277180730613678
+        },
+        "test": {
+          "counts": {
+            "0": 8,
+            "1": 6,
+            "-1": 5,
+            "2": 5,
+            "3": 3,
+            "-3": 2,
+            "-2": 5,
+            "-4": 1
+          },
+          "total_variation": 0.04602272727272728,
+          "jensen_shannon_bits": 0.01362111949207439
+        }
+      },
+      "characters": {
+        "train": {
+          "total_variation": 0.0062601818576542515,
+          "jensen_shannon_bits": 0.00010324476905952001
+        },
+        "validation": {
+          "total_variation": 0.03242639739211945,
+          "jensen_shannon_bits": 0.002085901656091192
+        },
+        "test": {
+          "total_variation": 0.03153724527850444,
+          "jensen_shannon_bits": 0.0028438971460632003
+        }
+      }
+    },
+    "ABC_roundtrip_all_pitches_and_durations": [],
+    "all_targets_once_no_tail_omission_no_record_crossing": [],
+    "uniform_metric_matches_analytic_value_all_lengths": [
+      {
+        "chars": 1,
+        "scored": 1,
+        "ppl": 81.9999967609524
+      },
+      {
+        "chars": 2,
+        "scored": 2,
+        "ppl": 81.9999967609524
+      },
+      {
+        "chars": 63,
+        "scored": 63,
+        "ppl": 81.9999967609524
+      },
+      {
+        "chars": 64,
+        "scored": 64,
+        "ppl": 81.9999967609524
+      },
+      {
+        "chars": 65,
+        "scored": 65,
+        "ppl": 81.9999967609524
+      },
+      {
+        "chars": 127,
+        "scored": 127,
+        "ppl": 81.9999967609524
+      },
+      {
+        "chars": 128,
+        "scored": 128,
+        "ppl": 81.9999967609524
+      },
+      {
+        "chars": 129,
+        "scored": 129,
+        "ppl": 81.9999967609524
+      },
+      {
+        "chars": 130,
+        "scored": 130,
+        "ppl": 81.9999967609524
+      },
+      {
+        "chars": 191,
+        "scored": 191,
+        "ppl": 81.9999967609524
+      },
+      {
+        "chars": 192,
+        "scored": 192,
+        "ppl": 81.9999967609524
+      },
+      {
+        "chars": 193,
+        "scored": 193,
+        "ppl": 81.9999967609524
+      },
+      {
+        "chars": 255,
+        "scored": 255,
+        "ppl": 81.9999967609524
+      },
+      {
+        "chars": 256,
+        "scored": 256,
+        "ppl": 81.9999967609524
+      },
+      {
+        "chars": 257,
+        "scored": 257,
+        "ppl": 81.9999967609524
+      },
+      {
+        "chars": 1000,
+        "scored": 1000,
+        "ppl": 81.9999967609524
+      }
+    ],
+    "causal_mask_does_not_expose_future_tokens": {
+      "max_logit_difference_before_changed_future": 0.0
+    }
+  },
+  "test_loss_computed": false,
+  "manifest_sha256": "92c0801ccc5f9b0e099d17209e675c0fbeb3d8cbed0b0994990e3a1d1868da5f",
+  "protocol_sha256": "5a7464baa063bfaa524e2085c5f8f9bd2f4fbf574a3305fe39aa6813710feea9",
+  "audit_script_sha256": "2a04fa649e427165b817997994558c533c590012199b7a4e8051756c03adc84b",
+  "passed": true,
+  "limitations": [
+    "Finite similarity rules cannot prove the absence of every musicological relationship.",
+    "Short shared motifs are expected in this domain and are not treated as full-record leakage.",
+    "Distribution matching uses metadata only; test prediction quality remains unmeasured.",
+    "Rare modes and keys may not occur in every split; inspect count tables, not only aggregate divergence."
+  ]
+}

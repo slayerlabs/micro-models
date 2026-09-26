@@ -1,0 +1,24 @@
+{
+  "validation_reproduction_absolute_errors": {
+    "NPLM": 4.7056075036522316e-08,
+    "GPT_A": 7.628723430741502e-09,
+    "GPT_B": 3.452627073130543e-09,
+    "ngram1": 8.881784197001252e-16,
+    "ngram3": 1.3322676295501878e-15,
+    "ngram6": 4.440892098500626e-16
+  },
+  "original_evaluator_agreement": {
+    "NPLM": 4.7056075036522316e-08,
+    "GPT_A": 7.628723430741502e-09,
+    "GPT_B": 3.452627073130543e-09
+  },
+  "causal_future_perturbation_passed": true,
+  "all_targets_scored_once": true,
+  "all_distributions_normalized": true,
+  "frozen_weights_unchanged": true,
+  "runtime": {
+    "python": "3.12.14",
+    "torch": "2.14.0+cpu",
+    "numpy": "2.5.3"
+  }
+}

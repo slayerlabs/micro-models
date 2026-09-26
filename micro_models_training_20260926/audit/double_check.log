@@ -1,0 +1,32 @@
+{"roundtrip_checked": 50, "failures": 0}
+{"roundtrip_checked": 100, "failures": 0}
+{"roundtrip_checked": 150, "failures": 0}
+{"roundtrip_checked": 200, "failures": 0}
+{"roundtrip_checked": 250, "failures": 0}
+{"roundtrip_checked": 300, "failures": 0}
+{"roundtrip_checked": 350, "failures": 0}
+{
+  "passed": true,
+  "checks": {
+    "unique_representative_ids": true,
+    "all_370_sources_accounted_once": true,
+    "all_source_hashes_match": true,
+    "all_record_lengths_match": true,
+    "all_text_hashes_match": true,
+    "no_unrecognized_characters": true,
+    "headers_do_not_contain_identity": true,
+    "soprano_is_highest_mean_voice": true,
+    "zero_overlap_train:validation": true,
+    "zero_overlap_train:test": true,
+    "zero_overlap_validation:test": true,
+    "character_JS_under_0_06_bits": true,
+    "mode_TV_under_0_15": true,
+    "meter_TV_under_0_15": true,
+    "split_shares_within_5_percentage_points": true,
+    "ABC_roundtrip_all_pitches_and_durations": true,
+    "all_targets_once_no_tail_omission_no_record_crossing": true,
+    "uniform_metric_matches_analytic_value_all_lengths": true,
+    "causal_mask_does_not_expose_future_tokens": true
+  },
+  "failed": []
+}

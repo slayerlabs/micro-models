@@ -1,0 +1,80 @@
+{
+  "source_records": 370,
+  "duplicates_removed": 18,
+  "kept": 352,
+  "families": 169,
+  "largest_family": 79,
+  "splits": {
+    "train": {
+      "records": 281,
+      "families": 135,
+      "characters": 67016,
+      "notes": 13992,
+      "length_quantiles": [
+        105.0,
+        191.0,
+        219.0,
+        263.0,
+        758.0
+      ],
+      "mode": {
+        "major": 137,
+        "dorian": 28,
+        "minor": 107,
+        "phrygian": 2,
+        "mixolydian": 7
+      },
+      "meter": {
+        "3/4": 28,
+        "4/4": 252,
+        "3/2": 1
+      }
+    },
+    "validation": {
+      "records": 36,
+      "families": 17,
+      "characters": 8664,
+      "notes": 1837,
+      "length_quantiles": [
+        149.0,
+        182.0,
+        216.0,
+        257.0,
+        447.0
+      ],
+      "mode": {
+        "major": 18,
+        "dorian": 4,
+        "minor": 13,
+        "mixolydian": 1
+      },
+      "meter": {
+        "3/4": 4,
+        "4/4": 32
+      }
+    },
+    "test": {
+      "records": 35,
+      "families": 17,
+      "characters": 8299,
+      "notes": 1731,
+      "length_quantiles": [
+        134.0,
+        194.5,
+        226.0,
+        258.0,
+        499.0
+      ],
+      "mode": {
+        "major": 18,
+        "minor": 12,
+        "dorian": 4,
+        "mixolydian": 1
+      },
+      "meter": {
+        "4/4": 32,
+        "3/4": 3
+      }
+    }
+  }
+}

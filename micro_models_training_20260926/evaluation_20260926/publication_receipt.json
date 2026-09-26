@@ -1,0 +1,66 @@
+{
+  "projectId": "appgprj_6ab720929fc48191b3f34cc5b417dbf3",
+  "siteUrl": "https://micro-models-bach-ewaluacja-20260926.rodzina-na-s-0732.chatgpt.site",
+  "ready": true,
+  "thinBootstrap": true,
+  "queryCount": 6,
+  "rowCount": 45,
+  "uploads": [
+    {
+      "kind": "html",
+      "sha256": "23483c907e824b689c422d92bad95b36c4772fa8f4d6044d32fe85c1975e953b",
+      "bytes": 2868449,
+      "transport": {
+        "encoding": "identity",
+        "bytes": 2868449
+      },
+      "milliseconds": 15747
+    },
+    {
+      "kind": "snapshot",
+      "sha256": "7e3935e4e0057ed2b4dbe1909edb8084a731edf3d69fa6ae7c22eaa117ec21c0",
+      "bytes": 17299,
+      "transport": {
+        "encoding": "identity",
+        "bytes": 17299
+      },
+      "milliseconds": 1664
+    }
+  ],
+  "readback": {
+    "html": {
+      "sha256": "23483c907e824b689c422d92bad95b36c4772fa8f4d6044d32fe85c1975e953b",
+      "bytes": 2868449,
+      "milliseconds": 1145
+    },
+    "snapshot": {
+      "sha256": "7e3935e4e0057ed2b4dbe1909edb8084a731edf3d69fa6ae7c22eaa117ec21c0",
+      "bytes": 17299,
+      "milliseconds": 9615,
+      "matchedEncoding": "snapshotResponse"
+    }
+  },
+  "deployment": {
+    "id": "appgdep_6ab725442b008191abeda874f8d7b925",
+    "project_id": "appgprj_6ab720929fc48191b3f34cc5b417dbf3",
+    "title": "Micro-models: ewaluacja pilotażu Bach",
+    "version_id": "appgprj_6ab720929fc48191b3f34cc5b417dbf3~appgver_39d4e9da54188191b37742861ce0015f",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://micro-models-bach-ewaluacja-20260926.rodzina-na-s-0732.chatgpt.site",
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ab720929fc48191b3f34cc5b417dbf3",
+    "failure_message": null,
+    "env_set_revision": 1,
+    "updated_at": "2026-09-26T01:52:20.317350+00:00"
+  },
+  "source": {
+    "project_id": "appgprj_6ab720929fc48191b3f34cc5b417dbf3",
+    "checkout_path": "/workspace/scratch/d9d52312d659/report_publication_v2",
+    "commit_sha": "97f7ccab1cff1a28657a246004e0917d4b4ff202",
+    "archive": "/workspace/scratch/d9d52312d659/report_deploy_v2.tar.gz"
+  },
+  "audience": "owner-only",
+  "snapshotAsOf": "2026-09-26",
+  "browserChecked": false
+}

@@ -1,0 +1,108 @@
+{
+  "format_version": 1,
+  "frozen_at": "2026-09-26T01:24:53.116481+00:00",
+  "purpose": "First held-out evaluation of completed Bach pilot; no retraining or test-driven tuning",
+  "manifest_sha256": "92c0801ccc5f9b0e099d17209e675c0fbeb3d8cbed0b0994990e3a1d1868da5f",
+  "primary_metric": "Music-body character NLL; PPL=exp(total NLL / total characters), EOS excluded",
+  "secondary_metrics": [
+    "full-text PPL",
+    "body bits per char",
+    "equal-family mean NLL",
+    "argmax accuracy music body",
+    "token class NLL"
+  ],
+  "models": [
+    "ngram_context1",
+    "ngram_context3",
+    "ngram_context6",
+    "NPLM",
+    "GPT_A",
+    "GPT_B"
+  ],
+  "primary_comparison": [
+    "NPLM",
+    "GPT_B"
+  ],
+  "checkpoint_selection": "Existing minimum validation body NLL; NPLM 1200, GPT A 1600, GPT B 1800. Best GPT seed B chosen using validation only.",
+  "exploratory_ensembles": {
+    "GPT_AB": [
+      "GPT_A",
+      "GPT_B"
+    ],
+    "NPLM_GPT_B": [
+      "NPLM",
+      "GPT_B"
+    ]
+  },
+  "ensemble_rule": "Arithmetic mean of full probability distributions, fixed equal weights, no fitted weight",
+  "windows": {
+    "block": 128,
+    "stride": 64,
+    "reset": "each record",
+    "target_coverage": "every text character once; causal left context only; do not score PAD/BOS/EOS"
+  },
+  "uncertainty": {
+    "method": "paired percentile cluster bootstrap; sample family IDs with replacement, include all records in selected families; aggregate NLL over characters",
+    "replicates": 10000,
+    "seed": 26092026,
+    "interval": 0.95,
+    "limits": "conditional on trained checkpoints and chosen split, 17 test families, no training-seed uncertainty or multiple-testing adjustment"
+  },
+  "generation": {
+    "models": [
+      "NPLM",
+      "GPT_A",
+      "GPT_B"
+    ],
+    "prompts": [
+      "X:1\nM:4/4\nL:1/4\nK:G\n",
+      "X:1\nM:4/4\nL:1/4\nK:Am\n",
+      "X:1\nM:3/4\nL:1/4\nK:D\n"
+    ],
+    "seeds": [
+      8200,
+      8201,
+      8202,
+      8203,
+      8204,
+      8205,
+      8206,
+      8207,
+      8208,
+      8209
+    ],
+    "temperature": 0.8,
+    "top_k": 20,
+    "max_new_tokens": 384,
+    "scope": "30 samples per model, fixed training-supported prompt conditions; parser acceptance, EOS, interior meter errors, length; not human musical quality"
+  },
+  "CKA": {
+    "split": "validation",
+    "layer": "after each of 4 GPT blocks",
+    "observations": "body target positions from evaluation windows, maximum 1536 evenly spaced indices",
+    "metric": "centered linear CKA biased estimator",
+    "controls": [
+      "trained-vs-random seed 9901",
+      "random 9901 vs 9902",
+      "permuted observation alignment",
+      "self CKA"
+    ],
+    "scope": "exploratory same-corpus seed analysis; not cross-style or proof of stitchability"
+  },
+  "forbidden": "No data reassignment, checkpoint changes, retraining, ensemble fitting or sample cherry-picking after test scores",
+  "checkpoint_sha256": {
+    "runs/gpt_92c0801c_seed_20260926/checkpoint_best.pt": "03267b60001e7ef395d9683c3578578418c54c237b47317e37e95e1dbfd0f3dc",
+    "runs/gpt_92c0801c_seed_20260927/checkpoint_best.pt": "d9ed56696eeda897487abc64fb6a930f4e026aa01a0d6e49e90169543c5a0fb7",
+    "runs/nplm_92c0801c_seed_20260926/checkpoint_best.pt": "345fc024600bb167651bd891114dffd1d9983305c7b49edb43556d642b5b133a"
+  },
+  "ngram_sha256": "576d9eb47105068a7d953c3e4321b07a977cc0cbc918857e5c2de908358c761a",
+  "pre_test_amendment": {
+    "at": "2026-09-26T01:26:55.224257+00:00",
+    "reason": "Upstream E1 code averages logits; measure both logit and probability ensemble with fixed weights before opening test scoring",
+    "formulas": [
+      "0.5*pA+0.5*pB",
+      "softmax(0.5*logitsA+0.5*logitsB)"
+    ],
+    "comparison_scope": "same corpus seeds/architectures, not upstream waltz/reel benchmark reproduction"
+  }
+}

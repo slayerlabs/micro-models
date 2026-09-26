@@ -1,0 +1,79 @@
+{
+  "manifest_sha256": "92c0801ccc5f9b0e099d17209e675c0fbeb3d8cbed0b0994990e3a1d1868da5f",
+  "test_evaluated": false,
+  "metric": "validation character perplexity, music body",
+  "rows": [
+    {
+      "model": "N-gram: kontekst 1",
+      "parameters": null,
+      "best_step": null,
+      "val_body_ppl": 3.8357922657115866,
+      "val_full_ppl": 3.890093629495549,
+      "train_body_ppl": null,
+      "state": "completed",
+      "seed": null
+    },
+    {
+      "model": "N-gram: kontekst 3",
+      "parameters": null,
+      "best_step": null,
+      "val_body_ppl": 2.7369024856309427,
+      "val_full_ppl": 2.6053124857396477,
+      "train_body_ppl": null,
+      "state": "completed",
+      "seed": null
+    },
+    {
+      "model": "N-gram: kontekst 6",
+      "parameters": null,
+      "best_step": null,
+      "val_body_ppl": 2.195527427169002,
+      "val_full_ppl": 2.0906631558655904,
+      "train_body_ppl": null,
+      "state": "completed",
+      "seed": null
+    },
+    {
+      "model": "GPT / 20260926",
+      "parameters": 820224,
+      "best_step": 1600,
+      "val_body_ppl": 1.9828416805218894,
+      "val_full_ppl": 1.8962812347715812,
+      "train_body_ppl": 1.8383496868501583,
+      "state": "completed",
+      "seed": 20260926,
+      "completed_steps": 2000,
+      "elapsed_seconds": 927.647729196,
+      "processed_target_tokens": 3621776,
+      "run_path": "runs/gpt_92c0801c_seed_20260926"
+    },
+    {
+      "model": "GPT / 20260927",
+      "parameters": 820224,
+      "best_step": 1800,
+      "val_body_ppl": 1.9746776663629677,
+      "val_full_ppl": 1.8887605073654403,
+      "train_body_ppl": 1.821665885881817,
+      "state": "completed",
+      "seed": 20260927,
+      "completed_steps": 2000,
+      "elapsed_seconds": 795.7272768170005,
+      "processed_target_tokens": 3622670,
+      "run_path": "runs/gpt_92c0801c_seed_20260927"
+    },
+    {
+      "model": "NPLM / 20260926",
+      "parameters": 78866,
+      "best_step": 1200,
+      "val_body_ppl": 1.8969843434984355,
+      "val_full_ppl": 1.8202434351028238,
+      "train_body_ppl": 1.5882308062103827,
+      "state": "completed",
+      "seed": 20260926,
+      "completed_steps": 2000,
+      "elapsed_seconds": 61.735246771000675,
+      "processed_target_tokens": 3621776,
+      "run_path": "runs/nplm_92c0801c_seed_20260926"
+    }
+  ]
+}

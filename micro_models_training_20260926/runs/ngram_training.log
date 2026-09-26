@@ -1,0 +1,48 @@
+{
+  "manifest_sha256": "92c0801ccc5f9b0e099d17209e675c0fbeb3d8cbed0b0994990e3a1d1868da5f",
+  "orders": [
+    1,
+    3,
+    6
+  ],
+  "training_records": 281,
+  "training_characters": 67016,
+  "validation_records": 36,
+  "test_evaluated": false,
+  "normalization_test_passed": true,
+  "results": [
+    {
+      "order": 1,
+      "nll_per_char": 1.3584332266197559,
+      "ppl": 3.890093629495549,
+      "bits_per_char": 1.9598048794231153,
+      "body_nll_per_char": 1.3443760016735835,
+      "body_ppl": 3.8357922657115866,
+      "characters_scored": 8664,
+      "body_characters_scored": 7914,
+      "contexts": 47
+    },
+    {
+      "order": 3,
+      "nll_per_char": 0.9575526241492286,
+      "ppl": 2.6053124857396477,
+      "bits_per_char": 1.3814564222503056,
+      "body_nll_per_char": 1.006826801229083,
+      "body_ppl": 2.7369024856309427,
+      "characters_scored": 8664,
+      "body_characters_scored": 7914,
+      "contexts": 681
+    },
+    {
+      "order": 6,
+      "nll_per_char": 0.7374813151051131,
+      "ppl": 2.0906631558655904,
+      "bits_per_char": 1.0639606360504177,
+      "body_nll_per_char": 0.7864223033893402,
+      "body_ppl": 2.195527427169002,
+      "characters_scored": 8664,
+      "body_characters_scored": 7914,
+      "contexts": 7550
+    }
+  ]
+}

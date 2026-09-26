@@ -1,0 +1,313 @@
+{
+  "at": "2026-09-26T02:41:43.947280+02:00",
+  "archive_sha256": "7f193c38a5e94588a52612c760f8bfc058fa6222a42f9b645e453f7fa0139f49",
+  "matches_historical_sha256": true,
+  "archive_bytes": 26494665,
+  "zip_crc_passed": true,
+  "entries": 63,
+  "file_checks": [
+    {
+      "file": "Micro_models_audyt_danych_20260926.ipynb",
+      "matches": true
+    },
+    {
+      "file": "Micro_models_audyt_i_treningi_20260926_PL.md",
+      "matches": true
+    },
+    {
+      "file": "Micro_models_kontynuacja.json",
+      "matches": true
+    },
+    {
+      "file": "README_PL.md",
+      "matches": true
+    },
+    {
+      "file": "audit/double_check.json",
+      "matches": true
+    },
+    {
+      "file": "audit/double_check.log",
+      "matches": true
+    },
+    {
+      "file": "audit/group_edges.json",
+      "matches": true
+    },
+    {
+      "file": "audit/musical_support.json",
+      "matches": true
+    },
+    {
+      "file": "audit/near_duplicates.json",
+      "matches": true
+    },
+    {
+      "file": "audit/prepare.log",
+      "matches": true
+    },
+    {
+      "file": "audit/profile_summary.json",
+      "matches": true
+    },
+    {
+      "file": "audit/protocol_revision.json",
+      "matches": true
+    },
+    {
+      "file": "audit/removed_duplicates.json",
+      "matches": true
+    },
+    {
+      "file": "audit/run_integrity.json",
+      "matches": true
+    },
+    {
+      "file": "data/all_records_pre_dedup.jsonl",
+      "matches": true
+    },
+    {
+      "file": "data/manifest.json",
+      "matches": true
+    },
+    {
+      "file": "data/test.jsonl",
+      "matches": true
+    },
+    {
+      "file": "data/train.jsonl",
+      "matches": true
+    },
+    {
+      "file": "data/validation.jsonl",
+      "matches": true
+    },
+    {
+      "file": "data/vocab.json",
+      "matches": true
+    },
+    {
+      "file": "figures/distributions.png",
+      "matches": true
+    },
+    {
+      "file": "figures/training_curves.png",
+      "matches": true
+    },
+    {
+      "file": "licenses/Bach-CC-BY-NC-SA-4.0.txt",
+      "matches": true
+    },
+    {
+      "file": "licenses/micro-models-MIT.txt",
+      "matches": true
+    },
+    {
+      "file": "requirements-lock.txt",
+      "matches": true
+    },
+    {
+      "file": "runs/gpt_92c0801c_seed_20260926/best_training_metrics.json",
+      "matches": true
+    },
+    {
+      "file": "runs/gpt_92c0801c_seed_20260926/best_validation.json",
+      "matches": true
+    },
+    {
+      "file": "runs/gpt_92c0801c_seed_20260926/checkpoint_best.pt",
+      "matches": true
+    },
+    {
+      "file": "runs/gpt_92c0801c_seed_20260926/checkpoint_last.pt",
+      "matches": true
+    },
+    {
+      "file": "runs/gpt_92c0801c_seed_20260926/config.json",
+      "matches": true
+    },
+    {
+      "file": "runs/gpt_92c0801c_seed_20260926/metrics.jsonl",
+      "matches": true
+    },
+    {
+      "file": "runs/gpt_92c0801c_seed_20260926/status.json",
+      "matches": true
+    },
+    {
+      "file": "runs/gpt_92c0801c_seed_20260927/best_training_metrics.json",
+      "matches": true
+    },
+    {
+      "file": "runs/gpt_92c0801c_seed_20260927/best_validation.json",
+      "matches": true
+    },
+    {
+      "file": "runs/gpt_92c0801c_seed_20260927/checkpoint_best.pt",
+      "matches": true
+    },
+    {
+      "file": "runs/gpt_92c0801c_seed_20260927/checkpoint_last.pt",
+      "matches": true
+    },
+    {
+      "file": "runs/gpt_92c0801c_seed_20260927/config.json",
+      "matches": true
+    },
+    {
+      "file": "runs/gpt_92c0801c_seed_20260927/metrics.jsonl",
+      "matches": true
+    },
+    {
+      "file": "runs/gpt_92c0801c_seed_20260927/status.json",
+      "matches": true
+    },
+    {
+      "file": "runs/gpt_seed_20260926.log",
+      "matches": true
+    },
+    {
+      "file": "runs/gpt_seed_20260927.log",
+      "matches": true
+    },
+    {
+      "file": "runs/ngram_92c0801c/counts.pkl",
+      "matches": true
+    },
+    {
+      "file": "runs/ngram_92c0801c/validation.json",
+      "matches": true
+    },
+    {
+      "file": "runs/ngram_training.log",
+      "matches": true
+    },
+    {
+      "file": "runs/nplm_92c0801c_seed_20260926/best_training_metrics.json",
+      "matches": true
+    },
+    {
+      "file": "runs/nplm_92c0801c_seed_20260926/best_validation.json",
+      "matches": true
+    },
+    {
+      "file": "runs/nplm_92c0801c_seed_20260926/checkpoint_best.pt",
+      "matches": true
+    },
+    {
+      "file": "runs/nplm_92c0801c_seed_20260926/checkpoint_last.pt",
+      "matches": true
+    },
+    {
+      "file": "runs/nplm_92c0801c_seed_20260926/config.json",
+      "matches": true
+    },
+    {
+      "file": "runs/nplm_92c0801c_seed_20260926/metrics.jsonl",
+      "matches": true
+    },
+    {
+      "file": "runs/nplm_92c0801c_seed_20260926/status.json",
+      "matches": true
+    },
+    {
+      "file": "runs/nplm_training.log",
+      "matches": true
+    },
+    {
+      "file": "runs/summary.json",
+      "matches": true
+    },
+    {
+      "file": "src/check_completed_runs.py",
+      "matches": true
+    },
+    {
+      "file": "src/double_check.py",
+      "matches": true
+    },
+    {
+      "file": "src/finalize_report.py",
+      "matches": true
+    },
+    {
+      "file": "src/gpt.py",
+      "matches": true
+    },
+    {
+      "file": "src/make_notebook.py",
+      "matches": true
+    },
+    {
+      "file": "src/prepare_data.py",
+      "matches": true
+    },
+    {
+      "file": "src/protocol.py",
+      "matches": true
+    },
+    {
+      "file": "src/train.py",
+      "matches": true
+    },
+    {
+      "file": "src/train_ngram.py",
+      "matches": true
+    }
+  ],
+  "files_matched": 62,
+  "separate_artifacts": [
+    {
+      "name": "Micro_models_audyt_i_treningi_20260926_PL.md",
+      "same_as_archive": true
+    },
+    {
+      "name": "Micro_models_audyt_danych_20260926.ipynb",
+      "same_as_archive": true
+    },
+    {
+      "name": "Micro_models_kontynuacja.json",
+      "same_as_archive": true
+    }
+  ],
+  "json_files_valid": 33,
+  "runs": [
+    {
+      "run": "gpt_92c0801c_seed_20260926",
+      "state": "completed",
+      "step": 2000,
+      "planned_steps": 2000,
+      "best_step": 1600,
+      "best_validation_body_ppl": 1.9828416805218894,
+      "best_training_body_ppl": 1.8383496868501583,
+      "elapsed_seconds": 927.647729196,
+      "processed_target_tokens": 3621776,
+      "test_evaluated": false
+    },
+    {
+      "run": "gpt_92c0801c_seed_20260927",
+      "state": "completed",
+      "step": 2000,
+      "planned_steps": 2000,
+      "best_step": 1800,
+      "best_validation_body_ppl": 1.9746776663629677,
+      "best_training_body_ppl": 1.821665885881817,
+      "elapsed_seconds": 795.7272768170005,
+      "processed_target_tokens": 3622670,
+      "test_evaluated": false
+    },
+    {
+      "run": "nplm_92c0801c_seed_20260926",
+      "state": "completed",
+      "step": 2000,
+      "planned_steps": 2000,
+      "best_step": 1200,
+      "best_validation_body_ppl": 1.8969843434984355,
+      "best_training_body_ppl": 1.5882308062103827,
+      "elapsed_seconds": 61.735246771000675,
+      "processed_target_tokens": 3621776,
+      "test_evaluated": false
+    }
+  ],
+  "test_model_scoring_performed": false
+}

@@ -1,0 +1,24 @@
+{
+  "format_valid": true,
+  "code_cells_executed": 9,
+  "execution_counts": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "errors": 0,
+  "image_outputs": 2,
+  "numerical_summary_matches_original": true,
+  "figures_identical_to_original": {
+    "distributions.png": true,
+    "training_curves.png": true
+  },
+  "execution_engine": "IPython InteractiveShell, fresh process, sequential cells",
+  "visual_inspection": "Both saved PNG figures inspected at reading size; byte-identical to originals. No full Jupyter UI inspection."
+}

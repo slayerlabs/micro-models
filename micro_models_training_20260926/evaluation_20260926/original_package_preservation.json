@@ -1,0 +1,9 @@
+{
+  "all_original_data_runs_training_source_unchanged": true,
+  "original_files_identical": 85,
+  "updated_entrypoint_files": [
+    "Micro_models_kontynuacja.json",
+    "START_HERE_PL.md"
+  ],
+  "original_checksums": "audit/pre_evaluation_SHA256SUMS"
+}

@@ -1,0 +1,46 @@
+{
+  "model_type": "gpt",
+  "model_config": {
+    "vocab_size": 82,
+    "block_size": 128,
+    "n_layer": 4,
+    "n_head": 4,
+    "n_embd": 128,
+    "dropout": 0.1
+  },
+  "seed": 20260927,
+  "steps": 2000,
+  "batch": 32,
+  "block": 128,
+  "stride": 64,
+  "base_lr": 0.0003,
+  "warmup": 100,
+  "precision": "FP32 parameters, forward, backward, optimizer; no AMP/FP8/quantization",
+  "torch": "2.14.0+cpu",
+  "python": "3.12.14",
+  "device": "cpu",
+  "threads": 2,
+  "parameters": 820224,
+  "source_commit": "da30da3d7486a4b6b3de8d2d4aaa0f183617f751",
+  "manifest_sha256": "92c0801ccc5f9b0e099d17209e675c0fbeb3d8cbed0b0994990e3a1d1868da5f",
+  "audit_sha256": "3ece728acf76673b62c0467baad673dbeab3dad9b5ab6ba4bbcad8cdad0ab411",
+  "source_code_sha256": {
+    "prepare_data.py": "6c8222b3a77f1a089ad32dbad65481597d939e0005c2cc423fb9d205363d7173",
+    "protocol.py": "5a7464baa063bfaa524e2085c5f8f9bd2f4fbf574a3305fe39aa6813710feea9",
+    "double_check.py": "2a04fa649e427165b817997994558c533c590012199b7a4e8051756c03adc84b",
+    "gpt.py": "2e0a95740b4f8e640b057819f5d2a766705f095a3670615df46c1c85efd9447b",
+    "train_ngram.py": "7f46e30624e9748f8cdff18809e496363df760e9a1fd93a26116e7a9e3552c42",
+    "train.py": "221eed465c24434daf94dff406853a340fa013ce4da1bd4b2c4f9c4aa77ee9b4"
+  },
+  "data_files_used": {
+    "train": "ec57c9dced9bb251d1b28fcbf0985ad68aa4c0ceb4ec4b0ee92c8adf76d997d8",
+    "validation": "c60b3d35b9e6a687dabd5788e850aaec0a3441f9b23b00ad4533c69b806c90a7"
+  },
+  "training_windows": 1189,
+  "training_target_positions_per_pass": 67297,
+  "validation_windows": 152,
+  "test_file_opened_by_trainer": false,
+  "checkpoint_selection": "minimum full-validation body_nll_per_char",
+  "sampler": "uniform replacement sampling of fixed record-bounded chunks; every target has one labeled chunk",
+  "loss": "all nonmasked training characters plus EOS; no target across record boundaries"
+}

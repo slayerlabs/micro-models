@@ -1,0 +1,51 @@
+496f85646f01bb307d703bb1c246aec19ace8a15 2026-09-05T17:31:53+02:00 exclude checkpoints
+f32b0183ba67166f15dbd95a703218ea9ed137bc 2026-09-05T11:43:51+02:00 klaryfikacje
+97dcc238f0ffbe2e3745bd4bf87963bf051526e6 2026-09-05T11:37:36+02:00 remove attribution
+58ee25c61ec5e164e5ef79d7697dc2bd47092932 2026-09-05T10:54:22+02:00 cleanup + ablation
+5f5dc25c4dffc6e00bbc33d62535778bfc61a9ec 2026-09-05T08:49:18+02:00 update docs
+3ba975bbec38717f30900307f90b8c5d6fd2932b 2026-09-05T00:18:37+02:00 make midi
+e794bdc612e1c1de85880c73d25ebff7d01fad0a 2026-09-05T00:01:50+02:00 rkl: on-policy reverse KL posttraining z rotującym nauczycielem (E-RKL)
+da30da3d7486a4b6b3de8d2d4aaa0f183617f751 2026-09-04T19:14:28+02:00 Delete music-experts/data/models directory
+fc53efa742a7e5a196bb675ff5be83eb7f2fbe59 2026-09-04T18:54:15+02:00 judge: GPT-based classifier-as-judge benchmark (E-JUDGE)
+c892b4f912f1c55e7cb92aead0330e5c46c7a1ee 2026-07-11T15:18:25+02:00 Merge pull request #11 from slayerlabs/obsidian-experts/iteracja-1
+eea145c485172ce7f783243dbff009ef502084fa 2026-06-28T03:10:35+02:00 obsidian-experts: English version of the paper (paper-en.tex)
+cf76508a94eefac7bd771a1e8eef73afb316092d 2026-06-28T03:05:12+02:00 obsidian-experts: papier (uczciwy wynik negatywny) — paper.tex
+b7f6960dc4ae43a3c3fa5f6f451d1b0383ae23ff 2026-06-28T01:54:57+02:00 Merge pull request #10 from slayerlabs/obsidian-experts/iteracja-1
+ced0e1a184ba72a1b07cdcb2f5eac8a97dbd0d08 2026-06-28T01:52:58+02:00 obsidian-experts: mikro-model PL od zera z notatek dialektycznych (iteracja 1)
+c1aa8a07baf431950f04774768829cbcce85ee02 2026-06-24T01:49:57+02:00 Merge pull request #9 from slayerlabs/blog/most-ngram-pelny
+192fd94704643096fe61483d439a03dc1b96c8c6 2026-06-24T01:35:37+02:00 blog #1: masterowanie tresci (ton hybryda + mostki + quotowalne tezy; standard naukowy: szacunki FLOPs oznaczone, zastrzezenia twarde)
+f1738f7d87b98cd44f57bf627922b17c32195166 2026-06-24T01:25:29+02:00 blog #1 (most n-gram->transformer): draft.tex rozbudowany do pelnego bloga w formatce slay-paper (FLOPs prominentnie + trojkat pgfplots + spektrum + most do praktyki + CTA); lmodern fix
+cc8f2e1d2504f808d377232acb053d754763770d 2026-06-23T06:10:26+02:00 Merge pull request #8 from slayerlabs/fix/paper-figures
+b1bb1d048c0b6104560feb1a0cec09f5a8a63d9a 2026-06-23T05:56:45+02:00 fix(paper): null per-skala na figurze CKA (zamiast plaskiego) — CKA null 0.26->0.55, kNN ~0.68 opadajacy; proza/caption zgodne z danymi; tytul self-stitch; n=1 na bar-charcie; usun nieuzyte bibitemy. cka.py liczy null/skala (odtwarzalnosc). Subsumuje #7.
+720d2d2153b6e4a4dff637e41c97f207f1fa7bce 2026-06-23T03:53:14+02:00 ci: wersjonujemy PDF-y w repo (jeden tex -> jeden pdf, ta sama nazwa); CI nadpisuje na main; zasiew 3 PDF
+3e2071f469dd6cbf75dc7fe9d55d0cf310c3a2fb 2026-06-23T03:44:36+02:00 ci(latex): PR uruchamia CI zawsze (bez filtra paths) + push lapie wszystkie workflowy — check nie znika gdy commit nie tyka *.tex
+3b8d6afb664cce0e538480f4c093ce6fe3f50049 2026-06-23T03:42:50+02:00 Merge pull request #6 from slayerlabs/fix/latex-paper-build
+a8b0ab8d8515802da61a689f6def7a2cd0604c04 2026-06-23T03:41:56+02:00 ci: release.yml — tag v* kompiluje papery i publikuje PDF-y jako assety GitHub Release
+c60d445e23415b0184c021ea4e46c9818f9787e0 2026-06-23T03:37:56+02:00 Merge pull request #5 from slayerlabs/fix/latex-paper-build
+134609d8563f3866febf58229e3470cd9b269f40 2026-06-23T03:33:31+02:00 fix(latex): poprawny zapis precyzji nodes near coords (pgfkeys fatal na paper.tex:89); +.gitignore (artefakty LaTeX) +trigger pull_request dla CI
+f1350db72c7082966348c63addfa040dde29b9e0 2026-06-23T03:25:35+02:00 fix(paper): Delta jako $\Delta$ zamiast unicode (T1/inputenc nie zna U+0394) — CI fatal na paper.tex:68
+b1fef193dbd26f7703ed1e9e022f76dac6705bc1 2026-06-23T03:20:30+02:00 CI: kompilacja LaTeX -> PDF (latexmk) dla obu paperow + bloga; PDF jako artefakty (matryca, fail-fast off)
+706a27f10f4dfe254392b5c1d2412f0f873dc210 2026-06-22T12:06:11+02:00 Merge pull request #4 from xfaang-ci/warsztat-spektrum
+c8de8df3c125758621d83b99ddcb87019d4c3bc0 2026-06-22T11:37:27+02:00 blogdraft: warsztat dialektyczny publikacji o spektrum + draft.tex (zsyntezowany)
+770c49dc66a94e9e50a07c73720f8b4bb6b8cc9b 2026-06-21T18:42:42+02:00 Blog DRAFT: most n-gram->transformer (trojkat jakosc-pamiec-obliczenia, FLOPs, uczciwy niuans) + wykres spektrum
+34b0174e41db9b8a4e6db49e4a9eea088c5b2de8 2026-06-21T16:56:13+02:00 Merge pull request #2 from xfaang-ci/docs/report-e2e
+647210876db0a19dada7383322f2cd2c39d94c38 2026-06-21T16:46:13+02:00 docs: REPORT.md end-to-end - domkniete luki (E_CKA po audycie + most n-gram->NPLM->transformer)
+2fd6f7323bf1b597e141022965f08a50880a3dad 2026-06-21T16:37:21+02:00 Merge pull request #1 from xfaang-ci/docs/report-md
+a9f7c8d65394f88d9f485d3dbb2249f29976d24e 2026-06-21T16:01:52+02:00 Bridge-paper dla Kacpra: most n-gram->transformer (spektrum: tabela + wykres + dyskusja ppl-pamiec-generalizacja, cytaty zweryfikowane)
+44d272a3dd584f6fe9d07c48967c27c3378bd6a2 2026-06-21T15:29:54+02:00 Most n-gram->transformer: NPLM + n-gram ppl sweep, wyniki spektrum (ppl vs pamiec vs generalizacja)
+1e8607f4c2dd4cd89f9eb6355a8989031a7a1a45 2026-06-21T15:04:02+02:00 E_CKA korekta po adwersarialnym audycie: CKA czysty sygnal, mutual-kNN wycofany; dialektyka audytu (szablon) + poprawiona figura w paper
+8a1fb5f057bba7c0d9383eac6d045eea8d5b70fc 2026-06-21T14:43:25+02:00 E_CKA utwardzony: krzywa mean+-std (4 skale x3 seedy) + figura empiryczna w paper.tex (pgfplots, error bary, podpis)
+5481ec8a1f9f973057b59b614e4cd4448761f4d5 2026-06-21T13:11:16+02:00 docs: REPORT.md - status prac dla osob z zewnatrz (prosto, krok po kroku)
+0e1b3c7a14b0cded02940648773505bdfb82694f 2026-06-21T13:03:59+02:00 E_CKA sweep skali: krzywa konwergencji (CKA sufit od 0,2M, kNN rosnie z N) + kod + modele
+1cf127f1118d12c3c7a11fc286c4ffdc177a919e 2026-06-21T12:39:54+02:00 Nitka dialektyczna #6: Konwergencja vs Komplementarnosc (KMT6/KMAT6/KMS6) z E_CKA
+d828550de62fdb3a122fe7ba2730e64a4c915902 2026-06-21T09:59:03+02:00 E_CKA: harness + jig-v2 + wynik (wspolna geometria, korekta interpretacji E1)
+b1296c7490d888f77d6a1a9afe08069655414811 2026-06-21T05:41:30+02:00 Roadmapa: pułapka metrum, caveat symetrii E1, E_CKA (platońska konwergencja na mikro-skali), nowy wątek granie-razem, doostrzony KMS2; paper zaktualizowany (cytaty zweryfikowane)
+a1b2d31b5713123c57ddb6d53e9ea3e61caf5c2e 2026-06-21T04:28:28+02:00 upload_hf.py: delete_patterns dla czystego re-sync + paper/ poza HF
+aed78bef16c16778dda56a3479aa3d63e93ee5c7 2026-06-21T03:47:58+02:00 Reorganizacja src/ wg warstw (core/data/train/generate/compose/tools) + odświeżenie docs i ścieżek
+8b4a797ae629819ab4ec1fc0216b741c1642a1c7 2026-06-21T03:06:42+02:00 Docs: Wnioski-i-Dowody + E1 w Eksperymentach + poprawki; LaTeX paper dla Kacpra (music-experts/paper)
+b4946600e5980a88dfd04c15f3f7d88b2ec8b7ff 2026-06-21T03:00:36+02:00 README po polsku (Slayer = polska ekipa)
+5cf5dd8e2cfaabb3d5153f0e5eb2c6d0450682d9 2026-06-21T02:49:36+02:00 Root README: landing dla slayerlabs/micro-models (cel, zasady, projekty, jak zaczac)
+f56db298d8707c9a17763820230c8c10a0414578 2026-06-21T02:41:18+02:00 Usun raport-baseline.html z music-experts/docs (zbedny)
+6edf05e8635411a0545e978e95bc590f15690ce3 2026-06-21T02:32:51+02:00 Tidy music-experts: lean (kod+wagi+docs), modele w data/models/jig_ckpt, bez reports/samples
+0e4e2c5b52f49ac6fbabb2ecdd38fe42ed6ab21d 2026-06-21T02:21:04+02:00 docs: notatki researchowe z Obsidiana (dialektyka kompozycji, roadmap, log eksperymentów, capstone)
+96663553a3524acca4de93de3433737e490e61e5 2026-06-21T02:09:58+02:00 music-experts: małe GPT od zera (jig/bach/waltz/reel) + kompozycja (E0/fuse/duet)

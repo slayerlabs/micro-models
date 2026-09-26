@@ -1,0 +1,1734 @@
+{
+  "schema_version": 1,
+  "language": "pl",
+  "as_of": "2026-09-26",
+  "purpose": "Trwały zapis rozpoznania i punkt kontynuacji projektu; nie świadectwo pełnej reprodukcji.",
+  "report_filename": "evaluation_20260926/Micro_models_ewaluacja_PL.md",
+  "user_goal": "Poznać repozytorium i odnośniki, zmapować etapy, ocenić zasoby oraz przygotować późniejszą wspólną realizację z agentem.",
+  "scope_completed": [
+    "Przegląd obu projektów main",
+    "Przegląd dokumentacji, źródeł publikacyjnych i kluczowych odnośników",
+    "Analiza historii wag",
+    "Przegląd rdzenia i dokumentacji PR 13",
+    "Wykonane krótkie testy i demonstracja checkpointu",
+    "2026-09-26: audyt i double check korpusu Bach; ukończone trzy porównania n-gramów, NPLM i dwa GPT po 2000 kroków; checkpointy i metryki zapisane",
+    "2026-09-26: odzyskano archiwum zgodne z historycznym SHA-256, zweryfikowano 62 pliki, ponowiono 19 kontroli danych i odtworzono metryki wag bez różnicy",
+    "2026-09-26: sprawdzono ciągłość stanu modelu, optymalizatora i RNG na kopiach w pamięci; dodano sześć surowych próbek oraz sekwencyjne MIDI",
+    "2026-09-26: test 10 zamrożonych wariantów, bootstrap 17 rodzin, 90 próbek, CKA i E0 identity, raport porównawczy i notebook."
+  ],
+  "scope_not_completed": [
+    "Pełna reprodukcja benchmarków",
+    "Trening na aktualnym The Session CSV",
+    "Dostęp do prywatnego vaulta",
+    "Pełny trening PR 13",
+    "Weryfikacja GPU użytkownika",
+    "Wdrożenie usługi lub publikacja modeli"
+  ],
+  "repository": {
+    "url": "https://github.com/slayerlabs/micro-models",
+    "branch": "main",
+    "commit": "da30da3d7486a4b6b3de8d2d4aaa0f183617f751",
+    "commit_date": "2026-09-04",
+    "tracked_files": 93,
+    "python_files": 25,
+    "python_lines": 2246,
+    "source_modified": false,
+    "local_path_at_audit": "/workspace/scratch/06f43e561df7/micro-models",
+    "local_path_is_ephemeral": true
+  },
+  "optional_pr13": {
+    "url": "https://github.com/slayerlabs/micro-models/pull/13",
+    "state_at_audit": "open",
+    "merged_at": null,
+    "head_repository": "adamskrodzki/micro-models",
+    "branch": "RL_training",
+    "commit": "496f85646f01bb307d703bb1c246aec19ace8a15",
+    "mechanism": "On-policy teacher distillation by reverse KL; judge only evaluates",
+    "full_training_tested": false,
+    "treat_as_separate_variant": true
+  },
+  "architecture": {
+    "music": {
+      "parameters": 816384,
+      "vocab": 52,
+      "block": 128,
+      "block_units": "characters",
+      "layers": 4,
+      "heads": 4,
+      "embedding": 128,
+      "batch": 32,
+      "steps": 2000
+    },
+    "obsidian": {
+      "parameters": 2640000,
+      "vocab": 4352,
+      "merges": 4096,
+      "block": 128,
+      "block_units": "BPE tokens",
+      "layers": 4,
+      "heads": 4,
+      "embedding": 192,
+      "batch": 24,
+      "steps": 8000
+    },
+    "shared_features": [
+      "decoder-only",
+      "learned positional embeddings",
+      "pre-norm blocks",
+      "tied token embeddings and head",
+      "next-token cross-entropy"
+    ],
+    "not_implemented": [
+      "KV cache",
+      "Hugging Face Transformers export",
+      "automatic agent orchestration",
+      "learned coordinated polyphony",
+      "IFC/BIM pipeline"
+    ]
+  },
+  "resource_snapshot": {
+    "python": "3.12.14",
+    "torch": "2.14.0+cpu",
+    "music21": "10.5.0",
+    "cuda_available": false,
+    "memory_limit_bytes": 8589934592,
+    "cpu_quota_cores": 8,
+    "torch_threads_in_smoke": 2,
+    "disk_free_approx_gib": 27,
+    "other_host_gpu_access_verified": false,
+    "core_cpu_feasibility": "confirmed short runs; full experiments require time and data",
+    "full_training_seconds_extrapolation_only": {
+      "music_2000_optimizer_steps": 705.6619760001013,
+      "obsidian_8000_optimizer_steps_per_arm": 6690.222064000409
+    },
+    "timing_excludes": [
+      "full evaluation",
+      "tokenizer fitting",
+      "data preparation",
+      "checkpoint IO",
+      "long-run throughput variation"
+    ]
+  },
+  "runtime_tests": {
+    "python": "3.12.14",
+    "torch": "2.14.0+cpu",
+    "music21": "10.5.0",
+    "cuda_available": false,
+    "music_training_smoke": {
+      "parameters": 816384,
+      "steps": 30,
+      "first_loss": 4.002767562866211,
+      "last_loss": 0.5043689608573914,
+      "median_step_seconds_after_5": 0.35283098800005064,
+      "note": "Synthetic repeated batch; checks backprop/optimization only, not validation quality."
+    },
+    "e0_identity_max_abs_error": 0.0,
+    "generation_shape": [
+      1,
+      20
+    ],
+    "obsidian_training_smoke": {
+      "parameters": 2640000,
+      "steps": 4,
+      "last_loss": 8.086779594421387,
+      "median_step_seconds_after_first": 0.8362777580000511,
+      "note": "Random token batch; checks resource feasibility only."
+    },
+    "bpe_roundtrip": {
+      "merges": 64,
+      "ok": true
+    },
+    "bpc_tail_omission": [
+      {
+        "chars": 128,
+        "tokens": 128,
+        "scored_tokens": 0,
+        "upstream_bpc": 0.0,
+        "all_chars_uniform_bpc": 8.0
+      },
+      {
+        "chars": 129,
+        "tokens": 129,
+        "scored_tokens": 0,
+        "upstream_bpc": 0.0,
+        "all_chars_uniform_bpc": 8.0
+      },
+      {
+        "chars": 130,
+        "tokens": 130,
+        "scored_tokens": 128,
+        "upstream_bpc": 7.876923098567564,
+        "all_chars_uniform_bpc": 8.0
+      },
+      {
+        "chars": 256,
+        "tokens": 256,
+        "scored_tokens": 128,
+        "upstream_bpc": 4.000000010991341,
+        "all_chars_uniform_bpc": 8.0
+      },
+      {
+        "chars": 257,
+        "tokens": 257,
+        "scored_tokens": 128,
+        "upstream_bpc": 3.9844358086139433,
+        "all_chars_uniform_bpc": 8.0
+      },
+      {
+        "chars": 258,
+        "tokens": 258,
+        "scored_tokens": 256,
+        "upstream_bpc": 7.9379845179363056,
+        "all_chars_uniform_bpc": 8.0
+      },
+      {
+        "chars": 1000,
+        "tokens": 1000,
+        "scored_tokens": 896,
+        "upstream_bpc": 7.168000019696484,
+        "all_chars_uniform_bpc": 8.0
+      }
+    ],
+    "decomposition_not_byte_lossless": {
+      "operator_text_before": "a*b > c",
+      "operator_text_after": "a b c",
+      "links_section_prose_retained": false,
+      "note": "Synthetic counterexample to a general losslessness claim; not a claim about private author notes."
+    },
+    "abc_midi_smoke": {
+      "bytes": 151,
+      "chords": 2
+    },
+    "historical_checkpoint_globals": [
+      "gpt.GPTConfig"
+    ],
+    "historical_checkpoint": {
+      "loaded_safely": true,
+      "parameters": 816384,
+      "stored_val_loss": 1.3345626592636108,
+      "stored_val_ppl": 3.7983344167475748,
+      "config": {
+        "vocab_size": 52,
+        "block_size": 128,
+        "n_layer": 4,
+        "n_head": 4,
+        "n_embd": 128,
+        "dropout": 0.1
+      },
+      "generated_characters": 414,
+      "midi_ok": true,
+      "note": "Stored validation score is checkpoint metadata, not reproduced benchmark."
+    },
+    "peak_rss_mib": 951.54296875
+  },
+  "split_audit": {
+    "documented_lengths_approx": {
+      "waltz": 789000,
+      "reel": 3900000
+    },
+    "e1_reel_eval_span": [
+      710100,
+      789000
+    ],
+    "reel_base_training_span": [
+      0,
+      3510000
+    ],
+    "overlap_fraction": 1.0,
+    "source": "Exact split formula in main e1_stitch.py and train_gpt.py, with rounded source corpus sizes. No current CSV processed."
+  },
+  "test_source": {
+    "filename_at_audit": "research/audit_runtime.py",
+    "language": "python",
+    "code": "\"\"\"Read-only review of upstream code; temporary outputs live under research/.\"\"\"\nimport ast\nimport importlib.util\nimport json\nimport math\nimport platform\nimport resource\nimport statistics\nimport sys\nimport time\nfrom pathlib import Path\n\nimport torch\nimport music21\n\nBASE = Path(__file__).resolve().parent\nROOT = BASE.parent / 'micro-models'\nsys.path.insert(0, str(ROOT / 'music-experts/src'))\nfrom core.gpt import GPT, GPTConfig\nfrom core.abc_to_midi import to_midi\n\ndef load_module(name, path):\n    spec = importlib.util.spec_from_file_location(name, path)\n    mod = importlib.util.module_from_spec(spec)\n    sys.modules[name] = mod\n    spec.loader.exec_module(mod)\n    return mod\n\ntok = load_module('audit_tokenizer', ROOT / 'obsidian-experts/train_tokenizer.py')\nprep = load_module('audit_prepare', ROOT / 'obsidian-experts/prepare_obsidian.py')\nreport = {'python': platform.python_version(), 'torch': torch.__version__,\n          'music21': music21.__version__, 'cuda_available': torch.cuda.is_available()}\ntorch.set_num_threads(2)\ntorch.manual_seed(117)\n\n# Real source architecture, full default music dimensions.\nm = GPT(GPTConfig(vocab_size=52, block_size=128, n_layer=4, n_head=4, n_embd=128))\nopt = torch.optim.AdamW(m.parameters(), lr=1e-3)\nx = torch.arange(32 * 128).view(32, 128) % 52\ny = (x + 1) % 52\ntimings=[]; losses=[]\nfor i in range(30):\n    t = time.perf_counter()\n    _, loss = m(x,y)\n    opt.zero_grad(set_to_none=True); loss.backward(); opt.step()\n    timings.append(time.perf_counter()-t); losses.append(loss.item())\nassert math.isfinite(losses[-1]) and losses[-1] < losses[0]\nreport['music_training_smoke'] = {'parameters':m.num_params(),'steps':30,\n    'first_loss':losses[0],'last_loss':losses[-1],\n    'median_step_seconds_after_5':statistics.median(timings[5:]),\n    'note':'Synthetic repeated batch; checks backprop/optimization only, not validation quality.'}\nm.eval()\nwith torch.no_grad():\n    expected,_=m(x[:2])\n    h=m.drop(m.tok_emb(x[:2])+m.pos_emb(torch.arange(128)))\n    g=torch.nn.Linear(128,128)\n    g.weight.copy_(torch.eye(128));g.bias.zero_()\n    for i,blk in enumerate(m.blocks):\n        if i==2:h=g(h)\n        h=blk(h)\n    got=m.head(m.ln_f(h))\n    report['e0_identity_max_abs_error']=(expected-got).abs().max().item()\n    assert torch.equal(expected,got)\n    report['generation_shape']=list(m.generate(x[:1,:8],12,top_k=10).shape)\n\n# Full Obsidian default architecture, a few actual optimizer steps.\ndel m,opt\no=GPT(GPTConfig(vocab_size=4352,block_size=128,n_layer=4,n_head=4,n_embd=192))\nopt=torch.optim.AdamW(o.parameters(),lr=3e-4)\nx=torch.randint(4352,(24,128));y=torch.randint(4352,(24,128))\ntimes=[]\nfor _ in range(4):\n    t=time.perf_counter();_,loss=o(x,y)\n    opt.zero_grad(set_to_none=True);loss.backward();opt.step()\n    times.append(time.perf_counter()-t)\nreport['obsidian_training_smoke']={'parameters':o.num_params(),'steps':4,\n    'last_loss':loss.item(),'median_step_seconds_after_first':statistics.median(times[1:]),\n    'note':'Random token batch; checks resource feasibility only.'}\ndel o,opt\n\nsample=('Zażółć gęślą jaźń. Teza: poprawny pomiar. Antyteza: błąd. Synteza: sprawdź dane.\\n'*10)\nmerges=tok.train(sample,64)\nassert tok.decode(tok.encode(sample,merges),tok.build_vocab(merges))==sample\nreport['bpe_roundtrip']={'merges':len(merges),'ok':True}\n(BASE/'runtime_audit_partial.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))\n\n# Extract and call the exact upstream bpc function without checkpoint imports.\ntree=ast.parse((ROOT/'obsidian-experts/eval_obsidian.py').read_text())\nfn=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='bits_per_char')\nspace={'torch':torch,'math':math,'encode':tok.encode}\nexec(compile(ast.Module(body=[fn],type_ignores=[]),'upstream_eval_bpc','exec'),space)\nclass Uniform:\n    def eval(self):return self\n    def __call__(self,x,y):return None,torch.tensor(math.log(256))\ncases=[]\nfor n in (128,129,130,256,257,258,1000):\n    bpc,nt=space['bits_per_char'](Uniform(),[], 'a'*n,128,'cpu')\n    scored=len(range(0,n-128-1,128))*128\n    cases.append({'chars':n,'tokens':nt,'scored_tokens':scored,'upstream_bpc':bpc,'all_chars_uniform_bpc':8.0})\nreport['bpc_tail_omission']=cases\n\nfm={'title':'Test', 'id':'T1'}\nbody='# Test\\n\\n> **Teza**: Nie zmieniać znaczenia.\\n\\n## Argumenty\\n\\nKod: `a*b > c`.\\n\\n## Powiązania\\n\\nWażne zdanie niebędące linkiem. [[Dane|Alias]]\\n'\ndec=prep.decompose(fm,body,'teza','Test')\nreport['decomposition_not_byte_lossless']={\n    'operator_text_before':'a*b > c','operator_text_after':prep.clean_text('a*b > c'),\n    'links_section_prose_retained':'Ważne zdanie niebędące linkiem.' in dec,\n    'note':'Synthetic counterexample to a general losslessness claim; not a claim about private author notes.'}\n\nabc='X:1\\nM:4/4\\nL:1/4\\nK:C\\n[CEG]2 [DFA]2 | C D E F |\\n'\nmid=BASE/'smoke_chords.mid'\nassert to_midi(abc,str(mid))\nsc=music21.converter.parse(str(mid))\nreport['abc_midi_smoke']={'bytes':mid.stat().st_size,'chords':len(sc.recurse().getElementsByClass('Chord'))}\n\nweight=BASE/'jig_ckpt.pt'\nif weight.exists():\n    unsafe=torch.serialization.get_unsafe_globals_in_checkpoint(str(weight))\n    report['historical_checkpoint_globals']=unsafe\n    assert set(unsafe)<= {'core.gpt.GPTConfig','gpt.GPTConfig'}\n    with torch.serialization.safe_globals([GPTConfig,(GPTConfig,'gpt.GPTConfig')]):\n        ck=torch.load(str(weight),map_location='cpu',weights_only=True)\n    hm=GPT(ck['config']);hm.load_state_dict(ck['model']);hm.eval()\n    seed='X:1\\nM:6/8\\nK:D\\n'\n    torch.manual_seed(20260621)\n    idx=torch.tensor([[ck['stoi'][c] for c in seed]])\n    tokens=hm.generate(idx,400,temperature=.8,top_k=20)[0].tolist()\n    s=''.join(ck['itos'][i] for i in tokens)\n    first=s.split('\\nX:')[0]\n    (BASE/'historical_jig_sample.abc').write_text(first)\n    midi_ok=to_midi(first,str(BASE/'historical_jig_sample.mid'))\n    report['historical_checkpoint']={'loaded_safely':True,'parameters':hm.num_params(),\n        'stored_val_loss':ck['val_loss'],'stored_val_ppl':math.exp(ck['val_loss']),\n        'config':vars(ck['config']),'generated_characters':len(s),'midi_ok':midi_ok,\n        'note':'Stored validation score is checkpoint metadata, not reproduced benchmark.'}\n\nreport['peak_rss_mib']=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1024\n(BASE/'runtime_audit.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))\nprint(json.dumps(report,ensure_ascii=False,indent=2),flush=True)\n",
+    "reproduction_note": "Place script in research/ next to sibling micro-models/ checkout; optional verified checkpoint in research/jig_ckpt.pt. Install tested Python dependencies. Synthetic tests do not need source CSV."
+  },
+  "historical_checkpoint": {
+    "commit": "c892b4f912f1c55e7cb92aead0330e5c46c7a1ee",
+    "path": "music-experts/data/models/jig_ckpt.pt",
+    "name": "jig_ckpt.pt",
+    "url": "https://raw.githubusercontent.com/slayerlabs/micro-models/c892b4f912f1c55e7cb92aead0330e5c46c7a1ee/music-experts/data/models/jig_ckpt.pt",
+    "bytes": 3548345,
+    "git_blob_sha": "6a65e8a3e1a0c8a9acc59f4e362c7bdc3e16a404",
+    "expected_blob_sha": "6a65e8a3e1a0c8a9acc59f4e362c7bdc3e16a404",
+    "matches": true,
+    "sha256": "886989d488609c2a69cbce40426c490bacb4054b3ade4ffa8efc7c1573d32c0c",
+    "load_note": "weights_only=True with explicit GPTConfig allowlist including historical gpt.GPTConfig alias",
+    "metadata_score_is_not_reproduced_benchmark": true
+  },
+  "data_status": {
+    "music_session": {
+      "source": "https://github.com/adactio/TheSession-data",
+      "source_commit": "5d3998db16be8ae786acdee43ed8381ada0407ba",
+      "license": "https://github.com/adactio/TheSession-data/blob/5d3998db16be8ae786acdee43ed8381ada0407ba/LICENSE.md",
+      "restriction_needs_resolution_before_training": true,
+      "current_csv_downloaded_for_availability_check": true,
+      "trained_on_current_csv": false,
+      "recommended_first_data": "Own or synthetic ABC with clear rights"
+    },
+    "obsidian": {
+      "original_private_vault_available": false,
+      "external_holdout_notes_reported": 82,
+      "raw_holdout_chars_reported": 344766,
+      "remaining_notes_reported": 731,
+      "exact_author_reproduction_currently_possible": false
+    }
+  },
+  "findings": [
+    {
+      "id": "DATA_TERMS",
+      "priority": "P0-before-new-training",
+      "status": "confirmed-source-text",
+      "finding": "Publiczny dump The Session zawiera osobną klauzulę zakazującą użycia z LLM; nie zakładać wyjątku dla micro-models.",
+      "evidence": "https://github.com/adactio/TheSession-data/blob/5d3998db16be8ae786acdee43ed8381ada0407ba/LICENSE.md",
+      "action": "Wybrać własne/syntetyczne dane lub źródło z odpowiednimi warunkami; ewentualnie ustalić uprawnienie."
+    },
+    {
+      "id": "E1_SPLIT",
+      "priority": "P0-before-scientific-conclusion",
+      "status": "confirmed-code-conditional-historical-effect",
+      "finding": "E1 skraca pełny reel do długości walca przed podziałem; bazowy reel jest trenowany na 90% pełnego korpusu. Przy opisanych rozmiarach reelowa walidacja E1 w całości przecina trening bazowego eksperta.",
+      "files": [
+        "music-experts/src/compose/e1_stitch.py",
+        "music-experts/src/train/train_gpt.py"
+      ],
+      "qualification": "Brak historycznego manifestu; faktyczny skład checkpointu nie został odtworzony. Wniosek dotyczy wykonania opublikowanej procedury.",
+      "action": "Wspólny split na poziomie utworów i rodzin wariantów przed każdym treningiem; ponownie wytrenować ekspertów."
+    },
+    {
+      "id": "BPC_TAIL",
+      "priority": "P1",
+      "status": "confirmed-by-exact-function-test",
+      "finding": "Ewaluator GPT pomija końcowe tokeny, ale dzieli przez cały tekst; 129 tokenów może dać 0 bpc.",
+      "files": [
+        "obsidian-experts/eval_obsidian.py"
+      ],
+      "action": "Ocenić wszystkie docelowe tokeny, obsłużyć krótkie sekwencje i BOS, jawnie określić mianownik i kontekst.",
+      "qualification": "Nie zmierzono wpływu poprawki na prywatnym teście autorów; nie twierdzić, że zmienia ranking."
+    },
+    {
+      "id": "UNEQUAL_TRAIN_DATA",
+      "priority": "P1",
+      "status": "confirmed-code",
+      "finding": "N-gram Obsidiana używa całej puli 731 notatek, a GPT ponownie dzieli ją na 90/10.",
+      "files": [
+        "obsidian-experts/train.py",
+        "obsidian-experts/ngram_obsidian.py"
+      ],
+      "action": "Wyrównać dostęp do danych treningowych i walidacyjnych."
+    },
+    {
+      "id": "NOT_LOSSLESS",
+      "priority": "P1-for-repurposing-parser",
+      "status": "confirmed-synthetic-counterexample",
+      "finding": "Czyszczenie usuwa znaki wpływające na znaczenie, a parser może usuwać prozę w powiązaniach.",
+      "files": [
+        "obsidian-experts/prepare_obsidian.py"
+      ],
+      "action": "Zachować oryginały; określić kontrakt transformacji i mierzyć straty informacji."
+    },
+    {
+      "id": "WEIGHTS_MISSING",
+      "priority": "P1-for-quickstart",
+      "status": "confirmed-history-and-recovery",
+      "finding": "Main nie ma wag; 16 checkpointów pozostaje w rodzicu commitu usuwającego. Jeden odzyskano i przetestowano.",
+      "action": "Przypiąć zaufane źródło historyczne i hash lub wytrenować własny model."
+    },
+    {
+      "id": "REPRODUCIBILITY",
+      "priority": "P1",
+      "status": "confirmed-code",
+      "finding": "Brak pełnego stanu resume, manifestów i zamrożonych zależności; katalog modelu wymaga utworzenia.",
+      "action": "CLI/konfiguracja, pełne checkpointy, osobne run_id i metadane środowiska."
+    },
+    {
+      "id": "ENSEMBLE_SEMANTICS",
+      "priority": "P2",
+      "status": "confirmed-code",
+      "finding": "Ensemble uśrednia logity: geometryczne ważenie rozkładów po normalizacji, nie średnia prawdopodobieństw.",
+      "action": "Nazwać metodę poprawnie; dodać porównanie z arithmetic probability mixture."
+    },
+    {
+      "id": "OVERCLAIMS",
+      "priority": "P1-for-reporting",
+      "status": "interpretation-audit",
+      "finding": "Przegrana z n-gramem nie dowodzi braku generalizacji; CKA nie dowodzi redundancji ani kompatybilności funkcjonalnej; MIDI nie dowodzi metrum.",
+      "action": "Zawęzić twierdzenia do zadania i pomiaru; niezależne seedy, kontrola losowa, porównanie kosztu."
+    }
+  ],
+  "recommended_phases": [
+    {
+      "id": "0",
+      "task": "Środowisko, cel, warunki danych, wspólny manifest",
+      "acceptance": "Wersje i hashe zapisane; zbiory bez przecięć grup",
+      "status": "completed_for_bach_pilot",
+      "completion_note": "Środowisko, źródło i wspólny manifest korpusu Bach zweryfikowane."
+    },
+    {
+      "id": "1",
+      "task": "Demonstracja znanego checkpointu lub własnego ABC",
+      "acceptance": "Powtarzalna generacja i poprawny zapis MIDI",
+      "status": "completed_diagnostic_demo",
+      "completion_note": "Sześć z góry określonych surowych próbek i sześć sekwencyjnych MIDI; ograniczenia metrum jawnie zmierzone."
+    },
+    {
+      "id": "2",
+      "task": "Korpus i n-gram",
+      "acceptance": "Jeden wspólny test; określona metryka",
+      "status": "completed_for_bach_pilot",
+      "completion_note": "Wspólny podział i trzy baseline n-gramowe gotowe; wszystkie warianty oceniono na zamrożonym teście."
+    },
+    {
+      "id": "3",
+      "task": "Jeden GPT od zera",
+      "acceptance": "Krzywe train/val, checkpoint wznowienia, próbki i koszt",
+      "status": "completed_for_bach_pilot",
+      "completion_note": "Dwa GPT ukończyły po 2000 kroków; krzywe, koszt CPU, checkpointy i próbki są dostępne."
+    },
+    {
+      "id": "4",
+      "task": "NPLM i kontrolowane ablacje",
+      "acceptance": "Porównanie jednej zmiennej naraz",
+      "status": "partially_completed",
+      "completion_note": "NPLM ukończony; pełna seria kontrolowanych ablacji nie była wykonana."
+    },
+    {
+      "id": "5",
+      "task": "E0, eksperci, ensemble, E1 i model wspólny",
+      "acceptance": "Brak przecieku; porównanie jakości i kosztu",
+      "status": "partially_completed",
+      "completion_note": "Ukończono stałe ensemble probability/logit dwóch GPT i NPLM+GPT, kontrolę E0 identyczności. Trening mappera i E1 różnych domen pozostają niewykonane."
+    },
+    {
+      "id": "6",
+      "task": "CKA i komplementarność",
+      "acceptance": "Kontrola losowa, analiza różnic błędów",
+      "status": "completed_for_bach_seed_pair",
+      "completion_note": "CKA 4 bloków na 1536 pozycjach walidacji, random i shuffle controls; komplementarność błędów i test ensemble. Bez sweepu skali i domen."
+    },
+    {
+      "id": "7",
+      "task": "Własne notatki raw/decomp",
+      "acceptance": "Poprawione bpc i parser; wyrównane dane",
+      "status": "blocked_missing_private_notes",
+      "completion_note": "Brak udostępnionego korpusu prywatnych notatek."
+    },
+    {
+      "id": "8",
+      "task": "Router, kontrakt reprezentacji lub PR reverse KL",
+      "acceptance": "Uzasadnienie wcześniejszym wynikiem",
+      "status": "deferred_until_evidence",
+      "completion_note": "Router/kontrakt reprezentacji/PR 13 zależą od wyniku wcześniejszych eksperymentów."
+    },
+    {
+      "id": "9",
+      "task": "Własne zadanie użytkowe",
+      "acceptance": "Osobne kryteria użyteczności i dane domenowe",
+      "status": "pending_task_definition",
+      "completion_note": "Zadanie użytkowe i kryteria użyteczności nie zostały wybrane."
+    }
+  ],
+  "next_action": "Przed nowymi treningami zaplanować nową ocenę poza wykorzystanym testem. Pierwszy uzasadniony kierunek: kontrolowana generacja z ograniczeniami metrum i porównywalnymi długościami; później destylacja NPLM+GPT. Nie dobierać ustawień na historycznym teście.",
+  "reporting_rules": [
+    "Label author-reported numbers separately from measured results",
+    "Do not interpret no n-gram win as no generalization",
+    "Do not equate CKA similarity with redundancy or functional interoperability",
+    "Do not treat historical val_loss as rerun benchmark",
+    "Do not claim general losslessness of parser",
+    "Do not apply stale document numbers without checking code and newer notes",
+    "Do not assume public availability equals permission for model training"
+  ],
+  "references": [
+    {
+      "key": "1612.01474",
+      "url": "https://arxiv.org/abs/1612.01474",
+      "status": 200,
+      "title": "Title: Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles",
+      "sha256": "293bd7a6c2a6029ebb90432f0b85f7263b7363e352f410b4d891bc24e27ba927"
+    },
+    {
+      "key": "1711.00937",
+      "url": "https://arxiv.org/abs/1711.00937",
+      "status": 200,
+      "title": "Title: Neural Discrete Representation Learning",
+      "sha256": "99ce76f368e259c117c74c28211eae08455929ddced560efe5b87d0b95140bdd"
+    },
+    {
+      "key": "1903.07227",
+      "url": "https://arxiv.org/abs/1903.07227",
+      "status": 200,
+      "title": "Title: Counterpoint by Convolution",
+      "sha256": "2064b904b9aa21d358c903903a1ce09f435cab276725bfce03cffbc0a76c352d"
+    },
+    {
+      "key": "1905.00414",
+      "url": "https://arxiv.org/abs/1905.00414",
+      "status": 200,
+      "title": "Title: Similarity of Neural Network Representations Revisited",
+      "sha256": "24e4e87230fd725868c3426629f18db4538c91f7b201de23df370a67162667af"
+    },
+    {
+      "key": "1908.06954",
+      "url": "https://arxiv.org/abs/1908.06954",
+      "status": 200,
+      "title": "Title: Attention on Attention for Image Captioning",
+      "sha256": "442c7a48ced8f137250adf59170e162788b7bc7ec922bd89ab074a0636406f2a"
+    },
+    {
+      "key": "1911.00172",
+      "url": "https://arxiv.org/abs/1911.00172",
+      "status": 200,
+      "title": "Title: Generalization through Memorization: Nearest Neighbor Language Models",
+      "sha256": "172044a2910d1ef34e6573de0a727703fafafa1f68a0f2fc6292c640811f083d"
+    },
+    {
+      "key": "2106.07682",
+      "url": "https://arxiv.org/abs/2106.07682",
+      "status": 200,
+      "title": "Title: Revisiting Model Stitching to Compare Neural Representations",
+      "sha256": "c2fd4c79405fdf3ef1036c00720ac85a5a5bb5413f6115d644842701041b3098"
+    },
+    {
+      "key": "2203.15556",
+      "url": "https://arxiv.org/abs/2203.15556",
+      "status": 200,
+      "title": "Title: Training Compute-Optimal Large Language Models",
+      "sha256": "bc4809d5c487933ab6aed4ea233d1281b3e0b14ffba026cf441688f35d8ed146"
+    },
+    {
+      "key": "2209.04836",
+      "url": "https://arxiv.org/abs/2209.04836",
+      "status": 200,
+      "title": "Title: Git Re-Basin: Merging Models modulo Permutation Symmetries",
+      "sha256": "e148f6c05cfdd60e16671540e8e958b9b52cf17554343ba1e04672c6c7fa1fa5"
+    },
+    {
+      "key": "2209.15430",
+      "url": "https://arxiv.org/abs/2209.15430",
+      "status": 200,
+      "title": "Title: Relative representations enable zero-shot latent space communication",
+      "sha256": "9fccd6a6b5bf8d92d918ef99a8ccebc715bfecda8e08f4103848ba41cb1aba66"
+    },
+    {
+      "key": "2210.07229",
+      "url": "https://arxiv.org/abs/2210.07229",
+      "status": 200,
+      "title": "Title: Mass-Editing Memory in a Transformer",
+      "sha256": "8d79e7a80ae57ed1dac0388d2f99eac9bf0bf787d78c685b042d8dbeff1da667"
+    },
+    {
+      "key": "2212.04089",
+      "url": "https://arxiv.org/abs/2212.04089",
+      "status": 200,
+      "title": "Title: Editing Models with Task Arithmetic",
+      "sha256": "85b49ce16e0396a7ba51faba106b867acc2b71819fbb39255f0917c50b707be2"
+    },
+    {
+      "key": "2301.04213",
+      "url": "https://arxiv.org/abs/2301.04213",
+      "status": 200,
+      "title": "Title: Does Localization Inform Editing? Surprising Differences in Causality-Based Localization vs. Knowledge Editing in Language Models",
+      "sha256": "944eae9f001940cffef768c42c645c72681b8602cce862df6bad74cdf6fd8b51"
+    },
+    {
+      "key": "2302.06586",
+      "url": "https://arxiv.org/abs/2302.06586",
+      "status": 200,
+      "title": "Title: Stitchable Neural Networks",
+      "sha256": "033a22532b061e85eca52db4b800dcd6d092d5eeb410df43d668a7f5efc55a5a"
+    },
+    {
+      "key": "2305.03053",
+      "url": "https://arxiv.org/abs/2305.03053",
+      "status": 200,
+      "title": "Title: ZipIt! Merging Models from Different Tasks without Training",
+      "sha256": "5910820a857dc8841981a9795f6e4b5bf8d4d1fbecca3c0f5059ad942513bb93"
+    },
+    {
+      "key": "2306.01708",
+      "url": "https://arxiv.org/abs/2306.01708",
+      "status": 200,
+      "title": "Title: TIES-Merging: Resolving Interference When Merging Models",
+      "sha256": "6fdbd0f716fc3a7d3a2178558d15fee3333657c356e04edd61a5298340f45618"
+    },
+    {
+      "key": "2306.09346",
+      "url": "https://arxiv.org/abs/2306.09346",
+      "status": 200,
+      "title": "Title: Rosetta Neurons: Mining the Common Units in a Model Zoo",
+      "sha256": "d848f093662148a3568c110b5115da8d157c935069451c321e75066740557588"
+    },
+    {
+      "key": "2309.08600",
+      "url": "https://arxiv.org/abs/2309.08600",
+      "status": 200,
+      "title": "Title: Sparse Autoencoders Find Highly Interpretable Features in Language Models",
+      "sha256": "07d8ea2085e624946f24566b7e7d5fb56f5a512091782f571afd24b4c4672134"
+    },
+    {
+      "key": "2311.03099",
+      "url": "https://arxiv.org/abs/2311.03099",
+      "status": 200,
+      "title": "Title: Language Models are Super Mario: Absorbing Abilities from Homologous Models as a Free Lunch",
+      "sha256": "dfe2dbe6c7e1c8930ecb2f8ae20411695d77434b99becbdee296fc0b68fa137c"
+    },
+    {
+      "key": "2401.17377",
+      "url": "https://arxiv.org/abs/2401.17377",
+      "status": 200,
+      "title": "Title: Infini-gram: Scaling Unbounded n-gram Language Models to a Trillion Tokens",
+      "sha256": "6e334f719dcaac0a7a0eea3d3b1f5e1964eb724949c2337bccd3f3eeaef0549d"
+    },
+    {
+      "key": "2404.16130",
+      "url": "https://arxiv.org/abs/2404.16130",
+      "status": 200,
+      "title": "Title: From Local to Global: A Graph RAG Approach to Query-Focused Summarization",
+      "sha256": "855117eeed1d12d807df77154b203ba20a1664fd6f17891395557b379989add7"
+    },
+    {
+      "key": "2405.07987",
+      "url": "https://arxiv.org/abs/2405.07987",
+      "status": 200,
+      "title": "Title: The Platonic Representation Hypothesis",
+      "sha256": "ac3939ff0740cfff3739ecc0d4cb7c7552ef479b728c009bfb89626771649bb8"
+    },
+    {
+      "key": "nplm",
+      "url": "https://www.jmlr.org/papers/v3/bengio03a.html",
+      "status": 200,
+      "sha256": "e195a55be393a27659899d9baa90f841d18c0c7b46b111ca4a6a62a2428ce6a1"
+    },
+    {
+      "key": "cka",
+      "url": "https://proceedings.mlr.press/v97/kornblith19a.html",
+      "status": 200,
+      "sha256": "8cb219c5764dcfd5f4603f9ef3193267befebba519f51e1860c713f4a26ca663"
+    },
+    {
+      "key": "pr13",
+      "url": "https://api.github.com/repos/slayerlabs/micro-models/pulls/13",
+      "status": 200,
+      "title": "2026-09-05_posttraining-reverse-kl",
+      "sha256": "b31e22b485f180e73b442cd09327aa58247dc90cdb12f1ee6d4eadd619652fdc"
+    },
+    {
+      "key": "pr13-files",
+      "url": "https://api.github.com/repos/slayerlabs/micro-models/pulls/13/files?per_page=100",
+      "status": 200,
+      "sha256": "749a184b4e56a6cfad5c50ae708dccddc178d8a57f5060c358979ebdc8e3a370"
+    },
+    {
+      "key": "old-eval",
+      "url": "https://raw.githubusercontent.com/Maggio333/slay-piano-gpt/main/results/eval.json",
+      "status": 200,
+      "sha256": "494dc2f6d7ec97e37ee8c8a9d0bf32d5ab32dc4b0da8a469b7ccfd316e51cc7b"
+    },
+    {
+      "key": "old-eval-code",
+      "url": "https://raw.githubusercontent.com/Maggio333/slay-piano-gpt/main/src/eval.py",
+      "status": 200,
+      "sha256": "5c668f2f0b1ed190fd229c18a3c6e37e500eff86b9e686a1eb76c6c27c1cbf70"
+    },
+    {
+      "key": "session-head",
+      "url": "https://api.github.com/repos/adactio/TheSession-data/commits/main",
+      "status": 200,
+      "sha256": "cb900a3a8390c0bd5adf0754fee5bd85351a3fbe9912caa6c43c51d008873c37"
+    },
+    {
+      "key": "MiniLLM",
+      "url": "https://arxiv.org/abs/2306.08543",
+      "review_scope": "Abstract and relationship to PR mechanism"
+    },
+    {
+      "key": "InstructGPT",
+      "url": "https://arxiv.org/abs/2203.02155",
+      "review_scope": "Abstract and distinction from PR mechanism"
+    }
+  ],
+  "file_inventory": [
+    {
+      "path": ".github/workflows/latex.yml",
+      "bytes": 1209,
+      "sha256": "8eb50a251e754313919de11d5f0b4abeac4cf9009545eadb70c10ecab3d5c8d8",
+      "role": "Budowanie i publikowanie dokumentów LaTeX",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/.github/workflows/latex.yml"
+    },
+    {
+      "path": ".github/workflows/release.yml",
+      "bytes": 1226,
+      "sha256": "4ebfffc1ac78d037fe355948a653cfdc0aad536fd9d6ccd39a407ba205b8005b",
+      "role": "Budowanie i publikowanie dokumentów LaTeX",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/.github/workflows/release.yml"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 125,
+      "sha256": "b9fce0302597d2b68e4e2a576d71a7bde4873bd0de27786988b4f133215eb252",
+      "role": "Opis repozytorium lub konfiguracja",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/.gitignore"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3552,
+      "sha256": "94f43390bbd288f6823e8842c398cff1bfae6ebe49363bb1c5351f906c43de06",
+      "role": "Opis repozytorium lub konfiguracja",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/README.md"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 6849,
+      "sha256": "f4d167f599f8bef02eb0fa026ddc324133d304c750eec2325f79b25221cd5dc8",
+      "role": "Opis repozytorium lub konfiguracja",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/REPORT.md"
+    },
+    {
+      "path": "music-experts/.gitignore",
+      "bytes": 275,
+      "sha256": "6f6712afcba994669738aac6d557e19b0b19143e630deeb4b2505435be25f94b",
+      "role": "Opis repozytorium lub konfiguracja",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/.gitignore"
+    },
+    {
+      "path": "music-experts/LICENSE",
+      "bytes": 1192,
+      "sha256": "a9ae94e072c6e7f3b01e1dc6c0bc047e0cc9173cf30a6537b57b634186b67c5d",
+      "role": "Opis repozytorium lub konfiguracja",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/LICENSE"
+    },
+    {
+      "path": "music-experts/README.md",
+      "bytes": 3235,
+      "sha256": "dcfeddf3039cc49a85c358bf9e77d5acb59c1dc97e814e35d656bb9022b24525",
+      "role": "Opis repozytorium lub konfiguracja",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/README.md"
+    },
+    {
+      "path": "music-experts/blogdraft/chart3_spectrum.png",
+      "bytes": 55857,
+      "sha256": "eab5aeac5f5e8a56da45aa2d1f08638ea1521fb120a88f8c5c8585fc1dfcb3eb",
+      "role": "Warsztat i materiał publikacyjny",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/blogdraft/chart3_spectrum.png"
+    },
+    {
+      "path": "music-experts/blogdraft/most-ngram-transformer.md",
+      "bytes": 7227,
+      "sha256": "dc6e3e8919369d44679235724af026d53329f4f745d2a1dc128369edde1a2349",
+      "role": "Warsztat i materiał publikacyjny",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/blogdraft/most-ngram-transformer.md"
+    },
+    {
+      "path": "music-experts/blogdraft/warsztat-spektrum/00-Cele/C1-Cel-Publikacji.md",
+      "bytes": 867,
+      "sha256": "2e264a51f6894987a685ba18858773ddedc42940f728305d125e017af82e3ce6",
+      "role": "Warsztat i materiał publikacyjny",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/blogdraft/warsztat-spektrum/00-Cele/C1-Cel-Publikacji.md"
+    },
+    {
+      "path": "music-experts/blogdraft/warsztat-spektrum/10-Tezy/T1-Os-Spektrum.md",
+      "bytes": 652,
+      "sha256": "9deacbdecefa4de8024f01c7fa1e4ee1994417241deb62c968b8c3a6bdc066d0",
+      "role": "Warsztat i materiał publikacyjny",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/blogdraft/warsztat-spektrum/10-Tezy/T1-Os-Spektrum.md"
+    },
+    {
+      "path": "music-experts/blogdraft/warsztat-spektrum/10-Tezy/T2-Jeden-Tekst.md",
+      "bytes": 545,
+      "sha256": "1a81f6f9d87c1bd682cd50e03284b2741b0d2a6b776dd01b30f9056a8e5ac3a7",
+      "role": "Warsztat i materiał publikacyjny",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/blogdraft/warsztat-spektrum/10-Tezy/T2-Jeden-Tekst.md"
+    },
+    {
+      "path": "music-experts/blogdraft/warsztat-spektrum/10-Tezy/T3-Hak-Doswiadczeni.md",
+      "bytes": 510,
+      "sha256": "a708d8191e9f6625282b3cbf7e5f70eee4ab3e2663a29c85e1a92e37b8a0aa66",
+      "role": "Warsztat i materiał publikacyjny",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/blogdraft/warsztat-spektrum/10-Tezy/T3-Hak-Doswiadczeni.md"
+    },
+    {
+      "path": "music-experts/blogdraft/warsztat-spektrum/10-Tezy/T4-Most-Praktyka.md",
+      "bytes": 556,
+      "sha256": "388c25cf9c49aeca02721127622a9d42b84a503ce34d1900f5e1ee6efe146c2c",
+      "role": "Warsztat i materiał publikacyjny",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/blogdraft/warsztat-spektrum/10-Tezy/T4-Most-Praktyka.md"
+    },
+    {
+      "path": "music-experts/blogdraft/warsztat-spektrum/15-Antytezy/AT1-Kolejny-Explainer.md",
+      "bytes": 578,
+      "sha256": "af01163cf802482e435a4a056c0da0af29fce897b022535edad08ffc079642cc",
+      "role": "Warsztat i materiał publikacyjny",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/blogdraft/warsztat-spektrum/15-Antytezy/AT1-Kolejny-Explainer.md"
+    },
+    {
+      "path": "music-experts/blogdraft/warsztat-spektrum/15-Antytezy/AT2-Dwa-Teksty.md",
+      "bytes": 525,
+      "sha256": "9b555eec5fb418f3403f2a2f8319d3662047bbe9850dd9b9fffb2987a4afe01d",
+      "role": "Warsztat i materiał publikacyjny",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/blogdraft/warsztat-spektrum/15-Antytezy/AT2-Dwa-Teksty.md"
+    },
+    {
+      "path": "music-experts/blogdraft/warsztat-spektrum/15-Antytezy/AT3-Oni-To-Wiedza.md",
+      "bytes": 607,
+      "sha256": "0a3b2edb93c273cee953450a494fcf6ce8f16e4d981e3805b7d12f75c66ce987",
+      "role": "Warsztat i materiał publikacyjny",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/blogdraft/warsztat-spektrum/15-Antytezy/AT3-Oni-To-Wiedza.md"
+    },
+    {
+      "path": "music-experts/blogdraft/warsztat-spektrum/15-Antytezy/AT4-Most-Oslabia.md",
+      "bytes": 587,
+      "sha256": "255a4620d7c7b072ef4d206a7ac3883c32f8d1a67aa142bf2044fb1da3740b49",
+      "role": "Warsztat i materiał publikacyjny",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/blogdraft/warsztat-spektrum/15-Antytezy/AT4-Most-Oslabia.md"
+    },
+    {
+      "path": "music-experts/blogdraft/warsztat-spektrum/25-Syntezy/S1-Studium-Nie-Explainer.md",
+      "bytes": 760,
+      "sha256": "24c7275bf6410f2b0e4e2a99b210c4b56e1c585a4b12873104b1924e27054a97",
+      "role": "Warsztat i materiał publikacyjny",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/blogdraft/warsztat-spektrum/25-Syntezy/S1-Studium-Nie-Explainer.md"
+    },
+    {
+      "path": "music-experts/blogdraft/warsztat-spektrum/25-Syntezy/S2-Konsolidacja.md",
+      "bytes": 604,
+      "sha256": "334f8f7cf0fa2160453fdde109c647aacec09e17a78b1fa90dc1ef247c6036e6",
+      "role": "Warsztat i materiał publikacyjny",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/blogdraft/warsztat-spektrum/25-Syntezy/S2-Konsolidacja.md"
+    },
+    {
+      "path": "music-experts/blogdraft/warsztat-spektrum/25-Syntezy/S3-Hak-To-Uczciwosc.md",
+      "bytes": 628,
+      "sha256": "6833db79e1e03018bc683f155c40fcf52721338e45172abc298db0ddfd18acb7",
+      "role": "Warsztat i materiał publikacyjny",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/blogdraft/warsztat-spektrum/25-Syntezy/S3-Hak-To-Uczciwosc.md"
+    },
+    {
+      "path": "music-experts/blogdraft/warsztat-spektrum/25-Syntezy/S4-Most-Koncepcyjny.md",
+      "bytes": 654,
+      "sha256": "b506dfbc5e9887cd0405de98b07cec3a95df3ac6106eeb0b7a27667b63e7a353",
+      "role": "Warsztat i materiał publikacyjny",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/blogdraft/warsztat-spektrum/25-Syntezy/S4-Most-Koncepcyjny.md"
+    },
+    {
+      "path": "music-experts/blogdraft/warsztat-spektrum/60-Reference/Material-Zrodlowy.md",
+      "bytes": 1118,
+      "sha256": "bfe75f2c5c139e6e7c537a406e04420a67bddd4d6ab3c26465423808a47c66d3",
+      "role": "Warsztat i materiał publikacyjny",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/blogdraft/warsztat-spektrum/60-Reference/Material-Zrodlowy.md"
+    },
+    {
+      "path": "music-experts/blogdraft/warsztat-spektrum/INDEX.md",
+      "bytes": 1413,
+      "sha256": "97e3db7f51ca1dfa037c110f6354bb7847d30d06048b5973a9c5609509a97ddf",
+      "role": "Warsztat i materiał publikacyjny",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/blogdraft/warsztat-spektrum/INDEX.md"
+    },
+    {
+      "path": "music-experts/blogdraft/warsztat-spektrum/chart3_spectrum.png",
+      "bytes": 55857,
+      "sha256": "eab5aeac5f5e8a56da45aa2d1f08638ea1521fb120a88f8c5c8585fc1dfcb3eb",
+      "role": "Warsztat i materiał publikacyjny",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/blogdraft/warsztat-spektrum/chart3_spectrum.png"
+    },
+    {
+      "path": "music-experts/blogdraft/warsztat-spektrum/draft.tex",
+      "bytes": 11875,
+      "sha256": "ad92add0cf379f741cdf094ddeae1d0c93af0482af4f2caaf1cd7d14b5b4b0e5",
+      "role": "Warsztat i materiał publikacyjny",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/blogdraft/warsztat-spektrum/draft.tex"
+    },
+    {
+      "path": "music-experts/blogdraft/warsztat-spektrum/formatka/slayer.sty",
+      "bytes": 1385,
+      "sha256": "fb77e1f6522ed9b32c41dff7cc6402ba1239f92ce27732bf1cc56297f0501a0c",
+      "role": "Warsztat i materiał publikacyjny",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/blogdraft/warsztat-spektrum/formatka/slayer.sty"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/00-Cele/KMC1-Cel-Kompozycja-Malych-Modeli.md",
+      "bytes": 2653,
+      "sha256": "612e08b14b3ce4d84209efbb706ae7ccc4683a80db9c796dc471315ce48ba65b",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/00-Cele/KMC1-Cel-Kompozycja-Malych-Modeli.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/10-Tezy/KMT1-Kompozycja-Malych.md",
+      "bytes": 923,
+      "sha256": "a7a6d3f26ad4c34f266cf16b7ce1f0d7b054d4f891983e9c623d0ea98492df0a",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/10-Tezy/KMT1-Kompozycja-Malych.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/10-Tezy/KMT2-Kontrakt-W-Treningu.md",
+      "bytes": 1204,
+      "sha256": "0d23456fa5e3a1be414773b94c8dc7f9a84b4d037c3259b2de2074a53df3119f",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/10-Tezy/KMT2-Kontrakt-W-Treningu.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/10-Tezy/KMT3-Slownik-Z-Aktywacji.md",
+      "bytes": 942,
+      "sha256": "4cb4c558812055d201f7899bf883f52a77c32e0004943e5d71c27d29d188a253",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/10-Tezy/KMT3-Slownik-Z-Aktywacji.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/10-Tezy/KMT4-Routing-Przez-Wariancje.md",
+      "bytes": 999,
+      "sha256": "32c9a0070582d8ba21c568abb6fc45ecd9a3870c65bfa1a82c8accce0369663c",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/10-Tezy/KMT4-Routing-Przez-Wariancje.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/10-Tezy/KMT5-Meta-Atencja.md",
+      "bytes": 832,
+      "sha256": "d62c0bae821be0f340c649191e55f286e6130be4ee99e318e6c876f4cd7c8c45",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/10-Tezy/KMT5-Meta-Atencja.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/10-Tezy/KMT6-Konwergencja-Umozliwia-Kompozycje.md",
+      "bytes": 1208,
+      "sha256": "68c9a2f0134eacc08f45bd662e818e9b153fdab0fa181f0e5d3ed5b788031d72",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/10-Tezy/KMT6-Konwergencja-Umozliwia-Kompozycje.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/15-Antytezy/KMAT1-Jeden-Wiekszy.md",
+      "bytes": 1045,
+      "sha256": "91e3eb30c9ff2bd0e59ceec80442d6f1eb501a9466efbe218f393b48d417a1fa",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/15-Antytezy/KMAT1-Jeden-Wiekszy.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/15-Antytezy/KMAT2-Wyrownanie-Posthoc.md",
+      "bytes": 1042,
+      "sha256": "ec7199fc854afadd28fd18da2da58bac596eb416f846f36b478c49b1cc9877d7",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/15-Antytezy/KMAT2-Wyrownanie-Posthoc.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/15-Antytezy/KMAT3-Liniowy-Mapper.md",
+      "bytes": 928,
+      "sha256": "fa401d0ee51dc35df30746ebc949672b05a1fa18063f2f4555f5308b45880897",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/15-Antytezy/KMAT3-Liniowy-Mapper.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/15-Antytezy/KMAT4-Nauczony-Router.md",
+      "bytes": 935,
+      "sha256": "096c0f2fb3a6e4d01acb136a8ebaa19010c9015da6452a4aef1873d455d318bc",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/15-Antytezy/KMAT4-Nauczony-Router.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/15-Antytezy/KMAT5-Plaskie-Wazenie.md",
+      "bytes": 969,
+      "sha256": "e60306d3b409ba50aba1eede368f6867b1ed988119b47a4366d833f33eefc0fd",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/15-Antytezy/KMAT5-Plaskie-Wazenie.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/15-Antytezy/KMAT6-Konwergencja-To-Redundancja.md",
+      "bytes": 1320,
+      "sha256": "a593691b26b72c7a2bd270f2eafb1865989777f71c6cc490c41df3e723bb9773",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/15-Antytezy/KMAT6-Konwergencja-To-Redundancja.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/25-Syntezy/KMS1-Kompozycja-Gdy-Kontrakt.md",
+      "bytes": 1370,
+      "sha256": "c119f2c1e92a07ad25b5e2d55c892d11150f23d01b3b9cee2616cfa2f65b8407",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/25-Syntezy/KMS1-Kompozycja-Gdy-Kontrakt.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/25-Syntezy/KMS2-Kontrakt-Vs-Posthoc.md",
+      "bytes": 2439,
+      "sha256": "b02e0c798dd24410d6dd7699780ece7a977c59a64fc64435af5efe0de8d7891c",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/25-Syntezy/KMS2-Kontrakt-Vs-Posthoc.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/25-Syntezy/KMS3-Liniowy-Najpierw.md",
+      "bytes": 957,
+      "sha256": "f3ba978b85e5977895b7514da3028adac5a167d2ee5c9b56ecd3448e3249bf47",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/25-Syntezy/KMS3-Liniowy-Najpierw.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/25-Syntezy/KMS4-Wariancja-Plus-Router.md",
+      "bytes": 1263,
+      "sha256": "4eb8806d1060900fa55355eff18c24f40bab7ddd332d6127c4ab59a0d55f2947",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/25-Syntezy/KMS4-Wariancja-Plus-Router.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/25-Syntezy/KMS5-Meta-Gdy-Trudne-Obszary.md",
+      "bytes": 1002,
+      "sha256": "f3f107401ccf31685bb7eb961c6a1cd210fa97305aa06417a8a495aeb52b3e96",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/25-Syntezy/KMS5-Meta-Gdy-Trudne-Obszary.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/25-Syntezy/KMS6-Konwergencja-Vs-Komplementarnosc.md",
+      "bytes": 1825,
+      "sha256": "59d0f6f9d5379b0aa589a3f3eaef1d07083d1494d1ccce4fd1e1780a0e85a233",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/25-Syntezy/KMS6-Konwergencja-Vs-Komplementarnosc.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/60-Reference/Audyt-Analizy-Pomiaru.md",
+      "bytes": 4324,
+      "sha256": "4e3efab7a7a2ca3b9fc03e69ccdc4cc0cbfa3c244384e3a521321e2c1848b47d",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/60-Reference/Audyt-Analizy-Pomiaru.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/60-Reference/Emergencja-i-Wspolna-Reprezentacja.md",
+      "bytes": 9153,
+      "sha256": "94759bdadba3f2bc4e6a9eafa97df9be1438c6741233631614996678c5433531",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/60-Reference/Emergencja-i-Wspolna-Reprezentacja.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/60-Reference/Kompozycja-Malych-Modeli.md",
+      "bytes": 7770,
+      "sha256": "3e9d17a263e2e2a3537f6c9a4c966be43b71c091437e7321c2da85edd1b5351a",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/60-Reference/Kompozycja-Malych-Modeli.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/Kompozycja-Eksperymenty.md",
+      "bytes": 13136,
+      "sha256": "c65741adcdc6f6f292469356c0fc445d3513ebcef194618be941933103f1aef5",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/Kompozycja-Eksperymenty.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/Kompozycja-INDEX.md",
+      "bytes": 3908,
+      "sha256": "8aeea432482ca58ed60882d4d18597a7b7d727e5e840fe77530d0778a32b21f9",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_kompozycja-malych-modeli/Kompozycja-INDEX.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-20_ngram-vs-transformer/Research-NGram-vs-MiniTransformer.md",
+      "bytes": 6278,
+      "sha256": "398d074990bab04ea81ae7a794815f096c826af33860b370caa8d58abc917565",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-20_ngram-vs-transformer/Research-NGram-vs-MiniTransformer.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/2026-06-21_granie-razem-polifonia/Granie-Razem-Polifonia.md",
+      "bytes": 4028,
+      "sha256": "a1fdabd3348715d64a6ad60099eadecfa9696a97a1f0cd9402f0dc3f903d593b",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/2026-06-21_granie-razem-polifonia/Granie-Razem-Polifonia.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/Badania-INDEX.md",
+      "bytes": 1928,
+      "sha256": "09e8b2161bf41b117f2d463088e74eb133a44def6f0fe6620688b71481ea11d4",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/Badania-INDEX.md"
+    },
+    {
+      "path": "music-experts/docs/Badania/Wnioski-i-Dowody.md",
+      "bytes": 5582,
+      "sha256": "15c687602c0e3140ecc9fe52f190eb1ef3b40d37842719b9790f1a371f69f741",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Badania/Wnioski-i-Dowody.md"
+    },
+    {
+      "path": "music-experts/docs/Capstone-Muzyka-ABC-MIDI.md",
+      "bytes": 2153,
+      "sha256": "3a586c3b0cdfda29c3a1d25ac51282fb166344f5955fa03f6f3092175707a5c0",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Capstone-Muzyka-ABC-MIDI.md"
+    },
+    {
+      "path": "music-experts/docs/Capstone-Muzyka-LOG-Realizacja.md",
+      "bytes": 5352,
+      "sha256": "42f53e7191a9dcee6efd0f5a65605bbbf51f082eac4147f093cfad9fee4c16b0",
+      "role": "Notatki badawcze i dziennik realizacji",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/docs/Capstone-Muzyka-LOG-Realizacja.md"
+    },
+    {
+      "path": "music-experts/paper/most-ngram-transformer.tex",
+      "bytes": 8474,
+      "sha256": "e108f6197d7eb3a98f8868f7dc90057264431abe1aa3fdc7814d4f0adc15b228",
+      "role": "Źródło artykułu",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/paper/most-ngram-transformer.tex"
+    },
+    {
+      "path": "music-experts/paper/paper.tex",
+      "bytes": 13510,
+      "sha256": "1c640882d75f89df0554751bdbea9f2b1b69008b8d9134320c45b4e9fdfd4be7",
+      "role": "Źródło artykułu",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/paper/paper.tex"
+    },
+    {
+      "path": "music-experts/requirements.txt",
+      "bytes": 24,
+      "sha256": "209072e6a8a8bbeaeba738b7d2cc391e66335cc9743616fdcea51a8a50b641f5",
+      "role": "Opis repozytorium lub konfiguracja",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/requirements.txt"
+    },
+    {
+      "path": "music-experts/src/compose/duet.py",
+      "bytes": 2319,
+      "sha256": "3a210099b39d79c517abe9ee65850d259d9567bbb692c9f38137a47dd3c4ce00",
+      "role": "Łączenie modeli i ścieżek muzycznych",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/src/compose/duet.py"
+    },
+    {
+      "path": "music-experts/src/compose/e0_stitch.py",
+      "bytes": 3448,
+      "sha256": "17efc3cef7f154c20dca16298f551f3ef0c6e5765621e14657a6cb23350f3533",
+      "role": "Łączenie modeli i ścieżek muzycznych",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/src/compose/e0_stitch.py"
+    },
+    {
+      "path": "music-experts/src/compose/e1_stitch.py",
+      "bytes": 4917,
+      "sha256": "4ab93fa900f4975987ea195d4eaccd7405d74ba1f44052c7f35880f971534932",
+      "role": "Łączenie modeli i ścieżek muzycznych",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/src/compose/e1_stitch.py"
+    },
+    {
+      "path": "music-experts/src/compose/fuse.py",
+      "bytes": 3364,
+      "sha256": "ef53651dbaa55b46b6019e58e59a29916a27a02907eca55c6252dd2c928e59d3",
+      "role": "Łączenie modeli i ścieżek muzycznych",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/src/compose/fuse.py"
+    },
+    {
+      "path": "music-experts/src/core/__init__.py",
+      "bytes": 401,
+      "sha256": "a8df7b2a97a4760ed146678bf4a57abf3313595dcac725c5863d6ce385e463c7",
+      "role": "Architektura GPT i konwersja ABC do MIDI",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/src/core/__init__.py"
+    },
+    {
+      "path": "music-experts/src/core/abc_to_midi.py",
+      "bytes": 2190,
+      "sha256": "1287d2e39e02cbfce525852950c7b61438c481ec504b370cc69298b3cc94917e",
+      "role": "Architektura GPT i konwersja ABC do MIDI",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/src/core/abc_to_midi.py"
+    },
+    {
+      "path": "music-experts/src/core/gpt.py",
+      "bytes": 5079,
+      "sha256": "2e0a95740b4f8e640b057819f5d2a766705f095a3670615df46c1c85efd9447b",
+      "role": "Architektura GPT i konwersja ABC do MIDI",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/src/core/gpt.py"
+    },
+    {
+      "path": "music-experts/src/data/prepare_bach.py",
+      "bytes": 3008,
+      "sha256": "5818b84a2cdbd400dce980f262593fd6ae09e34ae1ed5f95dc563149808dbbee",
+      "role": "Przygotowanie korpusu muzycznego",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/src/data/prepare_bach.py"
+    },
+    {
+      "path": "music-experts/src/data/prepare_data.py",
+      "bytes": 2609,
+      "sha256": "24f8c560848a26e1368c61509797990ca427be8e3872812e235068446356eb11",
+      "role": "Przygotowanie korpusu muzycznego",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/src/data/prepare_data.py"
+    },
+    {
+      "path": "music-experts/src/generate/gen_samples.py",
+      "bytes": 2737,
+      "sha256": "82c1201ebc084cde2aefcd402c8129968db3e93561e95c446e97747a8686053e",
+      "role": "Generowanie ABC i MIDI",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/src/generate/gen_samples.py"
+    },
+    {
+      "path": "music-experts/src/generate/make_midi.py",
+      "bytes": 2650,
+      "sha256": "cc1fb918db43c54e8ff87e83ac2ef9db206e4a79a84c35f9cbc61d67659b5df5",
+      "role": "Generowanie ABC i MIDI",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/src/generate/make_midi.py"
+    },
+    {
+      "path": "music-experts/src/generate/sample_gpt.py",
+      "bytes": 1449,
+      "sha256": "0c2dc030620738097359ac84ea977eda560010dc2cf1dcda2b4dabf7817c69b9",
+      "role": "Generowanie ABC i MIDI",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/src/generate/sample_gpt.py"
+    },
+    {
+      "path": "music-experts/src/tools/analyze.py",
+      "bytes": 1402,
+      "sha256": "c72cde1cfd1d15db81c7fce1f59abb4988287bba394fa5e1f90864a9c4bd2f15",
+      "role": "Analiza reprezentacji, danych i publikowanie",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/src/tools/analyze.py"
+    },
+    {
+      "path": "music-experts/src/tools/cka.py",
+      "bytes": 8397,
+      "sha256": "218bfd2e39abc1e607500be80ff6333c9166bdccfddfdafd263b8be4f019c7fb",
+      "role": "Analiza reprezentacji, danych i publikowanie",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/src/tools/cka.py"
+    },
+    {
+      "path": "music-experts/src/tools/upload_hf.py",
+      "bytes": 1480,
+      "sha256": "0c99a6ad3e98923e358d6ad0d527d2c89d8c309ea3c70a53bd2dbba3a73abd88",
+      "role": "Analiza reprezentacji, danych i publikowanie",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/src/tools/upload_hf.py"
+    },
+    {
+      "path": "music-experts/src/train/ngram_eval.py",
+      "bytes": 2389,
+      "sha256": "4210994e93f339d2b8d155294958073b940144006cd447c8aa62e2b311d12dcc",
+      "role": "Trening GPT, NPLM i n-gramów",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/src/train/ngram_eval.py"
+    },
+    {
+      "path": "music-experts/src/train/ngram_model.py",
+      "bytes": 2199,
+      "sha256": "ff35a78b738f1a27946db772902b15bf6c675d8e19a2be6cf029e6d5ff5e0d89",
+      "role": "Trening GPT, NPLM i n-gramów",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/src/train/ngram_model.py"
+    },
+    {
+      "path": "music-experts/src/train/nplm.py",
+      "bytes": 3013,
+      "sha256": "512cbc1c0c3ce2c15b78d75c87918e211f3501020ac8d4145d0d7715d6f758c1",
+      "role": "Trening GPT, NPLM i n-gramów",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/src/train/nplm.py"
+    },
+    {
+      "path": "music-experts/src/train/train_gpt.py",
+      "bytes": 4653,
+      "sha256": "113d54e002eebcd7288b61c5b8d3062a63166d0e85e614fcfda391c55feb9e3b",
+      "role": "Trening GPT, NPLM i n-gramów",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/music-experts/src/train/train_gpt.py"
+    },
+    {
+      "path": "obsidian-experts/.gitignore",
+      "bytes": 336,
+      "sha256": "9732de0f270bb74357750397cdfb739dc45049adebe9c7f36e1e050814a6510b",
+      "role": "Projekt uczenia na notatkach Obsidiana",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/obsidian-experts/.gitignore"
+    },
+    {
+      "path": "obsidian-experts/README.md",
+      "bytes": 5119,
+      "sha256": "b613dce70f5cf8147b02739d27ff0a8a60eec084fe3ea1341372a16dda336bca",
+      "role": "Projekt uczenia na notatkach Obsidiana",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/obsidian-experts/README.md"
+    },
+    {
+      "path": "obsidian-experts/docs/Koncepcja.md",
+      "bytes": 2366,
+      "sha256": "ff7f8e570ce136082398df04cc7733cb6f6ba2b39101f078e8fd1ea58ba086f6",
+      "role": "Projekt uczenia na notatkach Obsidiana",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/obsidian-experts/docs/Koncepcja.md"
+    },
+    {
+      "path": "obsidian-experts/docs/Wyniki.md",
+      "bytes": 3139,
+      "sha256": "4d074491f7869dade71e8ef3881ca244c79bdbcab61e3b980a7e567e7e320fcd",
+      "role": "Projekt uczenia na notatkach Obsidiana",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/obsidian-experts/docs/Wyniki.md"
+    },
+    {
+      "path": "obsidian-experts/eval_obsidian.py",
+      "bytes": 4569,
+      "sha256": "0a515939f781cca774f26e62174257a4ad6e03d787eaa39368ed8d8d945dd109",
+      "role": "Projekt uczenia na notatkach Obsidiana",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/obsidian-experts/eval_obsidian.py"
+    },
+    {
+      "path": "obsidian-experts/gpt.py",
+      "bytes": 5079,
+      "sha256": "2e0a95740b4f8e640b057819f5d2a766705f095a3670615df46c1c85efd9447b",
+      "role": "Projekt uczenia na notatkach Obsidiana",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/obsidian-experts/gpt.py"
+    },
+    {
+      "path": "obsidian-experts/ngram_obsidian.py",
+      "bytes": 2917,
+      "sha256": "8fb90b6a181374a962cf4bc9a6979c25a1ee78dc2964689478f4de84b8ee18c9",
+      "role": "Projekt uczenia na notatkach Obsidiana",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/obsidian-experts/ngram_obsidian.py"
+    },
+    {
+      "path": "obsidian-experts/paper/paper-en.tex",
+      "bytes": 14471,
+      "sha256": "40f5293c8315258d2eb72049c7d5777a098d8ab5cdfeb2468ff1548f37a41dd0",
+      "role": "Projekt uczenia na notatkach Obsidiana",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/obsidian-experts/paper/paper-en.tex"
+    },
+    {
+      "path": "obsidian-experts/paper/paper.tex",
+      "bytes": 14403,
+      "sha256": "b48fd171405a6b0cdce924ec7dade86ea40ff2111031b35de8b3201f8c11f97b",
+      "role": "Projekt uczenia na notatkach Obsidiana",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/obsidian-experts/paper/paper.tex"
+    },
+    {
+      "path": "obsidian-experts/prepare_obsidian.py",
+      "bytes": 11703,
+      "sha256": "5be711a29349c9438abe582d2fcbc7aaa28dfe92e1927f21c04fe053fc6d46cd",
+      "role": "Projekt uczenia na notatkach Obsidiana",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/obsidian-experts/prepare_obsidian.py"
+    },
+    {
+      "path": "obsidian-experts/requirements.txt",
+      "bytes": 102,
+      "sha256": "467b446f9dc2da1ab8fa0d4aa85aeb6befbebaf9687f545e362eabd4d38fe5b1",
+      "role": "Projekt uczenia na notatkach Obsidiana",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/obsidian-experts/requirements.txt"
+    },
+    {
+      "path": "obsidian-experts/train.py",
+      "bytes": 4727,
+      "sha256": "7a549de7c0601812e3b95eabff6ecbcd258ce43cc12293bf4fe0553a3d7245c4",
+      "role": "Projekt uczenia na notatkach Obsidiana",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/obsidian-experts/train.py"
+    },
+    {
+      "path": "obsidian-experts/train_tokenizer.py",
+      "bytes": 3891,
+      "sha256": "5218244627d6e9a751134316d8fce56cffa53e0169eabc05ef7790f25f8e35be",
+      "role": "Projekt uczenia na notatkach Obsidiana",
+      "url": "https://github.com/slayerlabs/micro-models/blob/da30da3d7486a4b6b3de8d2d4aaa0f183617f751/obsidian-experts/train_tokenizer.py"
+    }
+  ],
+  "latest_campaign": {
+    "as_of": "2026-09-26T00:51:57+02:00",
+    "status": "completed_first_bach_training_campaign",
+    "manifest_sha256": "92c0801ccc5f9b0e099d17209e675c0fbeb3d8cbed0b0994990e3a1d1868da5f",
+    "source_commit": "0fd9e00542445a522c6030c80c687b874aa569d5",
+    "scope": "Bach soprano; separate real corpus, not all original benchmarks",
+    "dataset": {
+      "source_records": 370,
+      "duplicates_removed": 18,
+      "kept": 352,
+      "families": 169,
+      "largest_family": 79,
+      "splits": {
+        "train": {
+          "records": 281,
+          "families": 135,
+          "characters": 67016,
+          "notes": 13992,
+          "length_quantiles": [
+            105.0,
+            191.0,
+            219.0,
+            263.0,
+            758.0
+          ],
+          "mode": {
+            "major": 137,
+            "dorian": 28,
+            "minor": 107,
+            "phrygian": 2,
+            "mixolydian": 7
+          },
+          "meter": {
+            "3/4": 28,
+            "4/4": 252,
+            "3/2": 1
+          }
+        },
+        "validation": {
+          "records": 36,
+          "families": 17,
+          "characters": 8664,
+          "notes": 1837,
+          "length_quantiles": [
+            149.0,
+            182.0,
+            216.0,
+            257.0,
+            447.0
+          ],
+          "mode": {
+            "major": 18,
+            "dorian": 4,
+            "minor": 13,
+            "mixolydian": 1
+          },
+          "meter": {
+            "3/4": 4,
+            "4/4": 32
+          }
+        },
+        "test": {
+          "records": 35,
+          "families": 17,
+          "characters": 8299,
+          "notes": 1731,
+          "length_quantiles": [
+            134.0,
+            194.5,
+            226.0,
+            258.0,
+            499.0
+          ],
+          "mode": {
+            "major": 18,
+            "minor": 12,
+            "dorian": 4,
+            "mixolydian": 1
+          },
+          "meter": {
+            "4/4": 32,
+            "3/4": 3
+          }
+        }
+      }
+    },
+    "audit_checks_passed": 19,
+    "independent_checker": "Separate implementation; RapidFuzz in builder, SequenceMatcher in audit",
+    "protocol_revision": "88% initial threshold invalidated; 80% final; all weights restarted",
+    "test_evaluated": true,
+    "precision": "FP32",
+    "compute": "CPU, two threads per neural run",
+    "results": [
+      {
+        "model": "N-gram: kontekst 1",
+        "parameters": null,
+        "best_step": null,
+        "val_body_ppl": 3.8357922657115866,
+        "val_full_ppl": 3.890093629495549,
+        "train_body_ppl": null,
+        "state": "completed",
+        "seed": null
+      },
+      {
+        "model": "N-gram: kontekst 3",
+        "parameters": null,
+        "best_step": null,
+        "val_body_ppl": 2.7369024856309427,
+        "val_full_ppl": 2.6053124857396477,
+        "train_body_ppl": null,
+        "state": "completed",
+        "seed": null
+      },
+      {
+        "model": "N-gram: kontekst 6",
+        "parameters": null,
+        "best_step": null,
+        "val_body_ppl": 2.195527427169002,
+        "val_full_ppl": 2.0906631558655904,
+        "train_body_ppl": null,
+        "state": "completed",
+        "seed": null
+      },
+      {
+        "model": "GPT / 20260926",
+        "parameters": 820224,
+        "best_step": 1600,
+        "val_body_ppl": 1.9828416805218894,
+        "val_full_ppl": 1.8962812347715812,
+        "train_body_ppl": 1.8383496868501583,
+        "state": "completed",
+        "seed": 20260926,
+        "completed_steps": 2000,
+        "elapsed_seconds": 927.647729196,
+        "processed_target_tokens": 3621776,
+        "run_path": "runs/gpt_92c0801c_seed_20260926"
+      },
+      {
+        "model": "GPT / 20260927",
+        "parameters": 820224,
+        "best_step": 1800,
+        "val_body_ppl": 1.9746776663629677,
+        "val_full_ppl": 1.8887605073654403,
+        "train_body_ppl": 1.821665885881817,
+        "state": "completed",
+        "seed": 20260927,
+        "completed_steps": 2000,
+        "elapsed_seconds": 795.7272768170005,
+        "processed_target_tokens": 3622670,
+        "run_path": "runs/gpt_92c0801c_seed_20260927"
+      },
+      {
+        "model": "NPLM / 20260926",
+        "parameters": 78866,
+        "best_step": 1200,
+        "val_body_ppl": 1.8969843434984355,
+        "val_full_ppl": 1.8202434351028238,
+        "train_body_ppl": 1.5882308062103827,
+        "state": "completed",
+        "seed": 20260926,
+        "completed_steps": 2000,
+        "elapsed_seconds": 61.735246771000675,
+        "processed_target_tokens": 3621776,
+        "run_path": "runs/nplm_92c0801c_seed_20260926"
+      }
+    ],
+    "checkpoint_integrity": {
+      "manifest_sha256": "92c0801ccc5f9b0e099d17209e675c0fbeb3d8cbed0b0994990e3a1d1868da5f",
+      "test_evaluated": false,
+      "method": "Fresh weights_only checkpoint load, hashes, optimizer step, and full validation reproduction",
+      "runs": [
+        {
+          "run": "gpt_92c0801c_seed_20260926",
+          "completed_steps": 2000,
+          "best_step": 1600,
+          "best_checkpoint_sha256": "03267b60001e7ef395d9683c3578578418c54c237b47317e37e95e1dbfd0f3dc",
+          "last_checkpoint_sha256": "01b7d005c0ce6a6691e04d714155232274846443800af0b2b37d305bc4127c16",
+          "maximum_reproduced_metric_difference": 0.0,
+          "validation_body_ppl": 1.9828416805218894,
+          "parameters": 820224,
+          "optimizer_steps_match": true,
+          "finite_FP32_weights": true,
+          "source_hashes_match": true,
+          "checkpoint_selection_matches_log": true,
+          "validation_reloaded_seconds": 0.5030856409994158,
+          "passed": true
+        },
+        {
+          "run": "gpt_92c0801c_seed_20260927",
+          "completed_steps": 2000,
+          "best_step": 1800,
+          "best_checkpoint_sha256": "d9ed56696eeda897487abc64fb6a930f4e026aa01a0d6e49e90169543c5a0fb7",
+          "last_checkpoint_sha256": "529a65563a02a9fb008048d9ac8f1bcf7fd237b5f02d9b55cbbc7303a75c2fef",
+          "maximum_reproduced_metric_difference": 0.0,
+          "validation_body_ppl": 1.9746776663629677,
+          "parameters": 820224,
+          "optimizer_steps_match": true,
+          "finite_FP32_weights": true,
+          "source_hashes_match": true,
+          "checkpoint_selection_matches_log": true,
+          "validation_reloaded_seconds": 0.48172846300076344,
+          "passed": true
+        },
+        {
+          "run": "nplm_92c0801c_seed_20260926",
+          "completed_steps": 2000,
+          "best_step": 1200,
+          "best_checkpoint_sha256": "345fc024600bb167651bd891114dffd1d9983305c7b49edb43556d642b5b133a",
+          "last_checkpoint_sha256": "d371e8359b123bf78dd4c7932921702c85e3bdae03e0b26aaadb65864f5bc788",
+          "maximum_reproduced_metric_difference": 0.0,
+          "validation_body_ppl": 1.8969843434984355,
+          "parameters": 78866,
+          "optimizer_steps_match": true,
+          "finite_FP32_weights": true,
+          "source_hashes_match": true,
+          "checkpoint_selection_matches_log": true,
+          "validation_reloaded_seconds": 0.023803350999514805,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    "files": {
+      "bundle": "Micro_models_treningi_20260926.zip",
+      "report": "Micro_models_audyt_i_treningi_20260926_PL.md",
+      "notebook": "Micro_models_audyt_danych_20260926.ipynb"
+    },
+    "next_action": "Przed nowymi treningami zaplanować nową ocenę poza wykorzystanym testem. Pierwszy uzasadniony kierunek: kontrolowana generacja z ograniczeniami metrum i porównywalnymi długościami; później destylacja NPLM+GPT. Nie dobierać ustawień na historycznym teście.",
+    "upstream_status": "Original E1 and Obsidian scripts not changed; new audited pipeline avoids their identified split/metric issues.",
+    "limitations": [
+      "Only 17 validation and 17 test groups",
+      "Rare modes/meters missing from held-out splits",
+      "Five rare duration events absent from training per held-out split",
+      "No GPU access verified",
+      "Do not compare perplexity directly with upstream corpus/encoding"
+    ],
+    "recovery_verified_at": "2026-09-26T02:56:38+02:00",
+    "generation_summary": {
+      "total": 6,
+      "parser_accepted": 6,
+      "midi_reopened": 6,
+      "EOS": 4,
+      "samples_with_incorrect_interior_measures": 4,
+      "original_notation_midi_exports": 2
+    },
+    "test_evaluation_file": "evaluation_20260926/results.json"
+  },
+  "updated_at": "2026-09-26T01:50:25.179169+00:00",
+  "recommended_phases_history": [
+    {
+      "at": "2026-09-26T02:56:38+02:00",
+      "reason": "Wcześniejsza lista nadal miała same pending mimo ukończonej serii; zachowano historyczny zapis.",
+      "phases": [
+        {
+          "id": "0",
+          "task": "Środowisko, cel, warunki danych, wspólny manifest",
+          "acceptance": "Wersje i hashe zapisane; zbiory bez przecięć grup",
+          "status": "pending"
+        },
+        {
+          "id": "1",
+          "task": "Demonstracja znanego checkpointu lub własnego ABC",
+          "acceptance": "Powtarzalna generacja i poprawny zapis MIDI",
+          "status": "pending"
+        },
+        {
+          "id": "2",
+          "task": "Korpus i n-gram",
+          "acceptance": "Jeden wspólny test; określona metryka",
+          "status": "pending"
+        },
+        {
+          "id": "3",
+          "task": "Jeden GPT od zera",
+          "acceptance": "Krzywe train/val, checkpoint wznowienia, próbki i koszt",
+          "status": "pending"
+        },
+        {
+          "id": "4",
+          "task": "NPLM i kontrolowane ablacje",
+          "acceptance": "Porównanie jednej zmiennej naraz",
+          "status": "pending"
+        },
+        {
+          "id": "5",
+          "task": "E0, eksperci, ensemble, E1 i model wspólny",
+          "acceptance": "Brak przecieku; porównanie jakości i kosztu",
+          "status": "pending"
+        },
+        {
+          "id": "6",
+          "task": "CKA i komplementarność",
+          "acceptance": "Kontrola losowa, analiza różnic błędów",
+          "status": "pending"
+        },
+        {
+          "id": "7",
+          "task": "Własne notatki raw/decomp",
+          "acceptance": "Poprawione bpc i parser; wyrównane dane",
+          "status": "pending"
+        },
+        {
+          "id": "8",
+          "task": "Router, kontrakt reprezentacji lub PR reverse KL",
+          "acceptance": "Uzasadnienie wcześniejszym wynikiem",
+          "status": "pending"
+        },
+        {
+          "id": "9",
+          "task": "Własne zadanie użytkowe",
+          "acceptance": "Osobne kryteria użyteczności i dane domenowe",
+          "status": "pending"
+        }
+      ]
+    }
+  ],
+  "latest_recovery": {
+    "at": "2026-09-26T02:56:38+02:00",
+    "passed": true,
+    "recovery_archive_sha256": "7f193c38a5e94588a52612c760f8bfc058fa6222a42f9b645e453f7fa0139f49",
+    "original_data_and_run_files_unchanged": [
+      "data/train.jsonl",
+      "data/vocab.json",
+      "data/all_records_pre_dedup.jsonl",
+      "data/test.jsonl",
+      "data/validation.jsonl",
+      "data/manifest.json",
+      "runs/gpt_seed_20260927.log",
+      "runs/ngram_training.log",
+      "runs/summary.json",
+      "runs/nplm_training.log",
+      "runs/gpt_seed_20260926.log",
+      "runs/gpt_92c0801c_seed_20260926/metrics.jsonl",
+      "runs/gpt_92c0801c_seed_20260926/config.json",
+      "runs/gpt_92c0801c_seed_20260926/best_validation.json",
+      "runs/gpt_92c0801c_seed_20260926/checkpoint_last.pt",
+      "runs/gpt_92c0801c_seed_20260926/checkpoint_best.pt",
+      "runs/gpt_92c0801c_seed_20260926/best_training_metrics.json",
+      "runs/gpt_92c0801c_seed_20260926/status.json",
+      "runs/nplm_92c0801c_seed_20260926/metrics.jsonl",
+      "runs/nplm_92c0801c_seed_20260926/config.json",
+      "runs/nplm_92c0801c_seed_20260926/best_validation.json",
+      "runs/nplm_92c0801c_seed_20260926/checkpoint_last.pt",
+      "runs/nplm_92c0801c_seed_20260926/checkpoint_best.pt",
+      "runs/nplm_92c0801c_seed_20260926/best_training_metrics.json",
+      "runs/nplm_92c0801c_seed_20260926/status.json",
+      "runs/gpt_92c0801c_seed_20260927/metrics.jsonl",
+      "runs/gpt_92c0801c_seed_20260927/config.json",
+      "runs/gpt_92c0801c_seed_20260927/best_validation.json",
+      "runs/gpt_92c0801c_seed_20260927/checkpoint_last.pt",
+      "runs/gpt_92c0801c_seed_20260927/checkpoint_best.pt",
+      "runs/gpt_92c0801c_seed_20260927/best_training_metrics.json",
+      "runs/gpt_92c0801c_seed_20260927/status.json",
+      "runs/ngram_92c0801c/validation.json",
+      "runs/ngram_92c0801c/counts.pkl"
+    ],
+    "all_six_checkpoints_unchanged": true,
+    "original_double_check_bytes_preserved": true,
+    "repeated_data_checks_passed": 19,
+    "validation_metric_max_difference": 0.0,
+    "resume_parameter_max_difference": 0.0,
+    "notebook": {
+      "format_valid": true,
+      "code_cells_executed": 9,
+      "execution_counts": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "errors": 0,
+      "image_outputs": 2,
+      "numerical_summary_matches_original": true,
+      "figures_identical_to_original": {
+        "distributions.png": true,
+        "training_curves.png": true
+      },
+      "execution_engine": "IPython InteractiveShell, fresh process, sequential cells",
+      "visual_inspection": "Both saved PNG figures inspected at reading size; byte-identical to originals. No full Jupyter UI inspection."
+    },
+    "generation_summary": {
+      "total": 6,
+      "parser_accepted": 6,
+      "midi_reopened": 6,
+      "EOS": 4,
+      "samples_with_incorrect_interior_measures": 4,
+      "original_notation_midi_exports": 2
+    },
+    "test_model_scoring_performed": false,
+    "production_training_steps_per_run": 2000,
+    "diagnostic_resume_updates_saved_to_production": false,
+    "files": {
+      "report": "Micro_models_odzyskanie_20260926_PL.md",
+      "bundle": "Micro_models_treningi_20260926.zip",
+      "entrypoint": "START_HERE_PL.md"
+    },
+    "scope": "Recovery and completion of the first Bach pilot, not all ten long-term research phases"
+  },
+  "project_status": "first_bach_pilot_evaluated_on_frozen_test",
+  "active_report_filename": "evaluation_20260926/Micro_models_ewaluacja_PL.md",
+  "latest_evaluation": {
+    "at": "2026-09-26T01:43:30.748699+00:00",
+    "protocol_sha256": "9b88b8a1e5510b5d91b9066fd73e3879c1c60aad2bbde1bccc3f9c3b06e3d564",
+    "test_records": 35,
+    "test_families": 17,
+    "body_characters": 7568,
+    "body_test_ppl": {
+      "NPLM": 1.950124904194844,
+      "GPT_A": 2.044298148490189,
+      "GPT_B": 2.0375033590573404,
+      "ngram_context1": 3.845466702786722,
+      "ngram_context3": 2.7422920298948683,
+      "ngram_context6": 2.250451237716851,
+      "GPT_AB_prob": 2.0158554835689273,
+      "GPT_AB_logits": 2.0187645157553957,
+      "NPLM_GPT_B_prob": 1.8791533058483876,
+      "NPLM_GPT_B_logits": 1.8594933033641008
+    },
+    "generated_samples": 90,
+    "CKA_trained_mean": 0.9082043078323756,
+    "double_check_passed": true,
+    "test_now_consumed": true,
+    "retraining_performed": false,
+    "weights_unchanged": true,
+    "report_url": "https://micro-models-bach-ewaluacja-20260926.rodzina-na-s-0732.chatgpt.site"
+  }
+}

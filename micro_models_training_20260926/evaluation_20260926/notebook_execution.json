@@ -1,0 +1,10 @@
+{
+  "format_valid": true,
+  "code_cells_executed": 8,
+  "errors": 0,
+  "figure_outputs": 5,
+  "engine": {
+    "engine": "IPython InteractiveShell, fresh process, sequential cells",
+    "reason": "Jupyter TCP kernel startup blocked by runtime network-socket permissions; nbclient failed before first cell."
+  }
+}

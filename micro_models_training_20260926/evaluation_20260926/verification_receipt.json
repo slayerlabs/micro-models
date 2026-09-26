@@ -1,0 +1,9 @@
+{
+  "data_and_checkpoints": "unchanged",
+  "numerical_double_check": "passed",
+  "notebook": "8 code cells via fresh IPython process; 5 rendered PNG outputs inspected",
+  "report_app": "authored content build passed; browser rendering/interactions not inspected because managed preview lacks a compatible prepared server/control-browser skill",
+  "upstream": "read via git main da30da3 and PR13 496f856; web search endpoint unavailable",
+  "limitations": "No full Jupyter UI inspection, no listening study, no cross-style E1 or author benchmark reproduction",
+  "final_narrative_cross_check": "passed: 86 parser-accepted samples, 4 rejected; all tables agree"
+}

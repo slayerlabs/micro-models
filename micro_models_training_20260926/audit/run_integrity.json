@@ -1,0 +1,56 @@
+{
+  "manifest_sha256": "92c0801ccc5f9b0e099d17209e675c0fbeb3d8cbed0b0994990e3a1d1868da5f",
+  "test_evaluated": false,
+  "method": "Fresh weights_only checkpoint load, hashes, optimizer step, and full validation reproduction",
+  "runs": [
+    {
+      "run": "gpt_92c0801c_seed_20260926",
+      "completed_steps": 2000,
+      "best_step": 1600,
+      "best_checkpoint_sha256": "03267b60001e7ef395d9683c3578578418c54c237b47317e37e95e1dbfd0f3dc",
+      "last_checkpoint_sha256": "01b7d005c0ce6a6691e04d714155232274846443800af0b2b37d305bc4127c16",
+      "maximum_reproduced_metric_difference": 0.0,
+      "validation_body_ppl": 1.9828416805218894,
+      "parameters": 820224,
+      "optimizer_steps_match": true,
+      "finite_FP32_weights": true,
+      "source_hashes_match": true,
+      "checkpoint_selection_matches_log": true,
+      "validation_reloaded_seconds": 1.894507429999976,
+      "passed": true
+    },
+    {
+      "run": "gpt_92c0801c_seed_20260927",
+      "completed_steps": 2000,
+      "best_step": 1800,
+      "best_checkpoint_sha256": "d9ed56696eeda897487abc64fb6a930f4e026aa01a0d6e49e90169543c5a0fb7",
+      "last_checkpoint_sha256": "529a65563a02a9fb008048d9ac8f1bcf7fd237b5f02d9b55cbbc7303a75c2fef",
+      "maximum_reproduced_metric_difference": 0.0,
+      "validation_body_ppl": 1.9746776663629677,
+      "parameters": 820224,
+      "optimizer_steps_match": true,
+      "finite_FP32_weights": true,
+      "source_hashes_match": true,
+      "checkpoint_selection_matches_log": true,
+      "validation_reloaded_seconds": 1.6238206149999996,
+      "passed": true
+    },
+    {
+      "run": "nplm_92c0801c_seed_20260926",
+      "completed_steps": 2000,
+      "best_step": 1200,
+      "best_checkpoint_sha256": "345fc024600bb167651bd891114dffd1d9983305c7b49edb43556d642b5b133a",
+      "last_checkpoint_sha256": "d371e8359b123bf78dd4c7932921702c85e3bdae03e0b26aaadb65864f5bc788",
+      "maximum_reproduced_metric_difference": 0.0,
+      "validation_body_ppl": 1.8969843434984355,
+      "parameters": 78866,
+      "optimizer_steps_match": true,
+      "finite_FP32_weights": true,
+      "source_hashes_match": true,
+      "checkpoint_selection_matches_log": true,
+      "validation_reloaded_seconds": 0.029483251000101518,
+      "passed": true
+    }
+  ],
+  "passed": true
+}
