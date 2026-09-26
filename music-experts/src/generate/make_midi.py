@@ -24,6 +24,7 @@ def first_tune(raw: str) -> str:
 
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--meter", default="6/8", help="metrum, np. 6/8, 4/4, 3/4")
     ap.add_argument("--key",  default="D",   help="tonacja, np. D, G, Am, Edor")
     ap.add_argument("--n",    type=int,   default=3,   help="ile melodii")
     ap.add_argument("--temp", type=float, default=0.8, help="temperatura (więcej = śmielej)")
@@ -42,7 +43,7 @@ def main():
     model.eval()
     print(f"GPT {model.num_params():,} param | val loss {ck['val_loss']:.3f} | {device}")
 
-    seed = f"X:1\nM:6/8\nK:{args.key}\n"
+    seed = f"X:1\nM:{args.meter}\nK:{args.key}\n"
     made = 0
     for i in range(1, args.n + 1):
         idx = torch.tensor([[stoi[c] for c in seed]], dtype=torch.long, device=device)

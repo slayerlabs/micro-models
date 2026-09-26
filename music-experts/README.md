@@ -40,10 +40,45 @@ context 128 chars, character-level. Trained on CPU in minutes.
 - **Duet** (`src/compose/duet.py`) — two experts layered (piano + violin, simultaneous): multi-track, not model-level fusion.
 - **Next — E1:** representation-level stitch (the actual hypothesis, meant to beat these baselines).
 
+## Judge — automatic generation benchmark
+
+Perplexity measures text fit, not whether a generated tune *works as music* (meter? key? dance
+type?). The judge is an independent classifier that scores generated melodies like a human
+would: seeing only the tune **body** (the `M:`/`K:` headers are stripped — the judge cannot
+cheat off the prompt), it predicts **meter**, **mode** and **type** (jig/reel/hornpipe...).
+Built from the same building blocks as the experts: `JudgeGPT` = `core/gpt.py` trunk (verbatim)
++ mean-pool + 3 linear heads, pure PyTorch; 55k tunes, leak-free split by `tune_id`.
+`judge_v2` val acc: meter **0.92**, mode **0.72**, type **0.82** — with musically honest
+confusions (hornpipe↔reel, Bmin↔D).
+
+Two benchmarks built on top of it:
+
+- **In-domain** (`benchmark_judge.py`): each expert is scored only on tunes from its own
+  domain (`data/models/domains.json`), failures count as 0 (no survivor bias), with a
+  real-melody ceiling for reference. Leaderboard: jigs hold **0.80–0.86** of ceiling,
+  waltz 0.86 (soft ceiling), reels 0.69–0.72. The judge's ranking agrees with PPL — two
+  independent metrics, one verdict.
+- **OOD transfer matrix** (`benchmark_ood.py`): expert × target domain. Diagonal always
+  wins (specialization is real), but **headers don't steer off-domain** (home-bias 0.9 —
+  a jig expert told `M:4/4` still emits 6/8), while **melody context half-steers** (home-bias
+  ~0.5). Reel experts are the most flexible donors; small (e32) models bend easiest,
+  big ones are most rigid.
+
+```bash
+./run_benchmarks.sh                                   # in-domain sweep, all checkpoints
+python src/tools/train_judge.py --iters 5000 --batch 64 --out data/models/judge_v2.pt
+python src/tools/benchmark_judge.py --model data/models/jig_ckpt.pt --judge data/models/judge_v2.pt
+python src/tools/benchmark_ood.py                     # expert × domain transfer matrix
+```
+
+Full WHY / HOW / WHAT, results and limitations (in Polish):
+[docs/Badania/2026-09-05_posttraining-reverse-kl/Judge-Sedzia-Generacji.md](docs/Badania/2026-09-05_posttraining-reverse-kl/Judge-Sedzia-Generacji.md)
+
 ## Pipeline (`src/`)
 `prepare_data.py` / `prepare_bach.py` (build ABC corpus) → `gpt.py` (architecture) → `train_gpt.py`
 (train; optional shared vocab) → `make_midi.py` / `gen_samples.py` (generate + render) →
-`e0_stitch.py` / `fuse.py` / `duet.py` (composition) · `ngram_model.py` (baseline) · `abc_to_midi.py` (render).
+`e0_stitch.py` / `fuse.py` / `duet.py` (composition) · `ngram_model.py` (baseline) · `abc_to_midi.py` (render) ·
+`train_judge.py` / `judge_tunes.py` / `benchmark_judge.py` / `benchmark_ood.py` (judge — generation benchmark).
 
 ## Usage
 ```bash

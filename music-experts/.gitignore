@@ -1,11 +1,12 @@
 # cache
 __pycache__/
 *.pyc
-
+.venv
 # Repo = kod + wagi + docs. Surowe dane i OUTPUTY (nagrania, korpusy, raporty robocze)
 # są regenerowalne, więc NIE idą. Idą tylko wytrenowane MODELE (wagi).
 data/*
-!data/models
+out/*
+data/models
 data/models/*
 !data/models/*.pt
 data/models/gpt_ckpt_v1_dirty.pt

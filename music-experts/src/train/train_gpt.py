@@ -1,11 +1,22 @@
 """Trening GPT od zera na korpusie ABC (L03/L08 w praktyce).
 Batche -> strata cross-entropy -> backprop -> AdamW -> val loss -> checkpoint.
 """
-import os, time, math, sys
+import os, time, math, sys, argparse
 from contextlib import nullcontext
 import torch
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from core.gpt import GPT, GPTConfig
+
+ap = argparse.ArgumentParser()
+ap.add_argument("data", nargs="?", default="data/jigs.abc")
+ap.add_argument("ckpt", nargs="?", default="data/models/jig_ckpt.pt")
+ap.add_argument("losslog", nargs="?", default="data/models/jig_loss_log.csv")
+ap.add_argument("vocab_from", nargs="?", default=None,
+                help="wspólny słownik z innego ckpt (do stitchu)")
+ap.add_argument("seed", nargs="?", type=int, default=20260620)   # niezależne modele do E_CKA/E0.5
+ap.add_argument("--max-iters", type=int, default=2000,
+                help="skalować z rozmiarem korpusu (mixed ~4x jig)")
+a = ap.parse_args()
 
 # --- hiperparametry ---
 block_size  = 128
@@ -15,12 +26,12 @@ n_head      = 4
 n_embd      = int(os.environ.get("N_EMBD", 128))    # ENV: sweep skali (E_CKA)
 dropout     = 0.1
 lr          = 3e-4
-max_iters   = 2000
+max_iters   = a.max_iters
 eval_interval = 200
 eval_iters  = 100
 warmup      = 100
 
-SEED = int(sys.argv[5]) if len(sys.argv) > 5 else 20260620   # argv[5]: seed (niezależne modele do E_CKA/E0.5)
+SEED = a.seed
 torch.manual_seed(SEED)
 device = "cuda" if torch.cuda.is_available() else "cpu"
 use_bf16 = device == "cuda" and torch.cuda.is_bf16_supported()
@@ -28,12 +39,9 @@ ctx = torch.autocast(device_type="cuda", dtype=torch.bfloat16) if use_bf16 else 
 sys.stdout.reconfigure(encoding="utf-8")
 print(f"urządzenie: {device} | bf16: {use_bf16}")
 
-# --- ścieżki z argumentów (domyślnie: jigi) ---
-DATA    = sys.argv[1] if len(sys.argv) > 1 else "data/jigs.abc"
-CKPT    = sys.argv[2] if len(sys.argv) > 2 else "data/models/jig_ckpt.pt"
-LOSSLOG = sys.argv[3] if len(sys.argv) > 3 else "data/models/jig_loss_log.csv"
-VOCAB_FROM = sys.argv[4] if len(sys.argv) > 4 else None   # wspólny słownik z innego ckpt (do stitchu)
-print(f"dane: {DATA} -> checkpoint: {CKPT}")
+# --- ścieżki z argumentów ---
+DATA, CKPT, LOSSLOG, VOCAB_FROM = a.data, a.ckpt, a.losslog, a.vocab_from
+print(f"dane: {DATA} -> checkpoint: {CKPT} | max_iters: {max_iters}")
 
 # --- dane: char-level ---
 text = open(DATA, encoding="utf-8").read()

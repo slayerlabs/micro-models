@@ -19,6 +19,7 @@ repo: "https://github.com/slayerlabs/micro-models"
 | 2026-06-20 | Kompozycja małych modeli (kontrakt · mapper · wariancja) | warsztat dialektyczny | [[Kompozycja-INDEX]] |
 | 2026-06-20 | N-gram → mini-transformer (most) | koncepcja / roadmap | [[Research-NGram-vs-MiniTransformer]] |
 | 2026-06-21 | Granie razem — sprzężone oscylatory + polifonia (oś pionowa) | koncepcja | [[Granie-Razem-Polifonia]] |
+| 2026-09-05 | Posttraining: reverse KL z rotującym nauczycielem (E-RKL) | zrealizowany | [[Posttraining-ReverseKL-Eksperyment]] · [[Reprodukcja-E-RKL-Krok-Po-Kroku]] |
 
 ## Kotwica strategiczna
 - [[Cele-Globalne-i-Kotwica]] — hierarchia: muzyka = sandbox (Cel #1 know-how) · IFC = produkt (Cel #2). Co przenosi się uczciwie, kolejność budowy IFC, walidator = nagroda RLVR.
